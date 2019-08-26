@@ -1,3 +1,19 @@
 <mat-toolbar color="primary">
   <span>Color Scheme Editor</span>
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Open<mat-icon svgIcon="menu-down"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false">
+    <input #fileInput type="file" accept=".json" (change)="openLocalFile($event.target.files[0])"
+      (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
+    <button mat-menu-item (click)="fileInput.click()">
+      <mat-icon svgIcon="upload"></mat-icon>
+      <span>local file...</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon svgIcon="cloud-upload"></mat-icon>
+      <span>from URL...</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
