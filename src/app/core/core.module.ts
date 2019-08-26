@@ -1,17 +1,20 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { environment } from '@env/environment';
+
 import { editorReducer } from './store/editor.reducer';
 import { EditorEffects } from './store/editor.effects';
-import { environment } from '@env/environment';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    HttpClientModule,
     StoreModule.forRoot({
       editorState: editorReducer
     }),

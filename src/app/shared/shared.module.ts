@@ -4,8 +4,10 @@ import {
   MatToolbarModule,
   MatMenuModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatIconRegistry
 } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { HeaderComponent } from './components/header/header.component';
 
@@ -13,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
   declarations: [HeaderComponent],
   imports: [
     CommonModule,
+
     MatButtonModule,
     MatToolbarModule,
     MatMenuModule,
@@ -20,11 +23,30 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   exports: [
     CommonModule,
+
     MatButtonModule,
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
+
     HeaderComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
+    this.addSvgIcon('file-export');
+    this.addSvgIcon('code');
+  }
+
+  private addSvgIcon(iconName: string) {
+    this.matIconRegistry.addSvgIcon(
+      iconName,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        `./assets/vendors/fontawesome/${iconName}.svg`
+      )
+    );
+  }
+}
