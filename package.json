@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:aot": "ng serve --aot=true",
     "build": "ng build",
+    "build:prod": "ng build --prod --aot=true --base-href=https://yuriity.github.io/color-scheme-editor/ --outputHashing=all --extractCss=true --sourceMap=false --namedChunks=false --buildOptimizer=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
