@@ -1,0 +1,35 @@
+<mat-table #table [dataSource]="dataSource">
+
+  <!-- Readability Column -->
+  <ng-container matColumnDef="readability">
+    <mat-header-cell *matHeaderCellDef> Readability </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <cse-readability-view [readability]="element.readability"></cse-readability-view>
+      <!-- {{element.readability}} -->
+    </mat-cell>
+  </ng-container>
+
+  <!-- Color Column -->
+  <ng-container matColumnDef="color">
+    <mat-header-cell *matHeaderCellDef> Color </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <!-- <app-color-editor [(color)]="element.color" [backgroundColor]="element.backgroundColor"></app-color-editor> -->
+      {{element.color.toHexString()}}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Scope Column -->
+  <ng-container matColumnDef="scope">
+    <mat-header-cell *matHeaderCellDef> Scope </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.scope}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

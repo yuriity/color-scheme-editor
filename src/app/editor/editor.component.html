@@ -2,5 +2,6 @@
 
 <ng-container *ngIf="editorState$ | async as editorState">
   <span *ngIf="editorState.loading">loading...</span>
-  <span *ngIf="!editorState.loading">{{ editorState | json }}</span>
+  <!-- <span *ngIf="!editorState.loading">{{ editorState | json }}</span> -->
+  <cse-color-scheme-table *ngIf="!editorState.loading"></cse-color-scheme-table>
 </ng-container>

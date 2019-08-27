@@ -5,7 +5,10 @@ import {
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
-  MatIconRegistry
+  MatIconRegistry,
+  MatTableModule,
+  MatTooltipModule,
+  MatSortModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -19,7 +22,10 @@ import { HeaderComponent } from './components/header/header.component';
     MatButtonModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatSortModule
   ],
   exports: [
     CommonModule,
@@ -28,6 +34,9 @@ import { HeaderComponent } from './components/header/header.component';
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatSortModule,
 
     HeaderComponent
   ]
@@ -39,6 +48,9 @@ export class SharedModule {
   ) {
     this.addSvgIcon('file-export');
     this.addSvgIcon('code');
+    this.addSvgIcon('eye');
+    this.addSvgIcon('eye-slash');
+    this.addSvgIcon('low-vision');
   }
 
   private addSvgIcon(iconName: string) {
