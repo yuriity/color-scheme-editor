@@ -1,10 +1,9 @@
 import { TinycolorInstance } from './tinycolor-instance';
 
-export class TokenColor {
-  constructor(
-    public name: string,
-    public scope: string,
-    public color: TinycolorInstance,
-    public readability: number
-  ) {}
+export interface TokenColor {
+  id: string;
+  name: string;
+  scope: string;
+  color: TinycolorInstance;
+  readability: number;
 }
