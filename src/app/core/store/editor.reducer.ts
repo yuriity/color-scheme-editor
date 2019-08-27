@@ -1,16 +1,20 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { EditorState } from './editor.state';
 import {
   actionEditorLoadSuccess,
   actionEditorLoadError,
   actionEditorLoad
 } from './editor.actions';
+import { EditorState } from './core.state';
 
-export const initialState: EditorState = { loading: false };
+const initialEditorState: EditorState = {
+  loading: false,
+  colorScheme: null,
+  error: null
+};
 
 const reducer = createReducer(
-  initialState,
+  initialEditorState,
   on(actionEditorLoad, state => ({
     ...state,
     loading: true,

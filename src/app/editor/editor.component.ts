@@ -2,8 +2,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { ColorScheme } from 'app/core/models/color-scheme';
-import { EditorState } from 'app/core/store/editor.state';
+import {
+  AppState,
+  selectEditorState,
+  EditorState
+} from 'app/core/store/core.state';
 
 @Component({
   selector: 'cse-editor',
@@ -12,11 +15,11 @@ import { EditorState } from 'app/core/store/editor.state';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditorComponent implements OnInit {
-  editorState$: Observable<ColorScheme>;
+  editorState$: Observable<EditorState>;
 
-  constructor(private store: Store<EditorState>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.editorState$ = this.store.pipe(select('editorState'));
+    this.editorState$ = this.store.pipe(select(selectEditorState));
   }
 }

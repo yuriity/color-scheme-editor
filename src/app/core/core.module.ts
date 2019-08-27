@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from 'environments/environment';
-import { editorReducer } from './store/editor.reducer';
+import { reducers, metaReducers } from './store/core.state';
 import { EditorEffects } from './store/editor.effects';
 
 @NgModule({
@@ -14,9 +14,8 @@ import { EditorEffects } from './store/editor.effects';
   imports: [
     CommonModule,
     HttpClientModule,
-    StoreModule.forRoot({
-      editorState: editorReducer
-    }),
+
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([EditorEffects]),
     environment.production
       ? []

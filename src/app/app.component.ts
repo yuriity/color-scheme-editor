@@ -1,7 +1,7 @@
+import { AppState } from './core/store/core.state';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { EditorState } from './core/store/editor.state';
 import { actionEditorLoad } from './core/store/editor.actions';
 
 @Component({
@@ -12,7 +12,7 @@ import { actionEditorLoad } from './core/store/editor.actions';
 export class AppComponent {
   title = 'color-scheme-editor';
 
-  constructor(private store: Store<EditorState>) {}
+  constructor(private store: Store<AppState>) {}
 
   loadFile(file: File) {
     this.store.dispatch(actionEditorLoad({ file }));
