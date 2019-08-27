@@ -5,8 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { environment } from '@env/environment';
-
+import { environment } from 'environments/environment';
 import { editorReducer } from './store/editor.reducer';
 import { EditorEffects } from './store/editor.effects';
 

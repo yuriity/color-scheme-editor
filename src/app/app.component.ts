@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { EditorState, actionEditorLoad } from '@app/core';
+import { EditorState } from './core/store/editor.state';
+import { actionEditorLoad } from './core/store/editor.actions';
 
 @Component({
   selector: 'cse-root',
