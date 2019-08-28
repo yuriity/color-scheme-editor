@@ -53,22 +53,8 @@ const ReadabilityLevels: ReadabilityLevel[] = [
 @Component({
   selector: 'cse-readability-view',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <mat-icon
-      [svgIcon]="readabilityLevel.class"
-      [ngStyle]="{ color: readabilityLevel.color }"
-      [matTooltip]="readabilityLevel.message"
-    ></mat-icon>
-    <h3>{{ readability | number: '1.0-1' }}</h3>
-  `,
-  styles: [
-    `
-      h3 {
-        display: inline;
-        margin-left: 10px;
-      }
-    `
-  ]
+  templateUrl: './readability-view.component.html',
+  styleUrls: ['./readability-view.component.scss']
 })
 export class ReadabilityViewComponent implements OnInit {
   private _readability: number;

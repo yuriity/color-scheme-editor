@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px
+}
+
+mat-icon {
+  align-self: center;
+}
+
+h3 {
+  display: inline;
+}
