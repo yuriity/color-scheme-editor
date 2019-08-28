@@ -52,7 +52,6 @@ export class EditorToolbarComponent implements OnInit {
   }
 
   onFilter(text: string) {
-    console.log('_onFilter(text: string):', text);
     this.filter.emit(text);
   }
 

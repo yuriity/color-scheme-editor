@@ -27,7 +27,7 @@ export class EditorEffects {
           tap(() => {
             this.router.navigate(['/', 'editor']);
           }),
-          delay(3000),
+          // delay(3000),
           map(colorScheme => actionEditorLoadSuccess({ colorScheme })),
           catchError(error => of(actionEditorLoadError({ error })))
         )
