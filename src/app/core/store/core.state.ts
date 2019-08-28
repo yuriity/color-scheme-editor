@@ -1,14 +1,21 @@
-import { MetaReducer, ActionReducerMap } from '@ngrx/store';
+import { MetaReducer, ActionReducerMap, createSelector } from '@ngrx/store';
 
 import { environment } from 'environments/environment';
-import { editorReducer, EditorState } from './editor.reducer';
+import {
+  editorReducer,
+  EditorState,
+  selectAllTokenColors
+} from './editor.reducer';
 
 export interface AppState {
   editor: EditorState;
 }
 
 export const selectEditorState = (state: AppState) => state.editor;
-// export const selectColorScheme = (state: AppState) => state.editor.colorScheme;
+export const selectAllTokens = createSelector(
+  selectEditorState,
+  selectAllTokenColors
+);
 
 export const reducers: ActionReducerMap<AppState> = {
   editor: editorReducer

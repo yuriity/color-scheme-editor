@@ -1,26 +1,17 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ViewChild
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DataSource } from '@angular/cdk/table';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { AppState, selectEditorState } from 'app/core/store/core.state';
+import { AppState, selectAllTokens } from 'app/core/store/core.state';
 import { TokenColor } from 'app/core/models/token-color';
-import { selectAllTokenColors } from 'app/core/store/editor.reducer';
 
 export class TokenColorsDataSource extends DataSource<any> {
   constructor(private store: Store<AppState>) {
     super();
   }
   connect(): Observable<TokenColor[]> {
-    return this.store.pipe(
-      select(selectEditorState),
-      select(selectAllTokenColors)
-    );
+    return this.store.pipe(select(selectAllTokens));
   }
   disconnect() {}
 }
