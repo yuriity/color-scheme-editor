@@ -1,0 +1,11 @@
+@import 'src/styles-responsive.scss';
+
+mat-progress-bar {
+  position: absolute;
+  top: 64px;
+  left: 0;
+
+  @include for-size($size-phone-only) {
+    top: 56px;
+  }
+}
