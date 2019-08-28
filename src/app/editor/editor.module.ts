@@ -6,6 +6,7 @@ import { EditorComponent } from './editor.component';
 import { ColorSchemeTableComponent } from './color-scheme-table/color-scheme-table.component';
 import { ReadabilityViewComponent } from './readability-view/readability-view.component';
 import { ColorViewComponent } from './color-view/color-view.component';
+import { EditorToolbarComponent } from './editor-toolbar/editor-toolbar.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     EditorComponent,
     ColorSchemeTableComponent,
     ReadabilityViewComponent,
-    ColorViewComponent
+    ColorViewComponent,
+    EditorToolbarComponent
   ],
   imports: [SharedModule, RouterModule.forChild(routes)]
 })

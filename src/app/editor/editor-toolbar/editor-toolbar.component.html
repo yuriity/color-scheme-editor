@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>{{ title }}</span>
+    <span class="toolbar-spacer"></span>
+    <mat-form-field class="filter-form-field">
+      <input matInput type="text" maxlength="120" [(ngModel)]="filterValue" #filterInput>
+      <mat-icon class="prefix-icon" svgIcon="filter" matPrefix color="primary"></mat-icon>
+      <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear"
+        (click)="onClearFilterValue()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-toolbar-row>
+</mat-toolbar>

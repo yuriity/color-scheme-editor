@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import {
   MatToolbarModule,
   MatMenuModule,
@@ -8,7 +10,8 @@ import {
   MatIconRegistry,
   MatTableModule,
   MatTooltipModule,
-  MatSortModule
+  MatSortModule,
+  MatInputModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -18,17 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
   declarations: [HeaderComponent],
   imports: [
     CommonModule,
-
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatSortModule
-  ],
-  exports: [
-    CommonModule,
+    FormsModule,
+    HttpClientModule,
 
     MatButtonModule,
     MatToolbarModule,
@@ -37,6 +31,21 @@ import { HeaderComponent } from './components/header/header.component';
     MatTableModule,
     MatTooltipModule,
     MatSortModule,
+    MatInputModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatSortModule,
+    MatInputModule,
 
     HeaderComponent
   ]
@@ -51,6 +60,7 @@ export class SharedModule {
     this.addSvgIcon('eye');
     this.addSvgIcon('eye-slash');
     this.addSvgIcon('low-vision');
+    this.addSvgIcon('filter');
   }
 
   private addSvgIcon(iconName: string) {
