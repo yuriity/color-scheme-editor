@@ -21,31 +21,31 @@ export const editorAdapter: EntityAdapter<TokenColor> = createEntityAdapter<
 >();
 
 const initialEditorState: EditorState = editorAdapter.getInitialState({
-  ids: ['001', '002', '003', '004'],
+  ids: [0, 1, 2, 3],
   entities: {
-    '001': {
-      id: '001',
+    0: {
+      id: 0,
       name: 'fail',
       scope: 'scope',
       color: tinycolor('#000000'),
       readability: 1.0006122113242268
     },
-    '002': {
-      id: '002',
+    1: {
+      id: 1,
       name: 'aa-large',
       scope: 'scope1, scope2',
       color: tinycolor('#7F7F7F'),
       readability: 4.163514325404547
     },
-    '003': {
-      id: '003',
+    2: {
+      id: 2,
       name: 'aa',
       scope: 'scope1, scope2, scope3',
       color: tinycolor('#8F8F8F'),
       readability: 5.15499651233818
     },
-    '004': {
-      id: '004',
+    3: {
+      id: 3,
       name: 'aaa',
       scope: 'scope1, scope2, scope3, scope4',
       color: tinycolor('#FFFFFF'),

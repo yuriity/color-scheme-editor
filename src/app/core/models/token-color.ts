@@ -1,7 +1,7 @@
 import { TinycolorInstance } from './tinycolor-instance';
 
 export interface TokenColor {
-  id: string;
+  id: number;
   name: string;
   scope: string;
   color: TinycolorInstance;

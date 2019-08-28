@@ -30,12 +30,18 @@ export class EditorService {
     const jsonObj = JSON.parse(stripJsonComments(json));
     const metadata = parseColorSchemeMetadata(jsonObj);
     const tokenColors = [];
+    let index = 0;
 
     if (jsonObj.tokenColors) {
       for (const jsonTokenColor of jsonObj.tokenColors) {
-        const tokenColor = parseTokenColor(jsonTokenColor, metadata.background);
+        const tokenColor = parseTokenColor(
+          index,
+          jsonTokenColor,
+          metadata.background
+        );
         if (tokenColor) {
           tokenColors.push(tokenColor);
+          index++;
         }
       }
     } else {

@@ -1,5 +1,4 @@
 import * as tinycolor from 'tinycolor2';
-import { v4 as uuid } from 'uuid';
 
 import { ColorSchemeMetadata } from '../models/color-scheme-metadata';
 import { TinycolorInstance } from '../models/tinycolor-instance';
@@ -12,6 +11,7 @@ export function parseColorSchemeMetadata(jsonObj: any): ColorSchemeMetadata {
 }
 
 export function parseTokenColor(
+  id: number,
   jsonObject: any,
   background: TinycolorInstance
 ): TokenColor | null {
@@ -21,7 +21,6 @@ export function parseTokenColor(
     jsonObject.settings &&
     jsonObject.settings.foreground
   ) {
-    const id = uuid();
     const scope = fetchScope(jsonObject.scope);
     const color = tinycolor(jsonObject.settings.foreground);
     const readability = tinycolor.readability(background, color);
