@@ -1,6 +1,7 @@
 import { ColorSchemeMetadata } from './../models/color-scheme-metadata';
 import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import * as tinycolor from 'tinycolor2';
 
 import {
   actionEditorLoadSuccess,
@@ -8,7 +9,6 @@ import {
   actionEditorLoad
 } from './editor.actions';
 import { TokenColor } from '../models/token-color';
-import * as tinycolor from 'tinycolor2';
 
 export interface EditorState extends EntityState<TokenColor> {
   loading: boolean;
@@ -21,7 +21,7 @@ export const editorAdapter: EntityAdapter<TokenColor> = createEntityAdapter<
 >();
 
 const initialEditorState: EditorState = editorAdapter.getInitialState({
-  ids: [0, 1, 2, 3],
+  ids: [0, 1, 2, 3, 4],
   entities: {
     0: {
       id: 0,
@@ -49,6 +49,13 @@ const initialEditorState: EditorState = editorAdapter.getInitialState({
       name: 'aaa',
       scope: 'scope1, scope2, scope3, scope4',
       color: tinycolor('#FFFFFF'),
+      readability: 16.67115667431794
+    },
+    4: {
+      id: 4,
+      name: 'transparent',
+      scope: 'scope1, scope2, scope3',
+      color: tinycolor('#FFFFFFB0'),
       readability: 16.67115667431794
     }
   },
@@ -89,22 +96,8 @@ export function editorReducer(state: EditorState | undefined, action: Action) {
   return reducer(state, action);
 }
 
-// get the selectors
-const {
-  selectIds,
-  selectEntities,
-  selectAll,
-  selectTotal
-} = editorAdapter.getSelectors();
+const { selectAll, selectTotal } = editorAdapter.getSelectors();
 
-// select the array of user ids
-export const selectTokenColorIds = selectIds;
-
-// select the dictionary of user entities
-export const selectTokenColorEntities = selectEntities;
-
-// select the array of users
 export const selectAllTokenColors = selectAll;
 
-// select the total user count
 export const selectTokenColorsTotal = selectTotal;

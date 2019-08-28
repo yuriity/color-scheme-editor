@@ -5,6 +5,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { EditorComponent } from './editor.component';
 import { ColorSchemeTableComponent } from './color-scheme-table/color-scheme-table.component';
 import { ReadabilityViewComponent } from './readability-view/readability-view.component';
+import { ColorViewComponent } from './color-view/color-view.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   declarations: [
     EditorComponent,
     ColorSchemeTableComponent,
-    ReadabilityViewComponent
+    ReadabilityViewComponent,
+    ColorViewComponent
   ],
   imports: [SharedModule, RouterModule.forChild(routes)]
 })

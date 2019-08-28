@@ -1,0 +1,12 @@
+.container {
+  display: grid;
+  width: 110px;
+  // TODO: Use color from theme
+  border: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 5px;
+}
+
+span {
+  justify-self: center;
+  margin: 7px;
+}

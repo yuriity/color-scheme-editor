@@ -12,6 +12,8 @@ export interface AppState {
 }
 
 export const selectEditorState = (state: AppState) => state.editor;
+export const selectColorSchemeMetadata = (state: AppState) =>
+  state.editor.metadata;
 export const selectAllTokens = createSelector(
   selectEditorState,
   selectAllTokenColors
