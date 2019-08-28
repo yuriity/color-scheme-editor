@@ -1,4 +1,4 @@
-import { TinycolorInstance } from './../../core/models/tinycolor-instance';
+import { TinycolorInstance } from '../../../core/models/tinycolor-instance';
 import {
   Component,
   OnInit,
