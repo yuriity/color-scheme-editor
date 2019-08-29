@@ -5,7 +5,7 @@ import {
   ViewChild,
   OnDestroy
 } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, map } from 'rxjs/operators';
@@ -17,6 +17,7 @@ import {
 } from 'app/core/store/core.state';
 import { TokenColorResource } from 'app/core/models/token-color.resource';
 import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
+import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
 
 @Component({
   selector: 'cse-editor',
@@ -33,7 +34,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.metadata$ = this.store.pipe(select(selectColorSchemeMetadata));
@@ -63,6 +64,17 @@ export class EditorComponent implements OnInit, OnDestroy {
       filterValue = filterValue.toLowerCase();
       this.dataSource.filter = filterValue;
     }
+  }
+
+  openDialog(token: TokenColorResource): void {
+    const dialogRef = this.dialog.open(TokenEditorDialogComponent, {
+      width: '250px',
+      data: { token }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:', result);
+    });
   }
 
   private updateDataSource(tokens: TokenColorResource[]) {

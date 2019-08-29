@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Edit Token Color</h2>
+<mat-dialog-content>
+  <mat-form-field hintLabel="Max 50 characters">
+    <input matInput maxlength="50" placeholder="Name" [(ngModel)]="name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Scope" [(ngModel)]="scope"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onSave()">Save</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

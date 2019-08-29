@@ -12,7 +12,8 @@ import {
   MatTooltipModule,
   MatSortModule,
   MatInputModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatDialogModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -33,7 +34,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatTooltipModule,
     MatSortModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { HeaderComponent } from './components/header/header.component';
     MatSortModule,
     MatInputModule,
     MatProgressBarModule,
+    MatDialogModule,
 
     HeaderComponent
   ]
