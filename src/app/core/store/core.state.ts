@@ -18,6 +18,13 @@ export const selectAllTokens = createSelector(
   selectEditorState,
   selectAllTokenColors
 );
+export const selectTokensWithBackground = createSelector(
+  selectAllTokens,
+  selectColorSchemeMetadata,
+  (tokens, metadata) => {
+    return { tokens, metadata };
+  }
+);
 
 export const reducers: ActionReducerMap<AppState> = {
   editor: editorReducer

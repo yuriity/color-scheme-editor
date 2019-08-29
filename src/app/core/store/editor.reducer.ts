@@ -25,38 +25,33 @@ const initialEditorState: EditorState = editorAdapter.getInitialState({
   entities: {
     0: {
       id: 0,
-      name: 'fail',
-      scope: 'scope',
-      color: tinycolor('#000000'),
-      readability: 1.0006122113242268
+      originalName: 'fail',
+      originalScope: 'scope',
+      originalColor: tinycolor('#000000')
     },
     1: {
       id: 1,
-      name: 'aa-large',
-      scope: 'scope1, scope2',
-      color: tinycolor('#7F7F7F'),
-      readability: 4.163514325404547
+      originalName: 'aa-large',
+      originalScope: 'scope1, scope2',
+      originalColor: tinycolor('#7F7F7F')
     },
     2: {
       id: 2,
-      name: 'aa',
-      scope: 'scope1, scope2, scope3',
-      color: tinycolor('#8F8F8F'),
-      readability: 5.15499651233818
+      originalName: 'aa',
+      originalScope: 'scope1, scope2, scope3',
+      originalColor: tinycolor('#8F8F8F')
     },
     3: {
       id: 3,
-      name: 'aaa',
-      scope: 'scope1, scope2, scope3, scope4',
-      color: tinycolor('#FFFFFF'),
-      readability: 16.67115667431794
+      originalName: 'aaa',
+      originalScope: 'scope1, scope2, scope3, scope4',
+      originalColor: tinycolor('#FFFFFF')
     },
     4: {
       id: 4,
-      name: 'transparent',
-      scope: 'scope1, scope2, scope3',
-      color: tinycolor('#FFFFFFB0'),
-      readability: 16.67115667431794
+      originalName: 'transparent',
+      originalScope: 'scope1, scope2, scope3',
+      originalColor: tinycolor('#FFFFFFB0')
     }
   },
   loading: false,

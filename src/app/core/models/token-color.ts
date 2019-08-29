@@ -1,9 +1,13 @@
 import { TinycolorInstance } from './tinycolor-instance';
 
-export interface TokenColor {
+export type TokenColor = Readonly<{
   id: number;
-  name: string;
-  scope: string;
-  color: TinycolorInstance;
-  readability: number;
-}
+  originalName: string;
+  name: string | null;
+  originalScope: string;
+  scope: string | null;
+  originalColor: TinycolorInstance;
+  color: TinycolorInstance | null;
+  originalFontStyle: string;
+  fontStyle: string | null;
+}>;

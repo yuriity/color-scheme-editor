@@ -8,14 +8,14 @@ import {
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, map } from 'rxjs/operators';
 
 import {
   AppState,
-  selectAllTokens,
-  selectColorSchemeMetadata
+  selectColorSchemeMetadata,
+  selectTokensWithBackground
 } from 'app/core/store/core.state';
-import { TokenColor } from 'app/core/models/token-color';
+import { TokenColorResource } from 'app/core/models/token-color.resource';
 import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
 
 @Component({
@@ -26,8 +26,8 @@ import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
 })
 export class EditorComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
-  value = 'Clear me';
-  dataSource: MatTableDataSource<TokenColor>;
+
+  dataSource: MatTableDataSource<TokenColorResource>;
   displayedColumns = ['readability', 'color', 'name', 'scope', 'edit'];
   metadata$: Observable<ColorSchemeMetadata>;
 
@@ -40,7 +40,12 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.store
       .pipe(
         takeUntil(this.unsubscribe$),
-        select(selectAllTokens)
+        select(selectTokensWithBackground),
+        map(data =>
+          data.tokens.map(
+            token => new TokenColorResource(token, data.metadata.background)
+          )
+        )
       )
       .subscribe(tokens => this.updateDataSource(tokens));
   }
@@ -60,11 +65,11 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
-  private updateDataSource(tokens: TokenColor[]) {
+  private updateDataSource(tokens: TokenColorResource[]) {
     console.log(
       'ColorSchemeTableComponent.updateDataSource(tokens: TokenColor[])'
     );
-    this.dataSource = new MatTableDataSource<TokenColor>(tokens);
+    this.dataSource = new MatTableDataSource<TokenColorResource>(tokens);
     this.dataSource.sort = this.sort;
   }
 }

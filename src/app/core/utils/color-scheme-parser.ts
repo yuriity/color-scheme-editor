@@ -12,8 +12,7 @@ export function parseColorSchemeMetadata(jsonObj: any): ColorSchemeMetadata {
 
 export function parseTokenColor(
   id: number,
-  jsonObject: any,
-  background: TinycolorInstance
+  jsonObject: any
 ): TokenColor | null {
   if (
     jsonObject.scope &&
@@ -23,9 +22,18 @@ export function parseTokenColor(
   ) {
     const scope = fetchScope(jsonObject.scope);
     const color = tinycolor(jsonObject.settings.foreground);
-    const readability = tinycolor.readability(background, color);
 
-    return { id, name: jsonObject.name, scope, color, readability };
+    return {
+      id,
+      originalName: jsonObject.name,
+      name: null,
+      originalScope: scope,
+      scope: null,
+      originalColor: color,
+      color: null,
+      originalFontStyle: jsonObject.settings.fontStyle,
+      fontStyle: null
+    };
   }
 
   return null;

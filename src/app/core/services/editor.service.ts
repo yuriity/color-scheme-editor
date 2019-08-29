@@ -34,11 +34,7 @@ export class EditorService {
 
     if (jsonObj.tokenColors) {
       for (const jsonTokenColor of jsonObj.tokenColors) {
-        const tokenColor = parseTokenColor(
-          index,
-          jsonTokenColor,
-          metadata.background
-        );
+        const tokenColor = parseTokenColor(index, jsonTokenColor);
         if (tokenColor) {
           tokenColors.push(tokenColor);
           index++;

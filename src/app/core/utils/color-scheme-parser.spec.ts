@@ -1,5 +1,3 @@
-import * as tinycolor from 'tinycolor2';
-
 import {
   parseColorSchemeMetadata,
   parseTokenColor
@@ -50,7 +48,7 @@ describe('Color Scheme Parser', () => {
           "scope": "scope_test"
         }`);
 
-        const actual = parseTokenColor(0, json, tinycolor());
+        const actual = parseTokenColor(0, json);
 
         expect(actual).toBeNull();
       });
@@ -62,7 +60,7 @@ describe('Color Scheme Parser', () => {
           "settings": { }
         }`);
 
-        const actual = parseTokenColor(0, json, tinycolor());
+        const actual = parseTokenColor(0, json);
 
         expect(actual).toBeNull();
       });
@@ -76,7 +74,7 @@ describe('Color Scheme Parser', () => {
           }
         }`);
 
-        const actual = parseTokenColor(0, json, tinycolor());
+        const actual = parseTokenColor(0, json);
 
         expect(actual).toBeNull();
       });
@@ -91,7 +89,7 @@ describe('Color Scheme Parser', () => {
           }
         }`);
 
-        const actual = parseTokenColor(0, json, tinycolor());
+        const actual = parseTokenColor(0, json);
 
         expect(actual).toBeNull();
       });
@@ -106,7 +104,7 @@ describe('Color Scheme Parser', () => {
           }
         }`);
 
-        const actual = parseTokenColor(0, json, tinycolor());
+        const actual = parseTokenColor(0, json);
 
         expect(actual).toBeNull();
       });
@@ -122,9 +120,9 @@ describe('Color Scheme Parser', () => {
         }
       }`);
 
-      const actual = parseTokenColor(0, json, tinycolor());
+      const actual = parseTokenColor(0, json);
 
-      expect(actual.name).toBe('name_test');
+      expect(actual.originalName).toBe('name_test');
     });
 
     it('should fetch "scope"', () => {
@@ -135,9 +133,9 @@ describe('Color Scheme Parser', () => {
         }
       }`);
 
-      const actual = parseTokenColor(0, json, tinycolor());
+      const actual = parseTokenColor(0, json);
 
-      expect(actual.scope).toBe('scope_test');
+      expect(actual.originalScope).toBe('scope_test');
     });
 
     it('should fetch "scope" as a proper string if it is array', () => {
@@ -148,9 +146,9 @@ describe('Color Scheme Parser', () => {
         }
       }`);
 
-      const actual = parseTokenColor(0, json, tinycolor());
+      const actual = parseTokenColor(0, json);
 
-      expect(actual.scope).toBe('scope_test1, scope_test2');
+      expect(actual.originalScope).toBe('scope_test1, scope_test2');
     });
 
     it('should fetch "color"', () => {
@@ -163,24 +161,24 @@ describe('Color Scheme Parser', () => {
         }
       }`);
 
-      const actual = parseTokenColor(0, json, tinycolor());
+      const actual = parseTokenColor(0, json);
 
-      expect(actual.color.toHexString()).toBe('#110000');
+      expect(actual.originalColor.toHexString()).toBe('#110000');
     });
 
-    it('should properly calculate "readability"', () => {
+    it('should fetch "fontStyle"', () => {
       const json = JSON.parse(`{
         "name": "name_test",
         "scope": "scope_test",
         "settings": {
-          "fontStyle": "italic",
-          "foreground": "#FFFFFF"
+          "fontStyle": "italic underline",
+          "foreground": "#110000"
         }
       }`);
 
-      const actual = parseTokenColor(0, json, tinycolor());
+      const actual = parseTokenColor(0, json);
 
-      expect(actual.readability).toBe(21);
+      expect(actual.originalFontStyle).toBe('italic underline');
     });
   });
 });
