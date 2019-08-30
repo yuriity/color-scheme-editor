@@ -13,14 +13,13 @@ import {
   MatSortModule,
   MatInputModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { HeaderComponent } from './components/header/header.component';
-
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,7 +34,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatSortModule,
     MatInputModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   exports: [
     CommonModule,
@@ -52,8 +52,7 @@ import { HeaderComponent } from './components/header/header.component';
     MatInputModule,
     MatProgressBarModule,
     MatDialogModule,
-
-    HeaderComponent
+    MatCheckboxModule
   ]
 })
 export class SharedModule {

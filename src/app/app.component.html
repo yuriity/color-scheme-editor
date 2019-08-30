@@ -1,5 +1,24 @@
 <header>
-  <cse-header (openFileEvent)="loadFile($event)"></cse-header>
+  <!-- <cse-header (openFileEvent)="loadFile($event)"></cse-header> -->
+  <mat-toolbar color="primary" class="mat-elevation-z6">
+    <span>Color Scheme Editor</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      Open<mat-icon class="menu-arrow-down">arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false">
+      <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
+        (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
+      <button mat-menu-item (click)="fileInput.click()">
+        <mat-icon svgIcon="file-export"></mat-icon>
+        <span>local file...</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon svgIcon="code"></mat-icon>
+        <span>from json...</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
   <mat-progress-bar color="accent" mode="indeterminate" *ngIf="(editorState$ | async).loading">
   </mat-progress-bar>
 </header>

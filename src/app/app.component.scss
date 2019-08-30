@@ -1,5 +1,9 @@
 @import 'src/styles-responsive.scss';
 
+.menu-arrow-down {
+  margin-left: 5px;
+}
+
 mat-progress-bar {
   position: absolute;
   top: 64px;
