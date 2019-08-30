@@ -1,4 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import './light-theme';
+
+@import './app/features/editor/components/font-style-view/font-style-view.component.scss-theme';
+
+@mixin custom-components-theme($theme) {
+  @include cse-font-style-view-component-theme($theme);
+}
+
+@include angular-material-theme($cse-light-theme);
+@include custom-components-theme($cse-light-theme);
 
 html,
 body {

@@ -1,8 +1,9 @@
+@import '~@angular/material/theming';
+
 .container {
   display: grid;
   width: 110px;
-  // TODO: Use color from theme
-  border: 1px solid rgba(0, 0, 0, .12);
+  border: 1px solid map-get($mat-light-theme-foreground, 'divider');
   border-radius: 5px;
 }
 
