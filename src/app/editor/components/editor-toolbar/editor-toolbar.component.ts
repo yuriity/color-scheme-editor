@@ -38,8 +38,6 @@ export class EditorToolbarComponent implements OnInit {
         map((event: any) => {
           return event.target.value;
         }),
-        // if character length greater then 2
-        filter(res => res.length > 2),
         // time in milliseconds between key events
         debounceTime(500),
         // if previous query is diffent from current
