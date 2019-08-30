@@ -8,6 +8,7 @@ import { EditorComponent } from './editor.component';
 import { ReadabilityViewComponent } from './components/readability-view/readability-view.component';
 import { ColorViewComponent } from './components/color-view/color-view.component';
 import { EditorToolbarComponent } from './components/editor-toolbar/editor-toolbar.component';
+import { FontStyleViewComponent } from './components/font-style-view/font-style-view.component';
 
 describe('EditorComponent', () => {
   let component: EditorComponent;
@@ -19,7 +20,8 @@ describe('EditorComponent', () => {
         EditorComponent,
         ReadabilityViewComponent,
         ColorViewComponent,
-        EditorToolbarComponent
+        EditorToolbarComponent,
+        FontStyleViewComponent
       ],
       imports: [
         RouterTestingModule,

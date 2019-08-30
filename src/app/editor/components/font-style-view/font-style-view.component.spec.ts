@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FontStyleViewComponent } from './font-style-view.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 describe('FontStyleViewComponent', () => {
   let component: FontStyleViewComponent;
@@ -8,9 +10,9 @@ describe('FontStyleViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FontStyleViewComponent ]
-    })
-    .compileComponents();
+      declarations: [FontStyleViewComponent],
+      imports: [NoopAnimationsModule, SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
