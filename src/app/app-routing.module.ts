@@ -5,12 +5,13 @@ const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   {
     path: 'about',
-    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+    loadChildren: () =>
+      import('./features/about/about.module').then(m => m.AboutModule)
   },
   {
     path: 'editor',
     loadChildren: () =>
-      import('./editor/editor.module').then(m => m.EditorModule)
+      import('./features/editor/editor.module').then(m => m.EditorModule)
   },
   {
     path: '**',

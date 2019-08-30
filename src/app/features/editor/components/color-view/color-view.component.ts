@@ -1,10 +1,11 @@
-import { TinycolorInstance } from '../../../core/models/tinycolor-instance';
 import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
   Input
 } from '@angular/core';
+
+import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
 
 @Component({
   selector: 'cse-color-view',
