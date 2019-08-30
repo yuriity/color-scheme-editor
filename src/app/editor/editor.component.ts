@@ -29,7 +29,14 @@ export class EditorComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   dataSource: MatTableDataSource<TokenColorResource>;
-  displayedColumns = ['readability', 'color', 'name', 'scope', 'edit'];
+  displayedColumns = [
+    'readability',
+    'color',
+    'fontStyle',
+    'name',
+    'scope',
+    'edit'
+  ];
   metadata$: Observable<ColorSchemeMetadata>;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

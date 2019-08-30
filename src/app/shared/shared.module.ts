@@ -67,6 +67,9 @@ export class SharedModule {
     this.addSvgIcon('eye-slash');
     this.addSvgIcon('low-vision');
     this.addSvgIcon('filter');
+    this.addSvgIcon('bold');
+    this.addSvgIcon('italic');
+    this.addSvgIcon('underline');
   }
 
   private addSvgIcon(iconName: string) {

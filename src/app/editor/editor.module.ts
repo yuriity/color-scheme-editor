@@ -7,6 +7,7 @@ import { ReadabilityViewComponent } from './components/readability-view/readabil
 import { ColorViewComponent } from './components/color-view/color-view.component';
 import { EditorToolbarComponent } from './components/editor-toolbar/editor-toolbar.component';
 import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
+import { FontStyleViewComponent } from './components/font-style-view/font-style-view.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     ReadabilityViewComponent,
     ColorViewComponent,
     EditorToolbarComponent,
-    TokenEditorDialogComponent
+    TokenEditorDialogComponent,
+    FontStyleViewComponent
   ],
   imports: [SharedModule, RouterModule.forChild(routes)],
   entryComponents: [TokenEditorDialogComponent]

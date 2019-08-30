@@ -19,6 +19,16 @@
     </mat-cell>
   </ng-container>
 
+  <!-- Font Style Column -->
+  <ng-container matColumnDef="fontStyle">
+    <mat-header-cell *matHeaderCellDef> Font Style </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <cse-font-style-view [fontStyleBold]="element.fontStyleBold" [fontStyleItalic]="element.fontStyleItalic"
+        [fontStyleUnderline]="element.fontStyleUnderline">
+      </cse-font-style-view>
+    </mat-cell>
+  </ng-container>
+
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
