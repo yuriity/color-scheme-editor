@@ -14,6 +14,13 @@ const routes: Routes = [
       import('./features/editor/editor.module').then(m => m.EditorModule)
   },
   {
+    path: 'edit-token/:tokenId',
+    loadChildren: () =>
+      import('./features/edit-token-color/edit-token-color.module').then(
+        m => m.EditTokenColorModule
+      )
+  },
+  {
     path: '**',
     redirectTo: 'about'
   }

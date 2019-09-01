@@ -4,6 +4,7 @@ import { TokenColor } from './token-color';
 import { TinycolorInstance } from './tinycolor-instance';
 
 export class TokenColorResource {
+  readonly id: number;
   readonly name: string;
   readonly scope: string;
   readonly color: TinycolorInstance;
@@ -14,51 +15,53 @@ export class TokenColorResource {
   readonly modified: boolean;
 
   constructor(
-    public readonly tokenColor: TokenColor,
+    private readonly _tokenColor: TokenColor,
     public readonly background: TinycolorInstance
   ) {
-    if (!tokenColor) {
+    if (!_tokenColor) {
       throw Error('"_tokenColor" should be initialized.');
     }
     if (!background) {
       throw Error('"_background" should be initialized.');
     }
 
-    this.name = this.tokenColor.name
-      ? this.tokenColor.name
-      : this.tokenColor.originalName;
+    this.id = this._tokenColor.id;
 
-    this.scope = this.tokenColor.scope
-      ? this.tokenColor.scope
-      : this.tokenColor.originalScope;
+    this.name = this._tokenColor.name
+      ? this._tokenColor.name
+      : this._tokenColor.originalName;
 
-    this.color = this.tokenColor.color
-      ? this.tokenColor.color
-      : this.tokenColor.originalColor;
+    this.scope = this._tokenColor.scope
+      ? this._tokenColor.scope
+      : this._tokenColor.originalScope;
 
-    this.fontStyleBold = this.tokenColor.fontStyle
-      ? this.tokenColor.fontStyle.includes('bold')
-      : this.tokenColor.originalFontStyle
-      ? this.tokenColor.originalFontStyle.includes('bold')
+    this.color = this._tokenColor.color
+      ? this._tokenColor.color
+      : this._tokenColor.originalColor;
+
+    this.fontStyleBold = this._tokenColor.fontStyle
+      ? this._tokenColor.fontStyle.includes('bold')
+      : this._tokenColor.originalFontStyle
+      ? this._tokenColor.originalFontStyle.includes('bold')
       : false;
 
-    this.fontStyleItalic = this.tokenColor.fontStyle
-      ? this.tokenColor.fontStyle.includes('italic')
-      : this.tokenColor.originalFontStyle
-      ? this.tokenColor.originalFontStyle.includes('italic')
+    this.fontStyleItalic = this._tokenColor.fontStyle
+      ? this._tokenColor.fontStyle.includes('italic')
+      : this._tokenColor.originalFontStyle
+      ? this._tokenColor.originalFontStyle.includes('italic')
       : false;
 
-    this.fontStyleUnderline = this.tokenColor.fontStyle
-      ? this.tokenColor.fontStyle.includes('underline')
-      : this.tokenColor.originalFontStyle
-      ? this.tokenColor.originalFontStyle.includes('underline')
+    this.fontStyleUnderline = this._tokenColor.fontStyle
+      ? this._tokenColor.fontStyle.includes('underline')
+      : this._tokenColor.originalFontStyle
+      ? this._tokenColor.originalFontStyle.includes('underline')
       : false;
 
     this.modified = !!(
-      this.tokenColor.name ||
-      this.tokenColor.scope ||
-      this.tokenColor.color ||
-      this.tokenColor.fontStyle
+      this._tokenColor.name ||
+      this._tokenColor.scope ||
+      this._tokenColor.color ||
+      this._tokenColor.fontStyle
     );
 
     this.readability = tinycolor.readability(this.background, this.color);

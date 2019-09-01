@@ -2,6 +2,8 @@
 
 @include mat-core();
 
+@import './styles-responsive';
+
 @import './light-theme';
 
 @import './app/features/editor/components/font-style-view/font-style-view.component.scss-theme';
@@ -21,6 +23,30 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include for-size($size-phone-only) {
+    max-width: 540px;
+  }
+
+  @include for-size($size-tablet-portrait-up) {
+    max-width: 720px;
+  }
+
+  @include for-size($size-tablet-landscape-up) {
+    max-width: 960px;
+  }
+
+  @include for-size($size-desktop-up) {
+    max-width: 1140px;
+  }
 }
 
 .code {

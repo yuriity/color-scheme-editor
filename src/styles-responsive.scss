@@ -6,25 +6,25 @@ $size-big-desktop-up: 'big-desktop-up';
 
 @mixin for-size($size) {
   @if $size==phone-only {
-    @media (max-width: 599px) {
+    @media (max-width: 576px) {
       @content;
     }
   }
 
   @else if $size==tablet-portrait-up {
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
       @content;
     }
   }
 
   @else if $size==tablet-landscape-up {
-    @media (min-width: 960px) {
+    @media (min-width: 992px) {
       @content;
     }
   }
 
   @else if $size==desktop-up {
-    @media (min-width: 1280px) {
+    @media (min-width: 1200px) {
       @content;
     }
   }

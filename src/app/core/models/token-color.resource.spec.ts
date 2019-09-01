@@ -29,6 +29,13 @@ describe('TokenColorResource', () => {
     }).toThrowError('"_background" should be initialized.');
   });
 
+  it('should initialize "id"', () => {
+    const tokenColor = { id: 42 } as any;
+    const actual = new TokenColorResource(tokenColor, tinycolor());
+
+    expect(actual.id).toBe(42);
+  });
+
   describe('readonly name: string', () => {
     it('should return "name" if it modified', () => {
       const tokenColor = { name: 'test_name' } as any;
