@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+
+  div.circle-marker {
+    pointer-events: none;
+    position: absolute;
+    box-sizing: border-box;
+    width: 11px;
+    height: 11px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .5), inset 0 0 2px 0 rgba(0, 0, 0, .5);
+    top: -5px;
+    left: calc(100% - 5px);
+  }
+
+  div.spectrum-container {
+    position: relative;
+    height: 255px;
+
+    canvas {
+      height: 255px;
+      width: 100%;
+      cursor: crosshair;
+    }
+  }
+}

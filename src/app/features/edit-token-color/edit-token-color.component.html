@@ -14,7 +14,9 @@
       <mat-checkbox><u>Underline</u></mat-checkbox>
     </section>
   </div>
-  <div class="color-editor" style="background-color: #a7ffeb">colorEditor</div>
+  <div class="color-editor">
+    <cse-color-picker [color]="color" (colorChange)="onColorChange($event)"></cse-color-picker>
+  </div>
   <div class="actions">
     <button mat-button>Save</button>
     <button mat-button>Cancel</button>

@@ -7,9 +7,14 @@
 @import './light-theme';
 
 @import './app/features/editor/components/font-style-view/font-style-view.component.scss-theme';
+@import './app/features/color-picker/color-picker.component.scss-theme.scss';
 
 @mixin custom-components-theme($theme) {
   @include cse-font-style-view-component-theme($theme);
+}
+
+@mixin custom-components-theme($theme) {
+  @include cse-color-picker-component-theme($theme);
 }
 
 @include angular-material-theme($cse-light-theme);
@@ -49,10 +54,18 @@ body {
   }
 }
 
-.code {
+.monospaced {
   font-family: operator mono ssm a, operator mono ssm b, operator mono, source code pro, Menlo, Consolas, Monaco, monospace;
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
+}
+
+.checkered-bg {
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #ddd 25%, transparent 0, transparent 75%, #ddd 0, #ddd), -webkit-linear-gradient(45deg, #ddd 25%, transparent 0, transparent 75%, #ddd 0, #ddd);
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 0, transparent 75%, #ddd 0, #ddd), linear-gradient(45deg, #ddd 25%, transparent 0, transparent 75%, #ddd 0, #ddd);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
 }

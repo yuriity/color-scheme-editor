@@ -1,0 +1,4 @@
+<div class="spectrum-container" (resized)="onResized($event)">
+  <canvas #spectrum csePickColor (colorPicked)="onColorPicked($event)"></canvas>
+  <div #marker id="marker" class="circle-marker"></div>
+</div>

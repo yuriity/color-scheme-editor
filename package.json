@@ -28,6 +28,7 @@
     "@ngrx/router-store": "^8.2.0",
     "@ngrx/store": "^8.2.0",
     "@ngrx/store-devtools": "^8.2.0",
+    "angular-resize-event": "^1.1.0",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "strip-json-comments": "^3.0.1",

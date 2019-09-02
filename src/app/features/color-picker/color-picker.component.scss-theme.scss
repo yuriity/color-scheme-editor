@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+@mixin cse-color-picker-component-theme($theme) {
+  $background: map-get($theme, background);
+
+  cse-color-picker {
+    @include _mat-theme-overridable-elevation(1, $theme);
+    background-color: mat-color($background, card);
+  }
+}

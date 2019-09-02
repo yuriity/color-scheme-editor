@@ -1,0 +1,96 @@
+<div class="preview checkered-bg">
+  <input [style.background]="color" [ngClass]="{'dark': !color.isDark() || color.getAlpha() < .45}"
+    class="layout-fill layout-align-center-center" [value]="colorValue" (focus)="onColorValueFocused()"
+    (blur)="onColorValueBlur()" (input)="onColorValueInput($event.target.value)">
+</div>
+<mat-tab-group mat-stretch-tabs [selectedIndex]="selected.value" (selectedIndexChange)="onSelectedIndexChange($event)">
+  <mat-tab label="HEX">
+    <div class="editor-container">
+      <cse-hex-editor [(color)]="color"></cse-hex-editor>
+    </div>
+  </mat-tab>
+  <mat-tab label="RGB">
+    <div class="editor-container">
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Red">R</mat-placeholder>
+        <mat-slider min="0" max="255" step="1" thumbLabel="true" color="primary" [value]="rgba.r"
+          (valueChange)="redChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="255" [value]="rgba.r"
+            (input)="redChanged($event.target.valueAsNumber)">
+        </mat-form-field>
+      </div>
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Green">G</mat-placeholder>
+        <mat-slider min="0" max="255" step="1" thumbLabel="true" color="primary" [value]="rgba.g"
+          (valueChange)="greenChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="255" [value]="rgba.g"
+            (input)="greenChanged($event.target.valueAsNumber)">
+        </mat-form-field>
+      </div>
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Blue">B</mat-placeholder>
+        <mat-slider min="0" max="255" step="1" thumbLabel="true" color="primary" [value]="rgba.b"
+          (valueChange)="blueChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="255" [value]="rgba.b"
+            (input)="blueChanged($event.target.valueAsNumber)">
+        </mat-form-field>
+      </div>
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Alpha">A</mat-placeholder>
+        <mat-slider min="0" max="100" step="1" thumbLabel="true" color="primary" [value]="alphaValue"
+          (valueChange)="alphaChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="100" [value]="alphaValue"
+            (input)="alphaChanged($event.target.valueAsNumber)">
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="HSL">
+    <div class="editor-container">
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Hue">H</mat-placeholder>
+        <mat-slider min="0" max="359" step="1" thumbLabel="true" color="primary" [value]="hsla.h"
+          (valueChange)="hueChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="359" step="1" [value]="hsla.h"
+            (input)="hueChanged($event.target.valueAsNumber)">
+        </mat-form-field>
+      </div>
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Saturation">S</mat-placeholder>
+        <mat-slider min="0" max="100" step="1" thumbLabel="true" color="primary" [value]="hsla.s"
+          (valueChange)="saturationChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="100" step="1" [value]="hsla.s"
+            (input)="saturationChanged($event.target.valueAsNumber)">
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </div>
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Lightness">L</mat-placeholder>
+        <mat-slider min="0" max="99" step="1" thumbLabel="true" color="primary" [value]="hsla.l"
+          (valueChange)="lightnessChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="99" step="1" [value]="hsla.l"
+            (input)="lightnessChanged($event.target.valueAsNumber)">
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </div>
+      <div class="editor-row">
+        <mat-placeholder matTooltip="Alpha">A</mat-placeholder>
+        <mat-slider min="0" max="100" step="1" thumbLabel="true" color="primary" [value]="alphaValue"
+          (valueChange)="alphaChanged($event)"></mat-slider>
+        <mat-form-field>
+          <input matInput type="number" min="0" max="100" [value]="alphaValue"
+            (input)="alphaChanged($event.target.valueAsNumber)">
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

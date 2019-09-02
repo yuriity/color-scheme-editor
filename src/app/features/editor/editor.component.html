@@ -45,7 +45,9 @@
   <ng-container matColumnDef="edit">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-button color="primary" (click)="openDialog(element)">Edit</button>
+      <button mat-button color="primary" [routerLink]="['/edit-token', element.id]">
+        Edit
+      </button>
     </mat-cell>
   </ng-container>
 

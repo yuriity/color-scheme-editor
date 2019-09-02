@@ -3,11 +3,13 @@
 @mixin cse-font-style-view-component-theme($theme) {
   $accent: map-get($theme, accent);
 
-  mat-icon.active {
-    color: mat-color($accent);
-  }
+  cse-font-style-view {
+    mat-icon.active {
+      color: mat-color($accent);
+    }
 
-  mat-icon.inactive {
-    color: map-get($mat-light-theme-foreground, 'disabled');
+    mat-icon.inactive {
+      color: map-get($mat-light-theme-foreground, 'disabled');
+    }
   }
 }

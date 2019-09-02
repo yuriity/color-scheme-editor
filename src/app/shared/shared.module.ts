@@ -14,7 +14,9 @@ import {
   MatInputModule,
   MatProgressBarModule,
   MatDialogModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatTabsModule,
+  MatSliderModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -35,7 +37,9 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatInputModule,
     MatProgressBarModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule,
+    MatSliderModule
   ],
   exports: [
     CommonModule,
@@ -52,7 +56,9 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatInputModule,
     MatProgressBarModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule,
+    MatSliderModule
   ]
 })
 export class SharedModule {
