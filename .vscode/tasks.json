@@ -15,7 +15,17 @@
     {
       "label": "test",
       "type": "shell",
-      "command": "npm run ng test",
+      "command": "npm run test-headless",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "test once",
+      "type": "shell",
+      "command": "npm run test-headless:once",
       "presentation": {
         "reveal": "always",
         "panel": "new"
