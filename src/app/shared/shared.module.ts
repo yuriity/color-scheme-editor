@@ -20,8 +20,10 @@ import {
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { ReadabilityViewComponent } from './components/readability-view/readability-view.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [ReadabilityViewComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -58,7 +60,9 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatDialogModule,
     MatCheckboxModule,
     MatTabsModule,
-    MatSliderModule
+    MatSliderModule,
+
+    ReadabilityViewComponent
   ]
 })
 export class SharedModule {
