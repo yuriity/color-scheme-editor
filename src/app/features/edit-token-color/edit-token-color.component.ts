@@ -9,8 +9,12 @@ import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditTokenColorComponent implements OnInit {
-  color = tinycolor('#ff0000');
+  background = tinycolor('#1E1E1E');
+  color = tinycolor('#D4D4D4');
   readability = 21;
+  fontStyleBold = false;
+  fontStyleItalic = true;
+  fontStyleUnderline = false;
 
   constructor() {}
 

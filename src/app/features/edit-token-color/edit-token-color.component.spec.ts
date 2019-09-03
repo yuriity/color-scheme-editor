@@ -5,6 +5,7 @@ import { AngularResizedEventModule } from 'angular-resize-event';
 import { SharedModule } from 'app/shared/shared.module';
 import { ColorPickerModule } from '../color-picker/color-picker.module';
 import { EditTokenColorComponent } from './edit-token-color.component';
+import { PreviewComponent } from './preview/preview.component';
 
 describe('EditTokenColorComponent', () => {
   let component: EditTokenColorComponent;
@@ -12,7 +13,7 @@ describe('EditTokenColorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditTokenColorComponent],
+      declarations: [EditTokenColorComponent, PreviewComponent],
       imports: [
         NoopAnimationsModule,
         AngularResizedEventModule,

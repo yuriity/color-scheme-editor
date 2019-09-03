@@ -1,0 +1,42 @@
+:host {
+  height: 65.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  label {
+    margin-bottom: 5px;
+    font-size: 75%;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  input {
+    text-align: center;
+    outline: none;
+    padding: 0.4375em 0;
+
+    font-style: inherit;
+    font-variant-ligatures: inherit;
+    font-variant-caps: inherit;
+    font-variant-numeric: inherit;
+    font-variant-east-asian: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  input.bold {
+    font-weight: bold;
+  }
+
+  input.italic {
+    font-style: italic;
+  }
+
+  input.underline {
+    text-decoration: underline
+  }
+}
