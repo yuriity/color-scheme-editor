@@ -26,7 +26,9 @@ export class ReadabilityViewComponent implements OnInit {
     this.readabilityLevel = getReadabilityLevel(this.readability);
   }
 
-  constructor() {}
+  constructor() {
+    this.readabilityLevel = getReadabilityLevel(0);
+  }
 
   ngOnInit() {}
 }

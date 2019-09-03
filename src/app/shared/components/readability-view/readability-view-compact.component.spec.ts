@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
 
-import { ReadabilityViewComponent } from './readability-view.component';
+import { ReadabilityViewCompactComponent } from './readability-view-compact.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('ReadabilityViewComponent', () => {
-  let component: ReadabilityViewComponent;
-  let fixture: ComponentFixture<ReadabilityViewComponent>;
+describe('ReadabilityViewCompactComponent', () => {
+  let component: ReadabilityViewCompactComponent;
+  let fixture: ComponentFixture<ReadabilityViewCompactComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ReadabilityViewComponent],
+      declarations: [ReadabilityViewCompactComponent],
       imports: [NoopAnimationsModule, MatIconModule, MatTooltipModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReadabilityViewComponent);
+    fixture = TestBed.createComponent(ReadabilityViewCompactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
