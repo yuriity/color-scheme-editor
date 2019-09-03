@@ -1,13 +1,11 @@
 :host {
   display: grid;
   grid-template-columns: auto auto;
-  grid-column-gap: 10px
-}
+  grid-column-gap: 10px;
+  align-items: center;
 
-mat-icon {
-  align-self: center;
-}
-
-h3 {
-  display: inline;
+  span {
+    font-size: 1.17em;
+    font-weight: bold;
+  }
 }
