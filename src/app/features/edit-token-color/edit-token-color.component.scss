@@ -1,45 +1,42 @@
 .container {
   display: grid;
-  // grid-gap: 50px;
   // grid-template:
-  //   " title        title        " auto
-  //   " form-fields  color-editor " auto
-  //   " actions      actions      " auto
+  //   " title        title             " auto
+  //   " field-name   field-readability " auto
+  //   " field-scope  color-editor      " auto
+  //   " field-styles color-editor      " auto
+  //   " spacer       color-editor      " auto
+  //   " actions      actions           " auto
   //   / 1fr          1fr;
   grid-template:
-    " title    title   "auto " form-fields  color-editor "auto " actions  actions "auto / 1fr 1fr;
+    " title title "auto " field-name field-readability "auto " field-scope color-editor "auto " field-styles color-editor "auto " spacer color-editor "auto " actions actions "auto / 1fr 1fr;
   grid-column-gap: 30px;
+  grid-row-gap: 8px;
 
   .title {
     grid-area: title;
+
     margin: 20px 0;
   }
 
-  .form-fields {
-    grid-area: form-fields;
-    display: grid;
-    align-content: start;
-
-    .icon-form-field {
-      position: relative;
-      display: flex;
-      height: 65.5px;
-      align-items: center;
-
-      mat-placeholder {
-        flex: 2 1 auto;
-      }
-
-      .mat-checkbox+.mat-checkbox {
-        margin-left: 20px;
-      }
-    }
+  .field-name {
+    grid-area: field-name;
   }
 
-  .colorPicker {
-    grid-area: color-editor;
+  .field-scope {
+    grid-area: field-scope;
+  }
 
-    height: 500px;
+  .field-styles {
+    grid-area: field-styles;
+  }
+
+  .field-readability {
+    grid-area: field-readability;
+  }
+
+  cse-color-picker {
+    grid-area: color-editor;
   }
 
   .actions {
@@ -51,5 +48,20 @@
     .mat-button+.mat-button {
       margin-left: 8px;
     }
+  }
+}
+
+.custom-form-field {
+  position: relative;
+  display: flex;
+  height: 65.5px;
+  align-items: center;
+
+  mat-placeholder {
+    flex: 2 1 auto;
+  }
+
+  .mat-checkbox+.mat-checkbox {
+    margin-left: 20px;
   }
 }

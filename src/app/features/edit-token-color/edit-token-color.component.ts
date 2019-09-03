@@ -10,6 +10,7 @@ import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
 })
 export class EditTokenColorComponent implements OnInit {
   color = tinycolor('#ff0000');
+  readability = 21;
 
   constructor() {}
 

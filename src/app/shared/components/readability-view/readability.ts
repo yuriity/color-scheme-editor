@@ -8,6 +8,7 @@ export interface ReadabilityLevel {
   name: string;
   color: string;
   class: string;
+  shortCode: string;
   message: string;
 }
 
@@ -17,6 +18,7 @@ const readabilityLevels: ReadabilityLevel[] = [
     name: 'fail',
     color: '#c00',
     class: 'eye-slash',
+    shortCode: 'Fail',
     message: 'Fails WCAG 2.0'
   },
   {
@@ -24,6 +26,7 @@ const readabilityLevels: ReadabilityLevel[] = [
     name: 'aa-large',
     color: '#e69900',
     class: 'low-vision',
+    shortCode: 'AA',
     message: 'Passes AA for large text (above 18pt or bold above 14pt)'
   },
   {
@@ -31,6 +34,7 @@ const readabilityLevels: ReadabilityLevel[] = [
     name: 'aa',
     color: '#8ab82e',
     class: 'eye',
+    shortCode: 'AA',
     message:
       'Passes AA level for any size text and AAA for large text (above 18pt or bold above 14pt)'
   },
@@ -39,6 +43,7 @@ const readabilityLevels: ReadabilityLevel[] = [
     name: 'aaa',
     color: '#5ea72a',
     class: 'eye',
+    shortCode: 'AAA',
     message: 'Passes AAA level for any size text'
   }
 ];
