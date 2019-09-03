@@ -3,11 +3,9 @@
 .container {
   display: grid;
   width: 110px;
-  border: 1px solid map-get($mat-light-theme-foreground, 'divider');
-  border-radius: 5px;
-}
 
-span {
-  justify-self: center;
-  margin: 7px;
+  span {
+    justify-self: center;
+    margin: 7px;
+  }
 }

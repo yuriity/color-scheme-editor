@@ -6,15 +6,14 @@
 
 @import './light-theme';
 
-@import './app/features/editor/components/font-style-view/font-style-view.component.scss-theme';
 @import './app/features/color-picker/color-picker.component.scss-theme.scss';
-
-@mixin custom-components-theme($theme) {
-  @include cse-font-style-view-component-theme($theme);
-}
+@import './app/features/editor/components/font-style-view/font-style-view.component.scss-theme';
+@import './app/features/editor/components/color-view/color-view.component.scss-theme.scss';
 
 @mixin custom-components-theme($theme) {
   @include cse-color-picker-component-theme($theme);
+  @include cse-font-style-view-component-theme($theme);
+  @include cse-color-view-component-theme($theme);
 }
 
 @include angular-material-theme($cse-light-theme);
