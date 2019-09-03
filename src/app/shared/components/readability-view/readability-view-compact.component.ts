@@ -18,7 +18,7 @@ interface ReadabilityLevel {
   message: string;
 }
 
-const ReadabilityLevels: ReadabilityLevel[] = [
+const readabilityLevels: ReadabilityLevel[] = [
   {
     range: { min: 0, max: 3 },
     name: 'fail',
@@ -51,12 +51,12 @@ const ReadabilityLevels: ReadabilityLevel[] = [
 ];
 
 @Component({
-  selector: 'cse-readability-view',
+  selector: 'cse-readability-view-compact',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './readability-view.component.html',
-  styleUrls: ['./readability-view.component.scss']
+  templateUrl: './readability-view-compact.component.html',
+  styleUrls: ['./readability-view-compact.component.scss']
 })
-export class ReadabilityViewComponent implements OnInit {
+export class ReadabilityViewCompactComponent implements OnInit {
   private _readability: number;
   get readability(): number {
     return this._readability;
@@ -67,7 +67,7 @@ export class ReadabilityViewComponent implements OnInit {
   }
 
   get readabilityLevel(): ReadabilityLevel {
-    for (const level of ReadabilityLevels) {
+    for (const level of readabilityLevels) {
       if (
         this.readability >= level.range.min &&
         this.readability < level.range.max
