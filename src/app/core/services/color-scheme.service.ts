@@ -12,7 +12,7 @@ import { ColorScheme } from '../models/color-scheme';
 @Injectable({
   providedIn: 'root'
 })
-export class EditorService {
+export class ColorSchemeService {
   constructor() {}
 
   loadColorScheme(file: File): Observable<ColorScheme> {

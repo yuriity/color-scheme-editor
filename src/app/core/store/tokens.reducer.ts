@@ -1,26 +1,26 @@
-import { ColorSchemeMetadata } from './../models/color-scheme-metadata';
-import { createReducer, on, Action } from '@ngrx/store';
+import { ColorSchemeMetadata } from '../models/color-scheme-metadata';
+import { createReducer, Action, on } from '@ngrx/store';
 import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import * as tinycolor from 'tinycolor2';
 
 import {
-  actionEditorLoadSuccess,
-  actionEditorLoadError,
-  actionEditorLoad
-} from './editor.actions';
+  actionTokensLoadSuccess,
+  actionTokensLoadError,
+  actionTokensLoad
+} from './tokens.actions';
 import { TokenColor } from '../models/token-color';
 
-export interface EditorState extends EntityState<TokenColor> {
+export interface TokenColorState extends EntityState<TokenColor> {
   loading: boolean;
   error: string | null;
   metadata: ColorSchemeMetadata | null;
 }
 
-export const editorAdapter: EntityAdapter<TokenColor> = createEntityAdapter<
+export const tokensAdapter: EntityAdapter<TokenColor> = createEntityAdapter<
   TokenColor
 >();
 
-const initialEditorState: EditorState = editorAdapter.getInitialState({
+const initialTokensState: TokenColorState = tokensAdapter.getInitialState({
   ids: [0, 1, 2, 3, 4],
   entities: {
     0: {
@@ -58,14 +58,14 @@ const initialEditorState: EditorState = editorAdapter.getInitialState({
       originalColor: tinycolor('#FFFFFFB0')
     }
   },
+  metadata: { name: 'Test Theme', background: tinycolor('#1E1E1E') },
   loading: false,
-  error: null,
-  metadata: { name: 'Test Theme', background: tinycolor('#1E1E1E') }
+  error: null
 });
 
 const reducer = createReducer(
-  initialEditorState,
-  on(actionEditorLoad, state => ({
+  initialTokensState,
+  on(actionTokensLoad, state => ({
     ...state,
     ids: [],
     entities: {},
@@ -73,15 +73,15 @@ const reducer = createReducer(
     error: null,
     metadata: null
   })),
-  on(actionEditorLoadSuccess, (state, { colorScheme }) =>
-    editorAdapter.addAll(colorScheme.tokenColors, {
+  on(actionTokensLoadSuccess, (state, { colorScheme }) =>
+    tokensAdapter.addAll(colorScheme.tokenColors, {
       ...state,
       loading: false,
       error: null,
       metadata: colorScheme.metadata
     })
   ),
-  on(actionEditorLoadError, (state, { error }) => ({
+  on(actionTokensLoadError, (state, { error }) => ({
     ...state,
     ids: [],
     entities: {},
@@ -91,12 +91,9 @@ const reducer = createReducer(
   }))
 );
 
-export function editorReducer(state: EditorState | undefined, action: Action) {
+export function tokensReducer(
+  state: TokenColorState | undefined,
+  action: Action
+) {
   return reducer(state, action);
 }
-
-const { selectAll, selectTotal } = editorAdapter.getSelectors();
-
-export const selectAllTokenColors = selectAll;
-
-export const selectTokenColorsTotal = selectTotal;

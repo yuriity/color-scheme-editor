@@ -1,35 +1,48 @@
-import { MetaReducer, ActionReducerMap, createSelector } from '@ngrx/store';
+import { TokenColorState, tokensReducer } from './tokens.reducer';
+import {
+  MetaReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector
+} from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
+import * as fromRouter from '@ngrx/router-store';
 
 import { environment } from 'environments/environment';
-import {
-  editorReducer,
-  EditorState,
-  selectAllTokenColors
-} from './editor.reducer';
-
-export interface AppState {
-  editor: EditorState;
-}
-
-export const selectEditorState = (state: AppState) => state.editor;
-export const selectColorSchemeMetadata = (state: AppState) =>
-  state.editor.metadata;
-export const selectAllTokens = createSelector(
-  selectEditorState,
-  selectAllTokenColors
-);
-export const selectTokensWithBackground = createSelector(
-  selectAllTokens,
-  selectColorSchemeMetadata,
-  (tokens, metadata) => {
-    return { tokens, metadata };
-  }
-);
 
 export const reducers: ActionReducerMap<AppState> = {
-  editor: editorReducer
+  tokens: tokensReducer,
+  router: routerReducer
 };
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? []
   : [];
+
+export interface AppState {
+  tokens: TokenColorState;
+  router: fromRouter.RouterReducerState<any>;
+}
+
+export const selectTokens = createFeatureSelector<AppState, TokenColorState>(
+  'tokens'
+);
+
+export const selectRouter = createFeatureSelector<
+  AppState,
+  fromRouter.RouterReducerState<any>
+>('router');
+
+const {
+  selectQueryParams, // select the current route query params
+  selectQueryParam, // factory function to select a query param
+  selectRouteParams, // select the current route params
+  selectRouteParam, // factory function to select a route param
+  selectRouteData, // select the current route data
+  selectUrl // select the current url
+} = fromRouter.getSelectors(selectRouter);
+
+export const selectRouteId = createSelector(
+  selectRouteParam('id'),
+  (id: string) => Number(id)
+);

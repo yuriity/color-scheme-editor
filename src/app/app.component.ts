@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { AppState, selectEditorState } from './core/store/core.state';
-import { actionEditorLoad } from './core/store/editor.actions';
-import { EditorState } from './core/store/editor.reducer';
+import { AppState } from './core/store/core.state';
+import { actionTokensLoad } from './core/store/tokens.actions';
+import { TokenColorState } from './core/store/tokens.reducer';
+import { selectTokensLoading } from './core/store/tokens.selectors';
 
 @Component({
   selector: 'cse-root',
@@ -12,15 +13,15 @@ import { EditorState } from './core/store/editor.reducer';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  editorState$: Observable<EditorState>;
+  tokensLoading$: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.editorState$ = this.store.pipe(select(selectEditorState));
+    this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));
   }
 
   loadFile(file: File) {
-    this.store.dispatch(actionEditorLoad({ file }));
+    this.store.dispatch(actionTokensLoad({ file }));
   }
 }

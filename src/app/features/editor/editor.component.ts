@@ -10,13 +10,13 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, map } from 'rxjs/operators';
 
-import {
-  AppState,
-  selectColorSchemeMetadata,
-  selectTokensWithBackground
-} from 'app/core/store/core.state';
+import { AppState } from 'app/core/store/core.state';
 import { TokenColorResource } from 'app/core/models/token-color.resource';
 import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
+import {
+  selectColorSchemeMetadata,
+  selectTokensWithBackground
+} from 'app/core/store/tokens.selectors';
 import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
 
 @Component({

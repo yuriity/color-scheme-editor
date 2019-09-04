@@ -19,7 +19,7 @@
       </button>
     </mat-menu>
   </mat-toolbar>
-  <mat-progress-bar color="accent" mode="indeterminate" *ngIf="(editorState$ | async).loading">
+  <mat-progress-bar color="accent" mode="indeterminate" *ngIf="tokensLoading$ | async">
   </mat-progress-bar>
 </header>
 
