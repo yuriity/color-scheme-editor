@@ -15,6 +15,16 @@
     {
       "label": "test",
       "type": "shell",
+      "command": "npm run test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "test-headless",
+      "type": "shell",
       "command": "npm run test-headless",
       "presentation": {
         "reveal": "always",
@@ -23,7 +33,7 @@
       "problemMatcher": []
     },
     {
-      "label": "test once",
+      "label": "test-headless once",
       "type": "shell",
       "command": "npm run test-headless:once",
       "presentation": {

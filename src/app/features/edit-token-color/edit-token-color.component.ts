@@ -1,6 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import * as tinycolor from 'tinycolor2';
+
+import { AppState } from 'app/core/store/core.state';
 import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
+import { selectSelectedTokenResource } from 'app/core/store/tokens.selectors';
+import { TokenColorResource } from 'app/core/models/token-color.resource';
+import { Update } from '@ngrx/entity';
+import { TokenColor } from 'app/core/models/token-color';
+import { updateToken } from 'app/core/store/tokens.actions';
 
 @Component({
   selector: 'cse-edit-token-color',
@@ -9,19 +19,30 @@ import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditTokenColorComponent implements OnInit {
-  background = tinycolor('#1E1E1E');
-  color = tinycolor('#D4D4D4');
-  readability = 21;
-  fontStyleBold = false;
-  fontStyleItalic = true;
-  fontStyleUnderline = false;
+  token$: Observable<TokenColorResource>;
 
-  constructor() {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.token$ = this.store.pipe(select(selectSelectedTokenResource));
+  }
 
-  onColorChange(newColor: TinycolorInstance) {
-    // console.log(newColor);
-    this.color = newColor;
+  onSave(token: TokenColorResource) {
+    console.log('onSave', token);
+    const editedToken: Update<TokenColor> = {
+      id: token.id,
+      changes: {
+        name: token.name,
+        scope: token.scope,
+        color: token.color,
+        fontStyle: token.getFontStyles()
+      }
+    };
+    this.store.dispatch(updateToken({ token: editedToken }));
+    this.router.navigate(['/editor']);
+  }
+
+  onCancel() {
+    this.router.navigate(['/editor']);
   }
 }

@@ -1,18 +1,25 @@
+import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 
 import { ColorScheme } from '../models/color-scheme';
+import { TokenColor } from '../models/token-color';
 
-export const actionTokensLoad = createAction(
+export const loadTokens = createAction(
   '[Tokens] Load',
   props<{ file: File }>()
 );
 
-export const actionTokensLoadSuccess = createAction(
+export const loadTokensSuccess = createAction(
   '[Tokens] Load Success',
   props<{ colorScheme: ColorScheme }>()
 );
 
-export const actionTokensLoadError = createAction(
+export const loadTokensError = createAction(
   '[Tokens] Load Error',
   props<{ error: string }>()
+);
+
+export const updateToken = createAction(
+  '[Tokens] Update Token',
+  props<{ token: Update<TokenColor> }>()
 );

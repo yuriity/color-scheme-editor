@@ -3,8 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
-import { actionTokensLoad } from './core/store/tokens.actions';
-import { TokenColorState } from './core/store/tokens.reducer';
+import { loadTokens } from './core/store/tokens.actions';
 import { selectTokensLoading } from './core/store/tokens.selectors';
 
 @Component({
@@ -22,6 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   loadFile(file: File) {
-    this.store.dispatch(actionTokensLoad({ file }));
+    this.store.dispatch(loadTokens({ file }));
   }
 }

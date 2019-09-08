@@ -5,9 +5,9 @@ import { catchError, map, switchMap, tap, delay } from 'rxjs/operators';
 
 import { ColorSchemeService } from '../services/color-scheme.service';
 import {
-  actionTokensLoad,
-  actionTokensLoadSuccess,
-  actionTokensLoadError
+  loadTokens,
+  loadTokensSuccess,
+  loadTokensError
 } from './tokens.actions';
 import { Router } from '@angular/router';
 
@@ -21,15 +21,15 @@ export class TokensEffects {
 
   loadColorScheme = createEffect(() =>
     this.actions$.pipe(
-      ofType(actionTokensLoad),
+      ofType(loadTokens),
       switchMap(action =>
         this.colorSchemeService.loadColorScheme(action.file).pipe(
           tap(() => {
             this.router.navigate(['/', 'editor']);
           }),
           // delay(3000),
-          map(colorScheme => actionTokensLoadSuccess({ colorScheme })),
-          catchError(error => of(actionTokensLoadError({ error })))
+          map(colorScheme => loadTokensSuccess({ colorScheme })),
+          catchError(error => of(loadTokensError({ error })))
         )
       )
     )

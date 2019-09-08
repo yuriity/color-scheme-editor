@@ -1,25 +1,36 @@
 <div class="container">
   <h2 class="title">Edit Token Color</h2>
-  <mat-form-field class="field-name">
-    <input matInput placeholder="Name" maxlength="100" value="name test">
-  </mat-form-field>
-  <mat-form-field class="field-scope">
-    <textarea matInput placeholder="Scope" required maxlength="250" value="scope test"></textarea>
-  </mat-form-field>
-  <section class="field-styles custom-form-field">
-    <mat-placeholder>Font styles:</mat-placeholder>
-    <mat-checkbox [(ngModel)]="fontStyleBold"><b>Bold</b></mat-checkbox>
-    <mat-checkbox [(ngModel)]="fontStyleItalic"><i>Italic</i></mat-checkbox>
-    <mat-checkbox [(ngModel)]="fontStyleUnderline"><u>Underline</u></mat-checkbox>
-  </section>
-  <section class="field-readability custom-form-field">
-    <mat-placeholder>Readability:</mat-placeholder>
-    <cse-readability-view [readability]="readability"></cse-readability-view>
-  </section>
-  <cse-preview class="field-preview"></cse-preview>
-  <cse-color-picker [color]="color" (colorChange)="onColorChange($event)"></cse-color-picker>
-  <div class="actions">
-    <button mat-button>Save</button>
-    <button mat-button>Cancel</button>
-  </div>
+  <ng-container *ngIf="token$ | async as token; else tokenIsEmpty">
+    <ng-container *ngIf="token">
+      <mat-form-field class="field-name">
+        <input matInput placeholder="Name" maxlength="100" [(ngModel)]="token.name">
+      </mat-form-field>
+      <mat-form-field class="field-scope">
+        <textarea matInput placeholder="Scope" required maxlength="250" [(ngModel)]="token.scope"></textarea>
+      </mat-form-field>
+      <section class="field-styles custom-form-field">
+        <mat-placeholder>Font styles:</mat-placeholder>
+        <mat-checkbox [(ngModel)]="token.fontStyleBold"><b>Bold</b></mat-checkbox>
+        <mat-checkbox [(ngModel)]="token.fontStyleItalic"><i>Italic</i></mat-checkbox>
+        <mat-checkbox [(ngModel)]="token.fontStyleUnderline"><u>Underline</u></mat-checkbox>
+      </section>
+      <cse-preview class="field-preview" [background]="token.background" [color]="token.color"
+        [fontStyleBold]="token.fontStyleBold" [fontStyleItalic]="token.fontStyleItalic"
+        [fontStyleUnderline]="token.fontStyleUnderline">
+      </cse-preview>
+      <section class="field-readability custom-form-field">
+        <mat-placeholder>Readability:</mat-placeholder>
+        <cse-readability-view [readability]="token.readability"></cse-readability-view>
+      </section>
+      <cse-color-picker [(color)]="token.color"></cse-color-picker>
+      <div class="actions">
+        <button mat-button (click)="onSave(token)">Save</button>
+        <button mat-button (click)="onCancel()">Cancel</button>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>
+
+<ng-template #tokenIsEmpty>
+  <p>Token is empty</p>
+</ng-template>

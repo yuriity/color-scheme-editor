@@ -4,9 +4,10 @@ import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import * as tinycolor from 'tinycolor2';
 
 import {
-  actionTokensLoadSuccess,
-  actionTokensLoadError,
-  actionTokensLoad
+  loadTokensSuccess,
+  loadTokensError,
+  loadTokens,
+  updateToken
 } from './tokens.actions';
 import { TokenColor } from '../models/token-color';
 
@@ -65,7 +66,7 @@ const initialTokensState: TokenColorState = tokensAdapter.getInitialState({
 
 const reducer = createReducer(
   initialTokensState,
-  on(actionTokensLoad, state => ({
+  on(loadTokens, state => ({
     ...state,
     ids: [],
     entities: {},
@@ -73,7 +74,7 @@ const reducer = createReducer(
     error: null,
     metadata: null
   })),
-  on(actionTokensLoadSuccess, (state, { colorScheme }) =>
+  on(loadTokensSuccess, (state, { colorScheme }) =>
     tokensAdapter.addAll(colorScheme.tokenColors, {
       ...state,
       loading: false,
@@ -81,14 +82,17 @@ const reducer = createReducer(
       metadata: colorScheme.metadata
     })
   ),
-  on(actionTokensLoadError, (state, { error }) => ({
+  on(loadTokensError, (state, { error }) => ({
     ...state,
     ids: [],
     entities: {},
     loading: true,
     error,
     metadata: null
-  }))
+  })),
+  on(updateToken, (state, { token }) => {
+    return tokensAdapter.updateOne(token, state);
+  })
 );
 
 export function tokensReducer(

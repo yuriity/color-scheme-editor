@@ -42,7 +42,4 @@ const {
   selectUrl // select the current url
 } = fromRouter.getSelectors(selectRouter);
 
-export const selectRouteId = createSelector(
-  selectRouteParam('id'),
-  (id: string) => Number(id)
-);
+export const selectRouteId = selectRouteParam('tokenId');

@@ -7,7 +7,7 @@ import { ColorPickerModule } from '../color-picker/color-picker.module';
 import { EditTokenColorComponent } from './edit-token-color.component';
 import { PreviewComponent } from './preview/preview.component';
 
-describe('EditTokenColorComponent', () => {
+xdescribe('EditTokenColorComponent', () => {
   let component: EditTokenColorComponent;
   let fixture: ComponentFixture<EditTokenColorComponent>;
 

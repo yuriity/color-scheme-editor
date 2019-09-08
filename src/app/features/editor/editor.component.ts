@@ -11,11 +11,11 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil, map } from 'rxjs/operators';
 
 import { AppState } from 'app/core/store/core.state';
-import { TokenColorResource } from 'app/core/models/token-color.resource';
+import { ReadonlyTokenColorResource } from 'app/core/models/token-color.resource';
 import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
 import {
   selectColorSchemeMetadata,
-  selectTokensWithBackground
+  selectReadonlyTokens
 } from 'app/core/store/tokens.selectors';
 import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
 
@@ -28,7 +28,7 @@ import { TokenEditorDialogComponent } from './components/token-editor-dialog/tok
 export class EditorComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
-  dataSource: MatTableDataSource<TokenColorResource>;
+  dataSource: MatTableDataSource<ReadonlyTokenColorResource>;
   displayedColumns = [
     'readability',
     'color',
@@ -48,12 +48,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.store
       .pipe(
         takeUntil(this.unsubscribe$),
-        select(selectTokensWithBackground),
-        map(data =>
-          data.tokens.map(
-            token => new TokenColorResource(token, data.metadata.background)
-          )
-        )
+        select(selectReadonlyTokens)
       )
       .subscribe(tokens => this.updateDataSource(tokens));
   }
@@ -73,7 +68,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
-  openDialog(token: TokenColorResource): void {
+  openDialog(token: ReadonlyTokenColorResource): void {
     const dialogRef = this.dialog.open(TokenEditorDialogComponent, {
       width: '250px',
       data: { token }
@@ -84,11 +79,13 @@ export class EditorComponent implements OnInit, OnDestroy {
     });
   }
 
-  private updateDataSource(tokens: TokenColorResource[]) {
+  private updateDataSource(tokens: ReadonlyTokenColorResource[]) {
     console.log(
       'ColorSchemeTableComponent.updateDataSource(tokens: TokenColor[])'
     );
-    this.dataSource = new MatTableDataSource<TokenColorResource>(tokens);
+    this.dataSource = new MatTableDataSource<ReadonlyTokenColorResource>(
+      tokens
+    );
     this.dataSource.sort = this.sort;
   }
 }

@@ -2,6 +2,10 @@ import { createSelector } from '@ngrx/store';
 
 import { tokensAdapter, TokenColorState } from './tokens.reducer';
 import { selectTokens, selectRouteId } from './core.state';
+import {
+  TokenColorResource,
+  ReadonlyTokenColorResource
+} from '../models/token-color.resource';
 
 const { selectEntities, selectAll, selectTotal } = tokensAdapter.getSelectors();
 
@@ -30,16 +34,33 @@ export const selectColorSchemeMetadata = createSelector(
   (state: TokenColorState) => state.metadata
 );
 
-export const selectTokensWithBackground = createSelector(
+export const selectReadonlyTokens = createSelector(
   selectAllTokens,
   selectColorSchemeMetadata,
   (tokens, metadata) => {
-    return { tokens, metadata };
+    return tokens.map(
+      token =>
+        new TokenColorResource(
+          token,
+          metadata.background
+        ) as ReadonlyTokenColorResource
+    );
   }
 );
 
 export const selectSelectedToken = createSelector(
-  selectTokens,
+  selectTokensEntities,
   selectRouteId,
-  (entities, routeId) => routeId && entities[routeId]
+  (entities, routeId) => entities[Number(routeId)]
+);
+
+export const selectSelectedTokenResource = createSelector(
+  selectSelectedToken,
+  selectColorSchemeMetadata,
+  (token, metadata) => {
+    if (token) {
+      return new TokenColorResource(token, metadata.background);
+    }
+    return null;
+  }
 );
