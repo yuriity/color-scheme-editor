@@ -3,19 +3,6 @@ import * as tinycolor from 'tinycolor2';
 import { TokenColor } from './token-color';
 import { TinycolorInstance } from './tinycolor-instance';
 
-export interface ReadonlyTokenColorResource {
-  readonly id: number;
-  readonly name: string;
-  readonly scope: string;
-  readonly fontStyleBold: boolean;
-  readonly fontStyleItalic: boolean;
-  readonly fontStyleUnderline: boolean;
-  readonly modified: boolean;
-  readonly color: tinycolor.Instance;
-  readonly background: tinycolor.Instance;
-  readonly readability: number;
-}
-
 export class TokenColorResource {
   readonly id: number;
   name: string;
@@ -41,17 +28,17 @@ export class TokenColorResource {
   }
 
   constructor(
-    private readonly _tokenColor: TokenColor,
+    public readonly tokenColor: TokenColor,
     public readonly background: TinycolorInstance
   ) {
-    if (!_tokenColor) {
+    if (!tokenColor) {
       throw Error('"_tokenColor" should be initialized.');
     }
     if (!background) {
       throw Error('"_background" should be initialized.');
     }
 
-    this.id = this._tokenColor.id;
+    this.id = this.tokenColor.id;
     this.name = this.getActualName();
     this.scope = this.getActualScope();
     this.color = this.getActualColor();
@@ -60,10 +47,10 @@ export class TokenColorResource {
     this.fontStyleUnderline = this.getActualFontStyleUnderline();
 
     this.modified = !!(
-      this._tokenColor.name ||
-      this._tokenColor.scope ||
-      this._tokenColor.color ||
-      this._tokenColor.fontStyle
+      this.tokenColor.name ||
+      this.tokenColor.scope ||
+      this.tokenColor.color ||
+      this.tokenColor.fontStyle
     );
   }
 
@@ -100,44 +87,44 @@ export class TokenColorResource {
   }
 
   private getActualName(): string {
-    return this._tokenColor.name
-      ? this._tokenColor.name
-      : this._tokenColor.originalName;
+    return this.tokenColor.name
+      ? this.tokenColor.name
+      : this.tokenColor.originalName;
   }
 
   private getActualScope(): string {
-    return this._tokenColor.scope
-      ? this._tokenColor.scope
-      : this._tokenColor.originalScope;
+    return this.tokenColor.scope
+      ? this.tokenColor.scope
+      : this.tokenColor.originalScope;
   }
 
   private getActualColor(): TinycolorInstance {
-    return this._tokenColor.color
-      ? this._tokenColor.color
-      : this._tokenColor.originalColor;
+    return this.tokenColor.color
+      ? this.tokenColor.color
+      : this.tokenColor.originalColor;
   }
 
   private getActualFontStyleBold(): boolean {
-    return this._tokenColor.fontStyle
-      ? this._tokenColor.fontStyle.includes('bold')
-      : this._tokenColor.originalFontStyle
-      ? this._tokenColor.originalFontStyle.includes('bold')
+    return this.tokenColor.fontStyle
+      ? this.tokenColor.fontStyle.includes('bold')
+      : this.tokenColor.originalFontStyle
+      ? this.tokenColor.originalFontStyle.includes('bold')
       : false;
   }
 
   private getActualFontStyleItalic(): boolean {
-    return this._tokenColor.fontStyle
-      ? this._tokenColor.fontStyle.includes('italic')
-      : this._tokenColor.originalFontStyle
-      ? this._tokenColor.originalFontStyle.includes('italic')
+    return this.tokenColor.fontStyle
+      ? this.tokenColor.fontStyle.includes('italic')
+      : this.tokenColor.originalFontStyle
+      ? this.tokenColor.originalFontStyle.includes('italic')
       : false;
   }
 
   private getActualFontStyleUnderline(): boolean {
-    return this._tokenColor.fontStyle
-      ? this._tokenColor.fontStyle.includes('underline')
-      : this._tokenColor.originalFontStyle
-      ? this._tokenColor.originalFontStyle.includes('underline')
+    return this.tokenColor.fontStyle
+      ? this.tokenColor.fontStyle.includes('underline')
+      : this.tokenColor.originalFontStyle
+      ? this.tokenColor.originalFontStyle.includes('underline')
       : false;
   }
 }
