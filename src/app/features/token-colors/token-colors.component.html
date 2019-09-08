@@ -1,4 +1,4 @@
-<cse-editor-toolbar [title]="(metadata$ | async)?.name" (filter)="applyFilter($event)"></cse-editor-toolbar>
+<cse-token-colors-toolbar [title]="(metadata$ | async)?.name" (filter)="applyFilter($event)"></cse-token-colors-toolbar>
 
 <mat-table #table [dataSource]="dataSource" matSort>
 

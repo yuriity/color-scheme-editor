@@ -39,10 +39,10 @@ export class EditTokenColorComponent implements OnInit {
       }
     };
     this.store.dispatch(updateToken({ token: editedToken }));
-    this.router.navigate(['/editor']);
+    this.router.navigate(['/token-colors']);
   }
 
   onCancel() {
-    this.router.navigate(['/editor']);
+    this.router.navigate(['/token-colors']);
   }
 }

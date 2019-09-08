@@ -9,9 +9,11 @@ const routes: Routes = [
       import('./features/about/about.module').then(m => m.AboutModule)
   },
   {
-    path: 'editor',
+    path: 'token-colors',
     loadChildren: () =>
-      import('./features/editor/editor.module').then(m => m.EditorModule)
+      import('./features/token-colors/token-colors.module').then(
+        m => m.TokenColorsModule
+      )
   },
   {
     path: 'edit-token/:tokenId',

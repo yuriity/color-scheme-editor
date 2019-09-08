@@ -4,21 +4,21 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CoreModule } from 'app/core/core.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { EditorComponent } from './editor.component';
+import { TokenColorsComponent } from './token-colors.component';
 import { ColorViewComponent } from './components/color-view/color-view.component';
-import { EditorToolbarComponent } from './components/editor-toolbar/editor-toolbar.component';
+import { TokenColorsToolbarComponent } from './components/token-colors-toolbar/token-colors-toolbar.component';
 import { FontStyleViewComponent } from './components/font-style-view/font-style-view.component';
 
-describe('EditorComponent', () => {
-  let component: EditorComponent;
-  let fixture: ComponentFixture<EditorComponent>;
+describe('TokenColorsComponent', () => {
+  let component: TokenColorsComponent;
+  let fixture: ComponentFixture<TokenColorsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        EditorComponent,
+        TokenColorsComponent,
         ColorViewComponent,
-        EditorToolbarComponent,
+        TokenColorsToolbarComponent,
         FontStyleViewComponent
       ],
       imports: [
@@ -31,7 +31,7 @@ describe('EditorComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorComponent);
+    fixture = TestBed.createComponent(TokenColorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

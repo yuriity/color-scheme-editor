@@ -25,7 +25,7 @@ export class TokensEffects {
       switchMap(action =>
         this.colorSchemeService.loadColorScheme(action.file).pipe(
           tap(() => {
-            this.router.navigate(['/', 'editor']);
+            this.router.navigate(['/', 'token-colors']);
           }),
           // delay(3000),
           map(colorScheme => loadTokensSuccess({ colorScheme })),

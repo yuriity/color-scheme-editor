@@ -9,20 +9,15 @@ import {
   ElementRef
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import {
-  map,
-  filter,
-  debounceTime,
-  distinctUntilChanged
-} from 'rxjs/operators';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'cse-editor-toolbar',
-  templateUrl: './editor-toolbar.component.html',
-  styleUrls: ['./editor-toolbar.component.scss'],
+  selector: 'cse-token-colors-toolbar',
+  templateUrl: './token-colors-toolbar.component.html',
+  styleUrls: ['./token-colors-toolbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EditorToolbarComponent implements OnInit {
+export class TokenColorsToolbarComponent implements OnInit {
   @Input() title: string;
   @Output() filter = new EventEmitter<string>();
   filterValue: string;

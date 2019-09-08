@@ -2,21 +2,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from 'app/shared/shared.module';
-import { EditorToolbarComponent } from './editor-toolbar.component';
+import { TokenColorsToolbarComponent } from './token-colors-toolbar.component';
 
-describe('EditorToolbarComponent', () => {
-  let component: EditorToolbarComponent;
-  let fixture: ComponentFixture<EditorToolbarComponent>;
+describe('TokenColorsToolbarComponent', () => {
+  let component: TokenColorsToolbarComponent;
+  let fixture: ComponentFixture<TokenColorsToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditorToolbarComponent],
+      declarations: [TokenColorsToolbarComponent],
       imports: [SharedModule, NoopAnimationsModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorToolbarComponent);
+    fixture = TestBed.createComponent(TokenColorsToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

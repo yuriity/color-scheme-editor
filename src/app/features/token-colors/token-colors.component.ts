@@ -20,12 +20,12 @@ import {
 import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
 
 @Component({
-  selector: 'cse-editor',
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss'],
+  selector: 'cse-token-colors',
+  templateUrl: './token-colors.component.html',
+  styleUrls: ['./token-colors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EditorComponent implements OnInit, OnDestroy {
+export class TokenColorsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   dataSource: MatTableDataSource<ReadonlyTokenColorResource>;
