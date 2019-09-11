@@ -5,7 +5,6 @@ import { SharedModule } from 'app/shared/shared.module';
 import { TokenColorsComponent } from './token-colors.component';
 import { ColorViewComponent } from './components/color-view/color-view.component';
 import { TokenColorsToolbarComponent } from './components/token-colors-toolbar/token-colors-toolbar.component';
-import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
 import { FontStyleViewComponent } from './components/font-style-view/font-style-view.component';
 
 const routes: Routes = [
@@ -20,10 +19,8 @@ const routes: Routes = [
     TokenColorsComponent,
     ColorViewComponent,
     TokenColorsToolbarComponent,
-    TokenEditorDialogComponent,
     FontStyleViewComponent
   ],
-  imports: [SharedModule, RouterModule.forChild(routes)],
-  entryComponents: [TokenEditorDialogComponent]
+  imports: [SharedModule, RouterModule.forChild(routes)]
 })
 export class TokenColorsModule {}

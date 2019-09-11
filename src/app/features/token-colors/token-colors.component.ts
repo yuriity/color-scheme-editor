@@ -17,7 +17,6 @@ import {
   selectColorSchemeMetadata,
   selectTokenColors
 } from 'app/core/store/tokens.selectors';
-import { TokenEditorDialogComponent } from './components/token-editor-dialog/token-editor-dialog.component';
 import { Update } from '@ngrx/entity';
 import { TokenColor } from 'app/core/models/token-color';
 import { updateToken } from 'app/core/store/tokens.actions';
@@ -45,7 +44,7 @@ export class TokenColorsComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private store: Store<AppState>, private dialog: MatDialog) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.metadata$ = this.store.pipe(select(selectColorSchemeMetadata));
@@ -70,17 +69,6 @@ export class TokenColorsComponent implements OnInit, OnDestroy {
       filterValue = filterValue.toLowerCase();
       this.dataSource.filter = filterValue;
     }
-  }
-
-  openDialog(token: TokenColorResource): void {
-    const dialogRef = this.dialog.open(TokenEditorDialogComponent, {
-      width: '250px',
-      data: { token }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed:', result);
-    });
   }
 
   resetToOriginal(token: TokenColorResource) {
