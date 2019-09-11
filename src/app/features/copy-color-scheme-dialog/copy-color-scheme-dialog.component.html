@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Generate Color Scheme from JSON</h2>
+<mat-dialog-content>
+  <p>You can generate your own color scheme from VSCode directly:</p>
+  <ol>
+    <li>Open VSCode</li>
+    <li>Press (CMD or CTRL) + SHIFT + P</li>
+    <li>Enter: '> Developer: Generate Color Scheme From Current Settings'</li>
+    <li>Copy the contents and paste them here!</li>
+  </ol>
+  <mat-form-field appearance="fill">
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="8" matAutosizeMaxRows="8"
+      placeholder="Paste the contents here" [formControl]="jsonControl" required cseJsonValidator></textarea>
+    <mat-error *ngIf="jsonControl.invalid">{{ getErrorMessage() }}</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onGenerate()" [disabled]="jsonControl.invalid">Generate Color Scheme</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

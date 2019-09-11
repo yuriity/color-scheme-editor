@@ -1,5 +1,4 @@
 <header>
-  <!-- <cse-header (openFileEvent)="loadFile($event)"></cse-header> -->
   <mat-toolbar color="primary" class="mat-elevation-z6">
     <span>Color Scheme Editor</span>
     <span class="toolbar-spacer"></span>
@@ -13,7 +12,7 @@
         <mat-icon svgIcon="file-export"></mat-icon>
         <span>local file...</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="generateColorScheme()">
         <mat-icon svgIcon="code"></mat-icon>
         <span>from json...</span>
       </button>

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
 import { loadTokens } from './core/store/tokens.actions';
 import { selectTokensLoading } from './core/store/tokens.selectors';
+import { CopyColorSchemeDialogComponent } from './features/copy-color-scheme-dialog/copy-color-scheme-dialog.component';
 
 @Component({
   selector: 'cse-root',
@@ -14,7 +16,7 @@ import { selectTokensLoading } from './core/store/tokens.selectors';
 export class AppComponent implements OnInit {
   tokensLoading$: Observable<boolean>;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));
@@ -22,5 +24,15 @@ export class AppComponent implements OnInit {
 
   loadFile(file: File) {
     this.store.dispatch(loadTokens({ file }));
+  }
+
+  generateColorScheme() {
+    const dialogRef = this.dialog.open(CopyColorSchemeDialogComponent, {
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:', result);
+    });
   }
 }
