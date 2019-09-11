@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatToolbarModule,
   MatMenuModule,
@@ -22,9 +22,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { ReadabilityViewCompactComponent } from './components/readability-view/readability-view-compact.component';
 import { ReadabilityViewComponent } from './components/readability-view/readability-view.component';
+import { JsonValidatorDirective } from './directives/json-validator.directive';
 
 @NgModule({
-  declarations: [ReadabilityViewCompactComponent, ReadabilityViewComponent],
+  declarations: [
+    ReadabilityViewCompactComponent,
+    ReadabilityViewComponent,
+    JsonValidatorDirective
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -48,6 +53,7 @@ import { ReadabilityViewComponent } from './components/readability-view/readabil
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
     MatButtonModule,
     MatToolbarModule,
@@ -64,7 +70,8 @@ import { ReadabilityViewComponent } from './components/readability-view/readabil
     MatSliderModule,
 
     ReadabilityViewCompactComponent,
-    ReadabilityViewComponent
+    ReadabilityViewComponent,
+    JsonValidatorDirective
   ]
 })
 export class SharedModule {
