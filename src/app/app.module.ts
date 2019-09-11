@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { CopyColorSchemeDialogModule } from './features/copy-color-scheme-dialog/copy-color-scheme-dialog.module';
-import { CopyColorSchemeDialogComponent } from './features/copy-color-scheme-dialog/copy-color-scheme-dialog.component';
+import { ParseColorSchemeDialogModule } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.module';
+import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +17,9 @@ import { CopyColorSchemeDialogComponent } from './features/copy-color-scheme-dia
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    CopyColorSchemeDialogModule
+    ParseColorSchemeDialogModule
   ],
-  entryComponents: [CopyColorSchemeDialogComponent],
+  entryComponents: [ParseColorSchemeDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

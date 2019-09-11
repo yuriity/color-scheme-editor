@@ -3,16 +3,16 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'cse-copy-color-scheme-dialog',
-  templateUrl: './copy-color-scheme-dialog.component.html',
-  styleUrls: ['./copy-color-scheme-dialog.component.scss'],
+  selector: 'cse-parse-color-scheme-dialog',
+  templateUrl: './parse-color-scheme-dialog.component.html',
+  styleUrls: ['./parse-color-scheme-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CopyColorSchemeDialogComponent implements OnInit {
+export class ParseColorSchemeDialogComponent implements OnInit {
   jsonControl = new FormControl('', [Validators.required]);
 
   constructor(
-    private dialogRef: MatDialogRef<CopyColorSchemeDialogComponent>
+    private dialogRef: MatDialogRef<ParseColorSchemeDialogComponent>
   ) {}
 
   ngOnInit() {}

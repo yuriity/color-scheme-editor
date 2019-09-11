@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AppState } from './core/store/core.state';
 import { loadTokens, parseTokens } from './core/store/tokens.actions';
 import { selectTokensLoading } from './core/store/tokens.selectors';
-import { CopyColorSchemeDialogComponent } from './features/copy-color-scheme-dialog/copy-color-scheme-dialog.component';
+import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
 
 @Component({
   selector: 'cse-root',
@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
   }
 
   generateColorScheme() {
-    const dialogRef = this.dialog.open(CopyColorSchemeDialogComponent, {
+    // TODO: This should be moved to separate NgRx Effect
+    const dialogRef = this.dialog.open(ParseColorSchemeDialogComponent, {
       width: '600px'
     });
 
