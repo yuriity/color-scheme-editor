@@ -7,7 +7,9 @@ import { ColorSchemeService } from '../services/color-scheme.service';
 import {
   loadTokens,
   loadTokensSuccess,
-  loadTokensError
+  loadTokensError,
+  parseTokens,
+  parseTokensSuccess
 } from './tokens.actions';
 import { Router } from '@angular/router';
 
@@ -22,16 +24,29 @@ export class TokensEffects {
   loadColorScheme = createEffect(() =>
     this.actions$.pipe(
       ofType(loadTokens),
+      tap(() => {
+        this.router.navigate(['/', 'token-colors']);
+      }),
       switchMap(action =>
         this.colorSchemeService.loadColorScheme(action.file).pipe(
-          tap(() => {
-            this.router.navigate(['/', 'token-colors']);
-          }),
           // delay(3000),
           map(colorScheme => loadTokensSuccess({ colorScheme })),
           catchError(error => of(loadTokensError({ error })))
         )
       )
+    )
+  );
+
+  parseColorScheme = createEffect(() =>
+    this.actions$.pipe(
+      ofType(parseTokens),
+      tap(() => {
+        this.router.navigate(['/', 'token-colors']);
+      }),
+      map(({ json }) => {
+        const colorScheme = this.colorSchemeService.parseColorScheme(json);
+        return parseTokensSuccess({ colorScheme });
+      })
     )
   );
 }

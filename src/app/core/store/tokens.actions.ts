@@ -19,6 +19,16 @@ export const loadTokensError = createAction(
   props<{ error: string }>()
 );
 
+export const parseTokens = createAction(
+  '[Tokens] Parse',
+  props<{ json: string }>()
+);
+
+export const parseTokensSuccess = createAction(
+  '[Tokens] Parse Success',
+  props<{ colorScheme: ColorScheme }>()
+);
+
 export const updateToken = createAction(
   '[Tokens] Update Token',
   props<{ token: Update<TokenColor> }>()

@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
-import { loadTokens } from './core/store/tokens.actions';
+import { loadTokens, parseTokens } from './core/store/tokens.actions';
 import { selectTokensLoading } from './core/store/tokens.selectors';
 import { CopyColorSchemeDialogComponent } from './features/copy-color-scheme-dialog/copy-color-scheme-dialog.component';
 
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed:', result);
+      this.store.dispatch(parseTokens({ json: result }));
     });
   }
 }

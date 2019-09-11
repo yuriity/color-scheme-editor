@@ -7,7 +7,9 @@ import {
   loadTokensSuccess,
   loadTokensError,
   loadTokens,
-  updateToken
+  updateToken,
+  parseTokens,
+  parseTokensSuccess
 } from './tokens.actions';
 import { TokenColor } from '../models/token-color';
 
@@ -66,6 +68,9 @@ const initialTokensState: TokenColorState = tokensAdapter.getInitialState({
 
 const reducer = createReducer(
   initialTokensState,
+  on(updateToken, (state, { token }) => {
+    return tokensAdapter.updateOne(token, state);
+  }),
   on(loadTokens, state => ({
     ...state,
     ids: [],
@@ -82,6 +87,22 @@ const reducer = createReducer(
       metadata: colorScheme.metadata
     })
   ),
+  on(parseTokens, state => ({
+    ...state,
+    ids: [],
+    entities: {},
+    loading: true,
+    error: null,
+    metadata: null
+  })),
+  on(parseTokensSuccess, (state, { colorScheme }) =>
+    tokensAdapter.addAll(colorScheme.tokenColors, {
+      ...state,
+      loading: false,
+      error: null,
+      metadata: colorScheme.metadata
+    })
+  ),
   on(loadTokensError, (state, { error }) => ({
     ...state,
     ids: [],
@@ -89,10 +110,7 @@ const reducer = createReducer(
     loading: true,
     error,
     metadata: null
-  })),
-  on(updateToken, (state, { token }) => {
-    return tokensAdapter.updateOne(token, state);
-  })
+  }))
 );
 
 export function tokensReducer(
