@@ -3,7 +3,8 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ViewChild,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 import { Store, select } from '@ngrx/store';
@@ -44,7 +45,7 @@ export class TokenColorsComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.metadata$ = this.store.pipe(select(selectColorSchemeMetadata));
@@ -90,5 +91,8 @@ export class TokenColorsComponent implements OnInit, OnDestroy {
     );
     this.dataSource = new MatTableDataSource<TokenColorResource>(tokens);
     this.dataSource.sort = this.sort;
+
+    // TODO: Move DataTable to separate dumb component
+    this.cd.markForCheck();
   }
 }
