@@ -4,29 +4,24 @@ import { createAction, props } from '@ngrx/store';
 import { ColorScheme } from '../models/color-scheme';
 import { TokenColor } from '../models/token-color';
 
-export const loadTokens = createAction(
-  '[Tokens] Load',
+export const loadFile = createAction(
+  '[ColorScheme] Load From File',
   props<{ file: File }>()
 );
 
-export const loadTokensSuccess = createAction(
-  '[Tokens] Load Success',
-  props<{ colorScheme: ColorScheme }>()
-);
-
-export const loadTokensError = createAction(
-  '[Tokens] Load Error',
-  props<{ error: string }>()
-);
-
-export const parseTokens = createAction(
-  '[Tokens] Parse',
+export const parseJson = createAction(
+  '[ColorScheme] Parse JSON',
   props<{ json: string }>()
 );
 
-export const parseTokensSuccess = createAction(
-  '[Tokens] Parse Success',
+export const loadColorSchemeSuccess = createAction(
+  '[Tokens] Load Color Scheme Success',
   props<{ colorScheme: ColorScheme }>()
+);
+
+export const loadColorSchemeError = createAction(
+  '[Tokens] Load Color Scheme Error',
+  props<{ error: Error }>()
 );
 
 export const updateToken = createAction(

@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
 import {
-  loadTokens,
-  parseTokens,
-  resetAllTokens
+  resetAllTokens,
+  loadFile,
+  parseJson
 } from './core/store/tokens.actions';
 import {
   selectTokensLoading,
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   loadFile(file: File) {
-    this.store.dispatch(loadTokens({ file }));
+    this.store.dispatch(loadFile({ file }));
   }
 
   generateColorScheme() {
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.store.dispatch(parseTokens({ json: result }));
+        this.store.dispatch(parseJson({ json: result }));
       }
     });
   }

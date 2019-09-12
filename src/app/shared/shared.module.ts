@@ -17,7 +17,8 @@ import {
   MatCheckboxModule,
   MatTabsModule,
   MatSliderModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -49,7 +50,8 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
     MatCheckboxModule,
     MatTabsModule,
     MatSliderModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   exports: [
     CommonModule,
@@ -71,6 +73,7 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
     MatTabsModule,
     MatSliderModule,
     MatBadgeModule,
+    MatSnackBarModule,
 
     ReadabilityViewCompactComponent,
     ReadabilityViewComponent,

@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Update } from '@ngrx/entity';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap, delay, take } from 'rxjs/operators';
-
-import { ColorSchemeService } from '../services/color-scheme.service';
 import {
-  loadTokens,
-  loadTokensSuccess,
-  loadTokensError,
-  parseTokens,
-  parseTokensSuccess,
   resetAllTokens,
-  updateTokens
+  updateTokens,
+  loadFile,
+  parseJson,
+  loadColorSchemeSuccess,
+  loadColorSchemeError
 } from './tokens.actions';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
-import { selectModifiedTokens } from './tokens.selectors';
 import { AppState } from './core.state';
-import { Update } from '@ngrx/entity';
+import { ColorSchemeService } from '../services/color-scheme.service';
+import { NotificationService } from '../services/notification.service';
+import { selectModifiedTokens } from './tokens.selectors';
 import { TokenColor } from '../models/token-color';
 
 @Injectable()
@@ -27,20 +26,21 @@ export class TokensEffects {
     private store: Store<AppState>,
     private actions$: Actions,
     private colorSchemeService: ColorSchemeService,
+    private notificationService: NotificationService,
     private router: Router
   ) {}
 
   loadColorScheme$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadTokens),
+      ofType(loadFile),
       tap(() => {
         this.router.navigate(['/', 'token-colors']);
       }),
       switchMap(action =>
         this.colorSchemeService.loadColorScheme(action.file).pipe(
           // delay(3000),
-          map(colorScheme => loadTokensSuccess({ colorScheme })),
-          catchError(error => of(loadTokensError({ error })))
+          map(colorScheme => loadColorSchemeSuccess({ colorScheme })),
+          catchError(error => of(loadColorSchemeError({ error })))
         )
       )
     )
@@ -48,15 +48,25 @@ export class TokensEffects {
 
   parseColorScheme$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(parseTokens),
+      ofType(parseJson),
       tap(() => {
         this.router.navigate(['/', 'token-colors']);
       }),
       map(({ json }) => {
         const colorScheme = this.colorSchemeService.parseColorScheme(json);
-        return parseTokensSuccess({ colorScheme });
-      })
+        return loadColorSchemeSuccess({ colorScheme });
+      }),
+      catchError(error => of(loadColorSchemeError({ error })))
     )
+  );
+
+  loadColorSchemeError$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(loadColorSchemeError),
+        tap(payload => this.notificationService.error(payload.error.message))
+      ),
+    { dispatch: false }
   );
 
   resetAllTokens$ = createEffect(() =>

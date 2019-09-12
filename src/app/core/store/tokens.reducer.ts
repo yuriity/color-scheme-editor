@@ -4,20 +4,19 @@ import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import * as tinycolor from 'tinycolor2';
 
 import {
-  loadTokensSuccess,
-  loadTokensError,
-  loadTokens,
   updateToken,
-  parseTokens,
-  parseTokensSuccess,
-  updateTokens
+  updateTokens,
+  loadFile,
+  loadColorSchemeSuccess,
+  parseJson,
+  loadColorSchemeError
 } from './tokens.actions';
 import { TokenColor } from '../models/token-color';
 
 export interface TokenColorState extends EntityState<TokenColor> {
   loading: boolean;
-  error: string | null;
-  metadata: ColorSchemeMetadata | null;
+  error?: Error;
+  metadata?: ColorSchemeMetadata;
 }
 
 export const tokensAdapter: EntityAdapter<TokenColor> = createEntityAdapter<
@@ -83,7 +82,7 @@ const reducer = createReducer(
   on(updateTokens, (state, { tokens }) => {
     return tokensAdapter.updateMany(tokens, state);
   }),
-  on(loadTokens, state => ({
+  on(loadFile, state => ({
     ...state,
     ids: [],
     entities: {},
@@ -91,15 +90,7 @@ const reducer = createReducer(
     error: null,
     metadata: null
   })),
-  on(loadTokensSuccess, (state, { colorScheme }) =>
-    tokensAdapter.addAll(colorScheme.tokenColors, {
-      ...state,
-      loading: false,
-      error: null,
-      metadata: colorScheme.metadata
-    })
-  ),
-  on(parseTokens, state => ({
+  on(parseJson, state => ({
     ...state,
     ids: [],
     entities: {},
@@ -107,7 +98,7 @@ const reducer = createReducer(
     error: null,
     metadata: null
   })),
-  on(parseTokensSuccess, (state, { colorScheme }) =>
+  on(loadColorSchemeSuccess, (state, { colorScheme }) =>
     tokensAdapter.addAll(colorScheme.tokenColors, {
       ...state,
       loading: false,
@@ -115,11 +106,11 @@ const reducer = createReducer(
       metadata: colorScheme.metadata
     })
   ),
-  on(loadTokensError, (state, { error }) => ({
+  on(loadColorSchemeError, (state, { error }) => ({
     ...state,
     ids: [],
     entities: {},
-    loading: true,
+    loading: false,
     error,
     metadata: null
   }))

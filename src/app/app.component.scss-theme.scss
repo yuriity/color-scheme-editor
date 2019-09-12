@@ -2,12 +2,50 @@
 
 @mixin cse-app-component-theme($theme) {
   $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
 
   mat-toolbar {
     a.mat-button {
       &.active {
         border: 1px solid mat-color($foreground, divider);
       }
+    }
+  }
+
+  .error-notification-overlay {
+    color: mat-color($warn, default-contrast);
+    background-color: mat-color($warn);
+
+    .mat-button {
+      color: mat-color($warn, default-contrast);
+    }
+  }
+
+  .info-notification-overlay {
+    color: mat-color($accent, default-contrast);
+    background-color: mat-color($accent);
+
+    .mat-button {
+      color: mat-color($accent, default-contrast);
+    }
+  }
+
+  .success-notification-overlay {
+    color: mat-color($success-colors, default-contrast);
+    background-color: mat-color($success-colors);
+
+    .mat-button {
+      color: mat-color($success-colors, default-contrast);
+    }
+  }
+
+  .warning-notification-overlay {
+    color: mat-color($warning-colors, default-contrast);
+    background-color: mat-color($warning-colors);
+
+    .mat-button {
+      color: mat-color($warning-colors, default-contrast);
     }
   }
 }
