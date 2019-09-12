@@ -9,7 +9,8 @@ import {
   loadTokens,
   updateToken,
   parseTokens,
-  parseTokensSuccess
+  parseTokensSuccess,
+  updateTokens
 } from './tokens.actions';
 import { TokenColor } from '../models/token-color';
 
@@ -78,6 +79,9 @@ const reducer = createReducer(
   initialTokensState,
   on(updateToken, (state, { token }) => {
     return tokensAdapter.updateOne(token, state);
+  }),
+  on(updateTokens, (state, { tokens }) => {
+    return tokensAdapter.updateMany(tokens, state);
   }),
   on(loadTokens, state => ({
     ...state,

@@ -33,3 +33,10 @@ export const updateToken = createAction(
   '[Tokens] Update Token',
   props<{ token: Update<TokenColor> }>()
 );
+
+export const updateTokens = createAction(
+  '[Tokens] Update Tokens',
+  props<{ tokens: Update<TokenColor>[] }>()
+);
+
+export const resetAllTokens = createAction('[Tokens] Reset All Tokens');

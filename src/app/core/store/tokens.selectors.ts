@@ -47,6 +47,11 @@ export const selectModifiedTokens = createSelector(
   tokens => tokens.filter(token => isTokenModified(token))
 );
 
+export const selectModifiedTokensTotal = createSelector(
+  selectModifiedTokens,
+  tokens => tokens.length
+);
+
 export const selectSelectedToken = createSelector(
   selectTokensEntities,
   selectRouteId,

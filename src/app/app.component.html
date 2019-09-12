@@ -21,13 +21,14 @@
         <span>Import from copied json...</span>
       </button>
     </mat-menu>
-    <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokens$ | async)?.length <= 0">
-      <mat-icon svgIcon="undo" [matBadge]="(modifiedTokens$ | async)?.length"
-        [matBadgeHidden]="(modifiedTokens$ | async)?.length <= 0" matBadgeColor="accent" matBadgePosition="below after"
+    <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
+      (click)="undoAllChanges()">
+      <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
+        [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeColor="accent" matBadgePosition="below after"
         matBadgeDescription="Number of modified tokens">
       </mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokens$ | async)?.length <= 0">
+    <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0">
       <mat-icon svgIcon="file-export"></mat-icon>
     </button>
   </mat-toolbar>

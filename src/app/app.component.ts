@@ -4,10 +4,14 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
-import { loadTokens, parseTokens } from './core/store/tokens.actions';
+import {
+  loadTokens,
+  parseTokens,
+  resetAllTokens
+} from './core/store/tokens.actions';
 import {
   selectTokensLoading,
-  selectModifiedTokens
+  selectModifiedTokensTotal
 } from './core/store/tokens.selectors';
 import { TokenColor } from './core/models/token-color';
 import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
@@ -19,13 +23,15 @@ import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-d
 })
 export class AppComponent implements OnInit {
   tokensLoading$: Observable<boolean>;
-  modifiedTokens$: Observable<TokenColor[]>;
+  modifiedTokensTotal$: Observable<number>;
 
   constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));
-    this.modifiedTokens$ = this.store.pipe(select(selectModifiedTokens));
+    this.modifiedTokensTotal$ = this.store.pipe(
+      select(selectModifiedTokensTotal)
+    );
   }
 
   loadFile(file: File) {
@@ -43,5 +49,9 @@ export class AppComponent implements OnInit {
         this.store.dispatch(parseTokens({ json: result }));
       }
     });
+  }
+
+  undoAllChanges(tokens: TokenColor[]) {
+    this.store.dispatch(resetAllTokens());
   }
 }
