@@ -11,3 +11,7 @@ export type TokenColor = Readonly<{
   originalFontStyle: string;
   fontStyle: string | null;
 }>;
+
+export function isTokenModified(token: TokenColor): boolean {
+  return !!(token.name || token.scope || token.color || token.fontStyle);
+}

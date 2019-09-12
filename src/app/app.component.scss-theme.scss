@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+@mixin cse-app-component-theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  mat-toolbar {
+    a.mat-button {
+      &.active {
+        border: 1px solid mat-color($foreground, divider);
+      }
+    }
+  }
+}

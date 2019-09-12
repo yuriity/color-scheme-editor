@@ -23,6 +23,14 @@ export const tokensAdapter: EntityAdapter<TokenColor> = createEntityAdapter<
   TokenColor
 >();
 
+// const initialTokensState: TokenColorState = tokensAdapter.getInitialState({
+//   ids: [],
+//   entities: {},
+//   metadata: null,
+//   loading: false,
+//   error: null
+// });
+
 const initialTokensState: TokenColorState = tokensAdapter.getInitialState({
   ids: [0, 1, 2, 3, 4],
   entities: {

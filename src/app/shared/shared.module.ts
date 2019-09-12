@@ -16,7 +16,8 @@ import {
   MatDialogModule,
   MatCheckboxModule,
   MatTabsModule,
-  MatSliderModule
+  MatSliderModule,
+  MatBadgeModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -47,7 +48,8 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
     MatDialogModule,
     MatCheckboxModule,
     MatTabsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatBadgeModule
   ],
   exports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
     MatCheckboxModule,
     MatTabsModule,
     MatSliderModule,
+    MatBadgeModule,
 
     ReadabilityViewCompactComponent,
     ReadabilityViewComponent,
@@ -79,6 +82,9 @@ export class SharedModule {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
+    this.addSvgIcon('undo');
+    this.addSvgIcon('folder-open');
+    this.addSvgIcon('file-upload');
     this.addSvgIcon('file-export');
     this.addSvgIcon('code');
     this.addSvgIcon('eye');

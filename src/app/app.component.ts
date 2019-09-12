@@ -5,7 +5,11 @@ import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
 import { loadTokens, parseTokens } from './core/store/tokens.actions';
-import { selectTokensLoading } from './core/store/tokens.selectors';
+import {
+  selectTokensLoading,
+  selectModifiedTokens
+} from './core/store/tokens.selectors';
+import { TokenColor } from './core/models/token-color';
 import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
 
 @Component({
@@ -15,11 +19,13 @@ import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-d
 })
 export class AppComponent implements OnInit {
   tokensLoading$: Observable<boolean>;
+  modifiedTokens$: Observable<TokenColor[]>;
 
   constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));
+    this.modifiedTokens$ = this.store.pipe(select(selectModifiedTokens));
   }
 
   loadFile(file: File) {
@@ -33,7 +39,9 @@ export class AppComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.store.dispatch(parseTokens({ json: result }));
+      if (result) {
+        this.store.dispatch(parseTokens({ json: result }));
+      }
     });
   }
 }

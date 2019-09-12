@@ -2,21 +2,34 @@
   <mat-toolbar color="primary" class="mat-elevation-z6">
     <span>Color Scheme Editor</span>
     <span class="toolbar-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
+      <a mat-button [routerLink]="'/token-colors'" routerLinkActive="active"> Editor </a>
+    </div>
     <button mat-button [matMenuTriggerFor]="menu">
-      Open<mat-icon class="menu-arrow-down">arrow_drop_down</mat-icon>
+      File<mat-icon class="menu-arrow-down">arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false">
       <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
         (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
       <button mat-menu-item (click)="fileInput.click()">
-        <mat-icon svgIcon="file-export"></mat-icon>
-        <span>local file...</span>
+        <mat-icon svgIcon="folder-open"></mat-icon>
+        <span>Open local file...</span>
       </button>
       <button mat-menu-item (click)="generateColorScheme()">
-        <mat-icon svgIcon="code"></mat-icon>
-        <span>from json...</span>
+        <mat-icon svgIcon="file-upload"></mat-icon>
+        <span>Import from copied json...</span>
       </button>
     </mat-menu>
+    <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokens$ | async)?.length <= 0">
+      <mat-icon svgIcon="undo" [matBadge]="(modifiedTokens$ | async)?.length"
+        [matBadgeHidden]="(modifiedTokens$ | async)?.length <= 0" matBadgeColor="accent" matBadgePosition="below after"
+        matBadgeDescription="Number of modified tokens">
+      </mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokens$ | async)?.length <= 0">
+      <mat-icon svgIcon="file-export"></mat-icon>
+    </button>
   </mat-toolbar>
   <mat-progress-bar color="accent" mode="indeterminate" *ngIf="tokensLoading$ | async">
   </mat-progress-bar>

@@ -1,6 +1,6 @@
 import * as tinycolor from 'tinycolor2';
 
-import { TokenColor } from './token-color';
+import { TokenColor, isTokenModified } from './token-color';
 import { TinycolorInstance } from './tinycolor-instance';
 
 export class TokenColorResource {
@@ -46,12 +46,7 @@ export class TokenColorResource {
     this.fontStyleItalic = this.getActualFontStyleItalic();
     this.fontStyleUnderline = this.getActualFontStyleUnderline();
 
-    this.modified = !!(
-      this.tokenColor.name ||
-      this.tokenColor.scope ||
-      this.tokenColor.color ||
-      this.tokenColor.fontStyle
-    );
+    this.modified = isTokenModified(this.tokenColor);
   }
 
   reset() {
