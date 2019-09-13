@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
 
 import { tokensAdapter, TokenColorState } from './tokens.reducer';
-import { selectTokens, selectRouteId } from './core.state';
-import { TokenColorResource } from '../models/token-color.resource';
-import { isTokenModified } from '../models/token-color';
+import { selectTokens, selectRouteId } from '../core.state';
+import { TokenColorResource } from '../../models/token-color.resource';
+import { isTokenModified } from '../../models/token-color';
 
 const { selectEntities, selectAll, selectTotal } = tokensAdapter.getSelectors();
 

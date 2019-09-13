@@ -1,8 +1,8 @@
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 
-import { ColorScheme } from '../models/color-scheme';
-import { TokenColor } from '../models/token-color';
+import { ColorScheme } from '../../models/color-scheme';
+import { TokenColor } from '../../models/token-color';
 
 export const loadFile = createAction(
   '[ColorScheme] Load From File',

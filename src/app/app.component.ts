@@ -8,11 +8,11 @@ import {
   resetAllTokens,
   loadFile,
   parseJson
-} from './core/store/tokens.actions';
+} from './core/store/tokens/tokens.actions';
 import {
   selectTokensLoading,
   selectModifiedTokensTotal
-} from './core/store/tokens.selectors';
+} from './core/store/tokens/tokens.selectors';
 import { TokenColor } from './core/models/token-color';
 import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
 

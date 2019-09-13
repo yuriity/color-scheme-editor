@@ -6,11 +6,11 @@ import * as tinycolor from 'tinycolor2';
 
 import { AppState } from 'app/core/store/core.state';
 import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
-import { selectSelectedTokenResource } from 'app/core/store/tokens.selectors';
+import { selectSelectedTokenResource } from 'app/core/store/tokens/tokens.selectors';
 import { TokenColorResource } from 'app/core/models/token-color.resource';
 import { Update } from '@ngrx/entity';
 import { TokenColor } from 'app/core/models/token-color';
-import { updateToken } from 'app/core/store/tokens.actions';
+import { updateToken } from 'app/core/store/tokens/tokens.actions';
 
 @Component({
   selector: 'cse-edit-token-color',

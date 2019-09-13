@@ -17,10 +17,10 @@ import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
 import {
   selectColorSchemeMetadata,
   selectTokenColors
-} from 'app/core/store/tokens.selectors';
+} from 'app/core/store/tokens/tokens.selectors';
 import { Update } from '@ngrx/entity';
 import { TokenColor } from 'app/core/models/token-color';
-import { updateToken } from 'app/core/store/tokens.actions';
+import { updateToken } from 'app/core/store/tokens/tokens.actions';
 
 @Component({
   selector: 'cse-token-colors',

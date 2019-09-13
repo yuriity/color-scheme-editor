@@ -11,7 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from 'environments/environment';
 import { reducers, metaReducers } from './store/core.state';
-import { TokensEffects } from './store/tokens.effects';
+import { TokensEffects } from './store/tokens/tokens.effects';
 
 @NgModule({
   declarations: [],

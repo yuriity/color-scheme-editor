@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
+import { select, Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap, delay, take } from 'rxjs/operators';
+
 import {
   resetAllTokens,
   updateTokens,
@@ -11,14 +14,11 @@ import {
   loadColorSchemeSuccess,
   loadColorSchemeError
 } from './tokens.actions';
-import { Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-
-import { AppState } from './core.state';
-import { ColorSchemeService } from '../services/color-scheme.service';
-import { NotificationService } from '../services/notification.service';
+import { AppState } from '../core.state';
 import { selectModifiedTokens } from './tokens.selectors';
-import { TokenColor } from '../models/token-color';
+import { ColorSchemeService } from '../../services/color-scheme.service';
+import { NotificationService } from '../../services/notification.service';
+import { TokenColor } from '../../models/token-color';
 
 @Injectable()
 export class TokensEffects {

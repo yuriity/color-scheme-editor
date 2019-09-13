@@ -1,4 +1,4 @@
-import { TokenColorState, tokensReducer } from './tokens.reducer';
+import { TokenColorState, tokensReducer } from './tokens/tokens.reducer';
 import {
   MetaReducer,
   ActionReducerMap,

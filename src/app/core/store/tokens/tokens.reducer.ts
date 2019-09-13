@@ -1,4 +1,4 @@
-import { ColorSchemeMetadata } from '../models/color-scheme-metadata';
+import { ColorSchemeMetadata } from '../../models/color-scheme-metadata';
 import { createReducer, Action, on } from '@ngrx/store';
 import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import * as tinycolor from 'tinycolor2';
@@ -11,7 +11,7 @@ import {
   parseJson,
   loadColorSchemeError
 } from './tokens.actions';
-import { TokenColor } from '../models/token-color';
+import { TokenColor } from '../../models/token-color';
 
 export interface TokenColorState extends EntityState<TokenColor> {
   loading: boolean;
