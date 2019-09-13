@@ -28,7 +28,8 @@
         matBadgeDescription="Number of modified tokens">
       </mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0">
+    <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
+      (click)="exportChanges()">
       <mat-icon svgIcon="file-export"></mat-icon>
     </button>
   </mat-toolbar>

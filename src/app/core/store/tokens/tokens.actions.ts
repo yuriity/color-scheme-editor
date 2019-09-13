@@ -4,6 +4,10 @@ import { createAction, props } from '@ngrx/store';
 import { ColorScheme } from '../../models/color-scheme';
 import { TokenColor } from '../../models/token-color';
 
+export const openExportColorSchemeDialog = createAction(
+  '[App] Open Export Color Scheme Dialog'
+);
+
 export const loadFile = createAction(
   '[ColorScheme] Load From File',
   props<{ file: File }>()

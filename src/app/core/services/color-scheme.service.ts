@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as stripJsonComments from 'strip-json-comments';
+
 import * as Json from '../utils/json';
 
 import {

@@ -2,8 +2,8 @@
 <mat-dialog-content>
   <p>some description</p>
   <mat-form-field appearance="fill">
-    <textarea matInput readonly="true" [value]="data.json" placeholder="Paste the contents here" matTextareaAutosize
-      matAutosizeMinRows="8" matAutosizeMaxRows="8">
+    <textarea #jsonInput matInput readonly="true" [value]="data.json" matTextareaAutosize matAutosizeMinRows="8"
+      matAutosizeMaxRows="8">
     </textarea>
   </mat-form-field>
 </mat-dialog-content>

@@ -7,13 +7,13 @@ import { AppState } from './core/store/core.state';
 import {
   resetAllTokens,
   loadFile,
-  parseJson
+  parseJson,
+  openExportColorSchemeDialog
 } from './core/store/tokens/tokens.actions';
 import {
   selectTokensLoading,
   selectModifiedTokensTotal
 } from './core/store/tokens/tokens.selectors';
-import { TokenColor } from './core/models/token-color';
 import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
 
 @Component({
@@ -51,7 +51,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  undoAllChanges(tokens: TokenColor[]) {
+  undoAllChanges() {
     this.store.dispatch(resetAllTokens());
+  }
+
+  exportChanges() {
+    this.store.dispatch(openExportColorSchemeDialog());
   }
 }

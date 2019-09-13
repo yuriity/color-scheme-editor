@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogRef } from '@angular/material';
 
+import { SharedModule } from 'app/shared/shared.module';
 import { ExportColorSchemeDialogComponent } from './export-color-scheme-dialog.component';
 
 describe('ExportColorSchemeDialogComponent', () => {
@@ -8,9 +11,10 @@ describe('ExportColorSchemeDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExportColorSchemeDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [ExportColorSchemeDialogComponent],
+      imports: [SharedModule, NoopAnimationsModule],
+      providers: [{ provide: MatDialogRef, useValue: {} }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

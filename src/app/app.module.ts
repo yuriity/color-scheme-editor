@@ -19,7 +19,6 @@ import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-d
     SharedModule,
     ParseColorSchemeDialogModule
   ],
-  entryComponents: [ParseColorSchemeDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+import { VSCodeSettings } from './../../models/vscode-settings';
 import { createSelector } from '@ngrx/store';
 
 import { tokensAdapter, TokenColorState } from './tokens.reducer';
@@ -66,5 +67,13 @@ export const selectSelectedTokenResource = createSelector(
       return new TokenColorResource(token, metadata.background);
     }
     return null;
+  }
+);
+
+export const selectVSCodeSettings = createSelector(
+  selectModifiedTokens,
+  selectColorSchemeMetadata,
+  (tokens, metadata) => {
+    return new VSCodeSettings(tokens, metadata.name);
   }
 );

@@ -39,7 +39,8 @@ const initialTokensState: TokenColorState = tokensAdapter.getInitialState({
       originalName: 'fail',
       originalScope: 'scope',
       originalColor: tinycolor('#000000'),
-      originalFontStyle: 'bold'
+      originalFontStyle: 'bold',
+      fontStyle: 'bold italic underline'
     },
     1: {
       id: 1,

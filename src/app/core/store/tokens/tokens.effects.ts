@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
@@ -12,19 +13,22 @@ import {
   loadFile,
   parseJson,
   loadColorSchemeSuccess,
-  loadColorSchemeError
+  loadColorSchemeError,
+  openExportColorSchemeDialog
 } from './tokens.actions';
 import { AppState } from '../core.state';
-import { selectModifiedTokens } from './tokens.selectors';
+import { selectModifiedTokens, selectVSCodeSettings } from './tokens.selectors';
 import { ColorSchemeService } from '../../services/color-scheme.service';
 import { NotificationService } from '../../services/notification.service';
 import { TokenColor } from '../../models/token-color';
+import { ExportColorSchemeDialogComponent } from 'app/features/export-color-scheme-dialog/export-color-scheme-dialog.component';
 
 @Injectable()
 export class TokensEffects {
   constructor(
     private store: Store<AppState>,
     private actions$: Actions,
+    private dialog: MatDialog,
     private colorSchemeService: ColorSchemeService,
     private notificationService: NotificationService,
     private router: Router
@@ -95,5 +99,25 @@ export class TokensEffects {
         return updateTokens({ tokens: tokensToUpdate });
       })
     )
+  );
+
+  openExportColorSchemeDialog$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(openExportColorSchemeDialog),
+        switchMap(() =>
+          this.store.pipe(
+            take(1),
+            select(selectVSCodeSettings)
+          )
+        ),
+        tap(settings => {
+          this.dialog.open(ExportColorSchemeDialogComponent, {
+            width: '600px',
+            data: { json: JSON.stringify(settings, null, 2) }
+          });
+        })
+      ),
+    { dispatch: false }
   );
 }

@@ -2,7 +2,10 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Inject
+  Inject,
+  ViewChild,
+  ElementRef,
+  AfterViewInit
 } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 
@@ -12,8 +15,17 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./export-color-scheme-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ExportColorSchemeDialogComponent implements OnInit {
+export class ExportColorSchemeDialogComponent implements OnInit, AfterViewInit {
+  @ViewChild('jsonInput', { static: true }) jsonInputRef: ElementRef;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log('ExportColorSchemeDialogComponent', this.data);
+  }
+
+  ngAfterViewInit() {
+    const inputElem = this.jsonInputRef.nativeElement as HTMLInputElement;
+    inputElem.select();
+  }
 }
