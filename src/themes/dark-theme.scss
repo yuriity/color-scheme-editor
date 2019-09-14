@@ -1,0 +1,5 @@
+$cse-dark-primary: mat-palette($mat-deep-orange);
+$cse-dark-accent: mat-palette($mat-light-blue);
+$cse-dark-warn: mat-palette($mat-red);
+
+$cse-dark-theme: mat-dark-theme($cse-dark-primary, $cse-dark-accent, $cse-dark-warn);

@@ -1,15 +1,39 @@
 @import 'src/styles-responsive.scss';
 
-.menu-arrow-down {
-  margin-left: 5px;
-}
+:host {
+  display: grid;
+  // grid-template:
+  //   " header " auto
+  //   " main   " 1fr
+  //   / 1fr
+  // ;
+  grid-template: " header "auto " main   "1fr / 1fr;
+  height: 100vh;
 
-mat-progress-bar {
-  position: absolute;
-  top: 64px;
-  left: 0;
+  header {
+    grid-area: header;
 
-  @include for-size($size-phone-only) {
-    top: 56px;
+    mat-toolbar {
+      background: linear-gradient(107deg, #ff5722, #9b0063);
+    }
+
+    .menu-arrow-down {
+      margin-left: 5px;
+    }
+
+    mat-progress-bar {
+      position: absolute;
+      top: 64px;
+      left: 0;
+
+      @include for-size($size-phone-only) {
+        top: 56px;
+      }
+    }
+  }
+
+  main {
+    grid-area: main;
+    overflow: auto;
   }
 }

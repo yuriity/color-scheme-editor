@@ -1,3 +1,4 @@
+<!-- <div class="app-container"> -->
 <header>
   <mat-toolbar color="primary" class="mat-elevation-z6">
     <span>Color Scheme Editor</span>
@@ -24,8 +25,8 @@
     <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
       (click)="undoAllChanges()">
       <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
-        [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeColor="accent" matBadgePosition="below after"
-        matBadgeDescription="Number of modified tokens">
+        [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeSize="small" matBadgeColor="accent"
+        matBadgePosition="below after" matBadgeDescription="Number of modified tokens">
       </mat-icon>
     </button>
     <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
@@ -37,4 +38,7 @@
   </mat-progress-bar>
 </header>
 
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<!-- </div> -->

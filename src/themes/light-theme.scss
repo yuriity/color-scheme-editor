@@ -1,5 +1,5 @@
-$cse-light-primary: mat-palette($mat-light-blue, A700);
-$cse-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$cse-light-primary: mat-palette($mat-deep-orange);
+$cse-light-accent: mat-palette($mat-light-blue);
 $cse-light-warn: mat-palette($mat-red);
 
 $cse-light-theme: mat-light-theme($cse-light-primary, $cse-light-accent, $cse-light-warn);

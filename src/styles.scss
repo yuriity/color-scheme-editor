@@ -5,7 +5,8 @@
 
 @import './styles-responsive';
 
-@import './light-theme';
+@import './themes/light-theme.scss';
+@import './themes/dark-theme.scss';
 
 @import './app/app.component.scss-theme.scss';
 @import './app/features/color-picker/color-picker.component.scss-theme.scss';
@@ -21,8 +22,18 @@
   @include cse-preview-component-theme($theme);
 }
 
-@include angular-material-theme($cse-light-theme);
-@include custom-components-theme($cse-light-theme);
+.light-theme {
+  @include angular-material-theme($cse-light-theme);
+  @include custom-components-theme($cse-light-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($cse-dark-theme);
+  @include custom-components-theme($cse-dark-theme);
+}
+
+@include angular-material-theme($cse-dark-theme);
+@include custom-components-theme($cse-dark-theme);
 
 html,
 body {

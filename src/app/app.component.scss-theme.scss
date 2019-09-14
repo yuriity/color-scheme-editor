@@ -1,14 +1,21 @@
 @import '~@angular/material/theming';
 
 @mixin cse-app-component-theme($theme) {
+  $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
+
+  cse-root {
+    color: mat-color($foreground, text);
+    background-color: mat-color($background, background);
+  }
 
   mat-toolbar {
     a.mat-button {
       &.active {
-        border: 1px solid mat-color($foreground, divider);
+        background-color: mat-color($primary, darker);
       }
     }
   }

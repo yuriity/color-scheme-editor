@@ -1,6 +1,7 @@
 @import '~@angular/material/theming';
 
 @mixin cse-font-style-view-component-theme($theme) {
+  $foreground: map-get($theme, foreground);
   $accent: map-get($theme, accent);
 
   cse-font-style-view {
@@ -9,7 +10,7 @@
     }
 
     mat-icon.inactive {
-      color: map-get($mat-light-theme-foreground, 'disabled');
+      color: mat-color($foreground, 'disabled-text');
     }
   }
 }
