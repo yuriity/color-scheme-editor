@@ -1,16 +1,17 @@
-import { TokenColorState, tokensReducer } from './tokens/tokens.reducer';
 import {
   MetaReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector
+  createFeatureSelector
 } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
 import * as fromRouter from '@ngrx/router-store';
 
 import { environment } from 'environments/environment';
+import { TokenColorState, tokensReducer } from './tokens/tokens.reducer';
+import { SettingsState, settingsReducer } from './settings/settings.reducer';
 
 export const reducers: ActionReducerMap<AppState> = {
+  settings: settingsReducer,
   tokens: tokensReducer,
   router: routerReducer
 };
@@ -20,9 +21,15 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   : [];
 
 export interface AppState {
+  settings: SettingsState;
   tokens: TokenColorState;
   router: fromRouter.RouterReducerState<any>;
 }
+
+export const selectSettingsState = createFeatureSelector<
+  AppState,
+  SettingsState
+>('settings');
 
 export const selectTokens = createFeatureSelector<AppState, TokenColorState>(
   'tokens'

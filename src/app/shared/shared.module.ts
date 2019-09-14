@@ -97,6 +97,8 @@ export class SharedModule {
     this.addSvgIcon('bold');
     this.addSvgIcon('italic');
     this.addSvgIcon('underline');
+    this.addSvgIcon('palette');
+    this.addSvgIcon('github');
   }
 
   private addSvgIcon(iconName: string) {

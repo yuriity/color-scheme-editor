@@ -1,44 +1,61 @@
-<!-- <div class="app-container"> -->
-<header>
-  <mat-toolbar color="primary" class="mat-elevation-z6">
-    <span>Color Scheme Editor</span>
-    <span class="toolbar-spacer"></span>
-    <div>
-      <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
-      <a mat-button [routerLink]="'/token-colors'" routerLinkActive="active"> Editor </a>
-    </div>
-    <button mat-button [matMenuTriggerFor]="menu">
-      File<mat-icon class="menu-arrow-down">arrow_drop_down</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false">
-      <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
-        (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
-      <button mat-menu-item (click)="fileInput.click()">
-        <mat-icon svgIcon="folder-open"></mat-icon>
-        <span>Open local file...</span>
-      </button>
-      <button mat-menu-item (click)="generateColorScheme()">
-        <mat-icon svgIcon="file-upload"></mat-icon>
-        <span>Import from copied json...</span>
-      </button>
-    </mat-menu>
-    <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
-      (click)="undoAllChanges()">
-      <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
-        [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeSize="small" matBadgeColor="accent"
-        matBadgePosition="below after" matBadgeDescription="Number of modified tokens">
-      </mat-icon>
-    </button>
-    <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
-      (click)="exportChanges()">
-      <mat-icon svgIcon="file-export"></mat-icon>
-    </button>
-  </mat-toolbar>
-  <mat-progress-bar color="accent" mode="indeterminate" *ngIf="tokensLoading$ | async">
-  </mat-progress-bar>
-</header>
+<div id="app-container" class="mat-app-background" [ngClass]="[(theme$ | async)]">
+  <header>
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+      <span>Color Scheme Editor</span>
+      <span class="toolbar-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
+        <a mat-button [routerLink]="'/token-colors'" routerLinkActive="active"> Editor </a>
+      </div>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
-<!-- </div> -->
+      <button mat-button [matMenuTriggerFor]="fileMenu">
+        File<mat-icon class="menu-arrow-down">arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #fileMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+        <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
+          (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
+        <button mat-menu-item (click)="fileInput.click()">
+          <mat-icon svgIcon="folder-open"></mat-icon>
+          <span>Open local file...</span>
+        </button>
+        <button mat-menu-item (click)="generateColorScheme()">
+          <mat-icon svgIcon="file-upload"></mat-icon>
+          <span>Import from copied json...</span>
+        </button>
+      </mat-menu>
+      <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
+        (click)="undoAllChanges()">
+        <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
+          [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeSize="small" matBadgeColor="accent"
+          matBadgePosition="below after" matBadgeDescription="Number of modified tokens">
+        </mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
+        (click)="exportChanges()">
+        <mat-icon svgIcon="file-export"></mat-icon>
+      </button>
+
+      <button mat-icon-button [matMenuTriggerFor]="themesMenu" matTooltip="Select application theme">
+        <mat-icon svgIcon="palette"></mat-icon>
+      </button>
+      <mat-menu #themesMenu="matMenu">
+        <button mat-menu-item (click)="onThemeChange('light-theme')" [disabled]="(theme$ | async) === 'light-theme'">
+          Ligth Theme
+        </button>
+        <button mat-menu-item (click)="onThemeChange('dark-theme')" [disabled]="(theme$ | async) === 'dark-theme'">
+          Dark Theme
+        </button>
+      </mat-menu>
+      <a mat-icon-button matTooltip="Project Github Repository"
+        href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank">
+        <mat-icon svgIcon="github"></mat-icon>
+      </a>
+    </mat-toolbar>
+    <mat-progress-bar color="accent" mode="indeterminate" *ngIf="tokensLoading$ | async">
+    </mat-progress-bar>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

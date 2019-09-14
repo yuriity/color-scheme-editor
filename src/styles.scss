@@ -32,9 +32,6 @@
   @include custom-components-theme($cse-dark-theme);
 }
 
-@include angular-material-theme($cse-dark-theme);
-@include custom-components-theme($cse-dark-theme);
-
 html,
 body {
   height: 100%;

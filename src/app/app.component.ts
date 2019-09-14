@@ -14,7 +14,9 @@ import {
   selectTokensLoading,
   selectModifiedTokensTotal
 } from './core/store/tokens/tokens.selectors';
+import { selectTheme } from './core/store/settings/settings.selectors';
 import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
+import { settingsChangeTheme } from './core/store/settings/settings.actions';
 
 @Component({
   selector: 'cse-root',
@@ -22,12 +24,14 @@ import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-d
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  theme$: Observable<string>;
   tokensLoading$: Observable<boolean>;
   modifiedTokensTotal$: Observable<number>;
 
   constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit() {
+    this.theme$ = this.store.pipe(select(selectTheme));
     this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));
     this.modifiedTokensTotal$ = this.store.pipe(
       select(selectModifiedTokensTotal)
@@ -57,5 +61,9 @@ export class AppComponent implements OnInit {
 
   exportChanges() {
     this.store.dispatch(openExportColorSchemeDialog());
+  }
+
+  onThemeChange(theme: string) {
+    this.store.dispatch(settingsChangeTheme({ theme }));
   }
 }
