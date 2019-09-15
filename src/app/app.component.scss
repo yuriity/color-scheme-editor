@@ -15,6 +15,17 @@
 
     mat-toolbar {
       background: linear-gradient(107deg, #ff5722, #9b0063);
+
+      a.app-logo {
+        margin-right: 16px;
+        height: auto;
+        width: auto;
+
+        mat-icon {
+          height: 48px;
+          width: 48px;
+        }
+      }
     }
 
     .menu-arrow-down {

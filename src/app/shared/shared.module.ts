@@ -85,23 +85,29 @@ export class SharedModule {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
-    this.addSvgIcon('undo');
-    this.addSvgIcon('folder-open');
-    this.addSvgIcon('file-upload');
-    this.addSvgIcon('file-export');
-    this.addSvgIcon('code');
-    this.addSvgIcon('eye');
-    this.addSvgIcon('eye-slash');
-    this.addSvgIcon('low-vision');
-    this.addSvgIcon('filter');
-    this.addSvgIcon('bold');
-    this.addSvgIcon('italic');
-    this.addSvgIcon('underline');
-    this.addSvgIcon('palette');
-    this.addSvgIcon('github');
+    this.matIconRegistry.addSvgIcon(
+      'color-scheme-editor-logo',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        `./assets/images/color-scheme-editor-logo.svg`
+      )
+    );
+    this.addFontawesomeIcon('undo');
+    this.addFontawesomeIcon('folder-open');
+    this.addFontawesomeIcon('file-upload');
+    this.addFontawesomeIcon('file-export');
+    this.addFontawesomeIcon('code');
+    this.addFontawesomeIcon('eye');
+    this.addFontawesomeIcon('eye-slash');
+    this.addFontawesomeIcon('low-vision');
+    this.addFontawesomeIcon('filter');
+    this.addFontawesomeIcon('bold');
+    this.addFontawesomeIcon('italic');
+    this.addFontawesomeIcon('underline');
+    this.addFontawesomeIcon('palette');
+    this.addFontawesomeIcon('github');
   }
 
-  private addSvgIcon(iconName: string) {
+  private addFontawesomeIcon(iconName: string) {
     this.matIconRegistry.addSvgIcon(
       iconName,
       this.domSanitizer.bypassSecurityTrustResourceUrl(
