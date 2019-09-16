@@ -1,4 +1,4 @@
-.container {
+.main-container {
   display: grid;
   // grid-template:
   //   " title          title             " auto
@@ -16,8 +16,6 @@
 
   .title {
     grid-area: title;
-
-    margin: 20px 0;
   }
 
   .field-name {
