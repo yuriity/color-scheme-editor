@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+p {
+  a {
+    border-bottom: 3px solid;
+  }
+}

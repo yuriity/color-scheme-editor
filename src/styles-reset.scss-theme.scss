@@ -1,0 +1,24 @@
+@import '.~@angular/material/theming';
+
+@mixin cse-styles-reset-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+
+  code {
+    color: mat-color($accent, lighter-contrast);
+    background-color: mat-color($accent, lighter);
+  }
+
+  p {
+    a {
+      color: mat-color($accent);
+      text-decoration: none;
+
+      &:hover {
+        color: mat-color($accent, darker);
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
   $warn: map-get($theme, warn);
 
   mat-toolbar {
-    a.mat-button {
+    button {
       &.active {
         background-color: mat-color($primary, darker);
       }

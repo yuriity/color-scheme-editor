@@ -2,12 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'about', pathMatch: 'full' },
-  {
-    path: 'about',
-    loadChildren: () =>
-      import('./features/about/about.module').then(m => m.AboutModule)
-  },
+  { path: '', redirectTo: 'token-colors', pathMatch: 'full' },
   {
     path: 'token-colors',
     loadChildren: () =>
@@ -23,8 +18,18 @@ const routes: Routes = [
       )
   },
   {
+    path: 'about',
+    loadChildren: () =>
+      import('./features/about/about.module').then(m => m.AboutModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () =>
+      import('./features/help/help.module').then(m => m.HelpModule)
+  },
+  {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'token-colors'
   }
 ];
 

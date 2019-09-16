@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
-@import 'styles-variables';
+@import './styles-variables';
+@import './styles-reset';
 
 @include mat-core();
 
@@ -8,6 +9,7 @@
 @import './themes/light-theme.scss';
 @import './themes/dark-theme.scss';
 
+@import './styles-reset.scss-theme';
 @import './app/app.component.scss-theme.scss';
 @import './app/features/color-picker/color-picker.component.scss-theme.scss';
 @import './app/features/token-colors/components/font-style-view/font-style-view.component.scss-theme';
@@ -15,6 +17,7 @@
 @import './app/features/edit-token-color/preview/preview.component.scss-theme.scss';
 
 @mixin custom-components-theme($theme) {
+  @include cse-styles-reset-theme($theme);
   @include cse-app-component-theme($theme);
   @include cse-color-picker-component-theme($theme);
   @include cse-font-style-view-component-theme($theme);
@@ -30,16 +33,6 @@
 .dark-theme {
   @include angular-material-theme($cse-dark-theme);
   @include custom-components-theme($cse-dark-theme);
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .main-container {
@@ -70,12 +63,33 @@ body {
   }
 }
 
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
 .monospaced {
   font-family: operator mono ssm a, operator mono ssm b, operator mono, source code pro, Menlo, Consolas, Monaco, monospace;
 }
 
-.toolbar-spacer {
-  flex: 1 1 auto;
+code {
+  font-family: operator mono ssm a, operator mono ssm b, operator mono, source code pro, Menlo, Consolas, Monaco, monospace;
+  font-size: 90%;
+  white-space: nowrap;
+  border-radius: 4px;
+  padding: 2px 4px;
+
+  mat-icon {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.mat-menu-content {
+  fa-icon {
+    position: relative;
+    top: 2px;
+    left: 4px;
+  }
 }
 
 .checkered-bg {

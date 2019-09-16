@@ -25,6 +25,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ReadabilityViewCompactComponent } from './components/readability-view/readability-view-compact.component';
 import { ReadabilityViewComponent } from './components/readability-view/readability-view.component';
 import { JsonValidatorDirective } from './directives/json-validator.directive';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     HttpClientModule,
 
@@ -55,6 +57,7 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
   ],
   exports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,

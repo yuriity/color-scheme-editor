@@ -1,0 +1,45 @@
+<div class="main-container">
+  <h1 class="title">FAQs</h1>
+
+  <h3>How to open existing color theme file?</h3>
+  <p><code>File</code> -> <code>Open local file...</code></p>
+
+  <h3>How to import color scheme from copy-pasted contents of the color theme file?</h3>
+  <p><code>File</code> -> <code>Import from copied JSON...</code></p>
+
+  <h3>How to generate your color scheme from VSCode directly?</h3>
+  <ol>
+    <li>Open VSCode</li>
+    <li>Press (CMD or CTRL) + SHIFT + P</li>
+    <li>Enter: <code>> Developer: Generate Color Scheme From Current Settings</code> and copy the contents</li>
+    <li>Paste it to dialog: <code>File</code> -> <code>Import from copied JSON...</code></li>
+  </ol>
+
+  <h3>What to do with results?</h3>
+  <ol>
+    <li>
+      Open
+      <code>
+        <mat-icon svgIcon="file-export"></mat-icon> Export results
+      </code>
+      dialog and copy contents</li>
+    <li>Open VSCode <code>settings.json</code> or color theme file</li>
+    <li>Insert copied contents to the file</li>
+  </ol>
+
+  <h3>Where can I found the <code>settings.json</code> file?</h3>
+  <p>
+    You can change the settings.json from your user preferences. These changes are global.
+    Therefore it will affect all of your projects. Here are 2 ways to reach that global settings.json file.
+  </p>
+  <ul>
+    <li><code>File</code> -> <code>Preferences</code> -> <code>Settings</code> -> <code>Extensions</code> -> Scroll down
+      and find <code>"Edit in settings.json"</code></li>
+    <li>Or in these paths in your OS</li>
+    <ul>
+      <li>Windows <code>%APPDATA%\Code\User\settings.json</code></li>
+      <li>macOS <code>$HOME/Library/Application Support/Code/User/settings.json</code></li>
+      <li>Linux <code>$HOME/.config/Code/User/settings.json</code></li>
+    </ul>
+  </ul>
+</div>

@@ -5,8 +5,9 @@
         <mat-icon svgIcon="color-scheme-editor-logo"></mat-icon>
       </a>
       <div>
-        <a mat-button [routerLink]="'/token-colors'" routerLinkActive="active"> Editor </a>
-        <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
+        <button mat-button [routerLink]="'/token-colors'" routerLinkActive="active"> Editor </button>
+        <button mat-button [routerLink]="'/help'" routerLinkActive="active"> Help </button>
+        <button mat-button [routerLink]="'/about'" routerLinkActive="active"> About </button>
       </div>
 
       <span class="toolbar-spacer"></span>
@@ -23,7 +24,7 @@
         </button>
         <button mat-menu-item (click)="generateColorScheme()">
           <mat-icon svgIcon="file-upload"></mat-icon>
-          <span>Import from copied json...</span>
+          <span>Import from copied JSON...</span>
         </button>
       </mat-menu>
       <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"

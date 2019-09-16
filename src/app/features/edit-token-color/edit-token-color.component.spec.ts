@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularResizedEventModule } from 'angular-resize-event';
+import { provideMockStore } from '@ngrx/store/testing';
+import * as tinycolor from 'tinycolor2';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { ColorPickerModule } from '../color-picker/color-picker.module';
@@ -19,6 +21,17 @@ xdescribe('EditTokenColorComponent', () => {
         AngularResizedEventModule,
         SharedModule,
         ColorPickerModule
+      ],
+      providers: [
+        provideMockStore({
+          initialState: {
+            ids: [],
+            entities: {},
+            metadata: { name: '', background: tinycolor() },
+            loading: false,
+            error: null
+          }
+        })
       ]
     }).compileComponents();
   }));

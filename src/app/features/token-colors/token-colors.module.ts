@@ -7,7 +7,7 @@ import { ColorViewComponent } from './components/color-view/color-view.component
 import { TokenColorsToolbarComponent } from './components/token-colors-toolbar/token-colors-toolbar.component';
 import { FontStyleViewComponent } from './components/font-style-view/font-style-view.component';
 import { HowToComponent } from './components/how-to/how-to.component';
-import { TokenColorsTableComponent } from './token-colors-table/token-colors-table.component';
+import { TokenColorsTableComponent } from './components/token-colors-table/token-colors-table.component';
 
 const routes: Routes = [
   {
