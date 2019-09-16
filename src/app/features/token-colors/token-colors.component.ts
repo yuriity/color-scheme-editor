@@ -12,15 +12,11 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil, map } from 'rxjs/operators';
 
 import { AppState } from 'app/core/store/core.state';
-import { TokenColorResource } from 'app/core/models/token-color.resource';
-import { ColorSchemeMetadata } from 'app/core/models/color-scheme-metadata';
-import {
-  selectColorSchemeMetadata,
-  selectTokenColors
-} from 'app/core/store/tokens/tokens.selectors';
+import { selectColorScheme } from 'app/core/store/tokens/tokens.selectors';
 import { Update } from '@ngrx/entity';
 import { TokenColor } from 'app/core/models/token-color';
 import { updateToken } from 'app/core/store/tokens/tokens.actions';
+import { ColorSchemeResource } from 'app/core/models/color-scheme.resource';
 
 @Component({
   selector: 'cse-token-colors',
@@ -28,53 +24,20 @@ import { updateToken } from 'app/core/store/tokens/tokens.actions';
   styleUrls: ['./token-colors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TokenColorsComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<void>();
-
-  dataSource: MatTableDataSource<TokenColorResource>;
-  displayedColumns = [
-    'readability',
-    'color',
-    'fontStyle',
-    'name',
-    'scope',
-    'modified',
-    'edit'
-  ];
-  metadata$: Observable<ColorSchemeMetadata>;
+export class TokenColorsComponent implements OnInit {
+  colorScheme$: Observable<ColorSchemeResource>;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.metadata$ = this.store.pipe(select(selectColorSchemeMetadata));
-    this.store
-      .pipe(
-        takeUntil(this.unsubscribe$),
-        select(selectTokenColors)
-      )
-      .subscribe(tokens => this.updateDataSource(tokens));
+    this.colorScheme$ = this.store.pipe(select(selectColorScheme));
   }
 
-  ngOnDestroy() {
-    console.log('ColorSchemeTableComponent.ngOnDestroy()');
-
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
-
-  applyFilter(filterValue: string) {
-    if (this.dataSource) {
-      filterValue = filterValue.trim();
-      filterValue = filterValue.toLowerCase();
-      this.dataSource.filter = filterValue;
-    }
-  }
-
-  resetToOriginal(token: TokenColorResource) {
+  resetToOriginal(tokenId: number) {
     const editedToken: Update<TokenColor> = {
-      id: token.id,
+      id: tokenId,
       changes: {
         name: null,
         scope: null,
@@ -83,16 +46,5 @@ export class TokenColorsComponent implements OnInit, OnDestroy {
       }
     };
     this.store.dispatch(updateToken({ token: editedToken }));
-  }
-
-  private updateDataSource(tokens: TokenColorResource[]) {
-    console.log(
-      'ColorSchemeTableComponent.updateDataSource(tokens: TokenColor[])'
-    );
-    this.dataSource = new MatTableDataSource<TokenColorResource>(tokens);
-    this.dataSource.sort = this.sort;
-
-    // TODO: Move DataTable to separate dumb component
-    this.cd.markForCheck();
   }
 }

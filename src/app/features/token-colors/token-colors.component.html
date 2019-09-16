@@ -1,65 +1,9 @@
-<cse-token-colors-toolbar [title]="(metadata$ | async)?.name" (filter)="applyFilter($event)"></cse-token-colors-toolbar>
+<ng-container *ngIf="colorScheme$ | async as colorScheme; else howto">
+  <cse-token-colors-table *ngIf="colorScheme.tokens.length > 0; else howto" [colorSchemeName]="colorScheme.name"
+    [tokens]="colorScheme.tokens" (resetItemEvent)="resetToOriginal($event)">
+  </cse-token-colors-table>
+</ng-container>
 
-<mat-table #table [dataSource]="dataSource" matSort>
-
-  <!-- Readability Column -->
-  <ng-container matColumnDef="readability">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Readability </mat-header-cell>
-    <mat-cell *matCellDef="let item">
-      <cse-readability-view-compact [readability]="item.readability"></cse-readability-view-compact>
-    </mat-cell>
-  </ng-container>
-
-  <!-- Color Column -->
-  <ng-container matColumnDef="color">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-    <mat-cell *matCellDef="let item">
-      <cse-color-view [color]="item.color" [background]="(metadata$ | async).background">
-      </cse-color-view>
-    </mat-cell>
-  </ng-container>
-
-  <!-- Font Style Column -->
-  <ng-container matColumnDef="fontStyle">
-    <mat-header-cell *matHeaderCellDef> Font Style </mat-header-cell>
-    <mat-cell *matCellDef="let item">
-      <cse-font-style-view [fontStyleBold]="item.fontStyleBold" [fontStyleItalic]="item.fontStyleItalic"
-        [fontStyleUnderline]="item.fontStyleUnderline">
-      </cse-font-style-view>
-    </mat-cell>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-    <mat-cell *matCellDef="let item"> {{item.name}} </mat-cell>
-  </ng-container>
-
-  <!-- Scope Column -->
-  <ng-container matColumnDef="scope">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Scope </mat-header-cell>
-    <mat-cell *matCellDef="let item"> {{item.scope}} </mat-cell>
-  </ng-container>
-
-  <!-- Modified Column justify-content: center-->
-  <ng-container matColumnDef="modified" class="justify-center">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Modified </mat-header-cell>
-    <mat-cell *matCellDef="let item">
-      <mat-checkbox [checked]="item.modified" [disabled]="!item.modified" (change)="resetToOriginal(item)"
-        matTooltip="Uncheck to reset to original values." [matTooltipDisabled]="!item.modified"></mat-checkbox>
-    </mat-cell>
-  </ng-container>
-
-  <!-- Edit Column -->
-  <ng-container matColumnDef="edit">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let item">
-      <button mat-button color="primary" [routerLink]="['/edit-token', item.id]">
-        Edit
-      </button>
-    </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+<ng-template #howto>
+  <cse-how-to></cse-how-to>
+</ng-template>
