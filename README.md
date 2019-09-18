@@ -1,27 +1,33 @@
 # ColorSchemeEditor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+![application logo](https://raw.githubusercontent.com/yuriity/color-scheme-editor/master/meta-assets/logo.png)
 
-## Development server
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**<https://yuriity.github.io/color-scheme-editor>**
 
-## Code scaffolding
+**ColorSchemeEditor** is a color scheme editor for [Visual Studio Code](https://code.visualstudio.com). It allows you to tune the editor's syntax highlighting colors easier and faster.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![application logo](https://raw.githubusercontent.com/yuriity/color-scheme-editor/master/meta-assets/cse-screen1.jpg)
+![application logo](https://raw.githubusercontent.com/yuriity/color-scheme-editor/master/meta-assets/cse-screens.jpg)
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. clone the repo
+2. run `npm install`
+3. run `npm run ng serve`
+4. open your browser on http://localhost:4221/
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- custom themes support (light and dark themes)
+- lazy-loading of feature modules
+- angular-material and custom components in SharedModule
+- localStorage ui state persistence **(in process)**
+- fully responsive design **(in process)**
 
-## Running end-to-end tests
+## Stack
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Angular
+- NgRx
+- Angular Material
