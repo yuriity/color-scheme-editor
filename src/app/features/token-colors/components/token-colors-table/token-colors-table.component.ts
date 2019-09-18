@@ -20,7 +20,6 @@ import { TokenColorResource } from 'app/core/models/token-color.resource';
 export class TokenColorsTableComponent implements OnInit {
   @Input() colorSchemeName: string;
   @Input() set tokens(value: TokenColorResource[]) {
-    console.log('TokenColorsTableComponent.tokens', value);
     this.dataSource = new MatTableDataSource<TokenColorResource>(value);
     this.dataSource.sort = this.sort;
   }

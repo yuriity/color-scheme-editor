@@ -1,6 +1,6 @@
 <ng-container *ngIf="colorScheme$ | async as colorScheme; else howto">
-  <cse-token-colors-table *ngIf="colorScheme.tokens.length > 0; else howto" [colorSchemeName]="colorScheme.name"
-    [tokens]="colorScheme.tokens" (resetItemEvent)="resetToOriginal($event)">
+  <cse-token-colors-table *ngIf="colorScheme.tokens.length > 0 || (tokensLoading$ | async); else howto"
+    [colorSchemeName]="colorScheme.name" [tokens]="colorScheme.tokens" (resetItemEvent)="resetToOriginal($event)">
   </cse-token-colors-table>
 </ng-container>
 

@@ -38,6 +38,10 @@ export const selectColorScheme = createSelector(
   selectAllTokens,
   selectColorSchemeMetadata,
   (tokens, metadata) => {
+    console.log('selectColorScheme', metadata);
+    if (!metadata) {
+      return new ColorSchemeResource('', []);
+    }
     return new ColorSchemeResource(
       metadata.name,
       tokens.map(token => new TokenColorResource(token, metadata.background))
