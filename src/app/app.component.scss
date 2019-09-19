@@ -1,14 +1,39 @@
 @import 'src/styles-responsive.scss';
 
 #app-container {
-  display: grid;
-  // grid-template:
-  //   " header " auto
-  //   " main   " 1fr
-  //   / 1fr
-  // ;
-  grid-template: " header "auto " main   "1fr / 1fr;
   height: 100vh;
+  display: grid;
+  grid-template:
+    " header "auto // prettier-ignore
+    " main   "1fr // prettier-ignore
+    / 1fr;
+
+  mat-sidenav-container {
+    height: 100vh;
+
+    mat-sidenav {
+      width: 250px;
+
+      .branding {
+        display: flex;
+        align-items: center;
+        padding: 8px 10px;
+        font-size: 18px;
+        font-weight: 500;
+
+        mat-icon {
+          height: 48px;
+          width: 48px;
+          margin: 2px 10px 0 0;
+          color: linear-gradient(107deg, #ff5722, #9b0063);
+        }
+      }
+
+      .mat-nav-list {
+        padding-top: 0;
+      }
+    }
+  }
 
   header {
     grid-area: header;
@@ -24,6 +49,23 @@
         mat-icon {
           height: 48px;
           width: 48px;
+        }
+      }
+
+      .bars-button {
+        margin-right: 16px;
+        display: inline-block;
+
+        @include for-size($size-tablet-portrait-up) {
+          display: none;
+        }
+      }
+
+      .nav-button {
+        display: none;
+
+        @include for-size($size-tablet-portrait-up) {
+          display: inline-block;
         }
       }
     }

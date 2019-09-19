@@ -18,7 +18,9 @@ import {
   MatTabsModule,
   MatSliderModule,
   MatBadgeModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSidenavModule,
+  MatListModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -53,7 +55,9 @@ import { RouterModule } from '@angular/router';
     MatTabsModule,
     MatSliderModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports: [
     CommonModule,
@@ -77,6 +81,8 @@ import { RouterModule } from '@angular/router';
     MatSliderModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
 
     ReadabilityViewCompactComponent,
     ReadabilityViewComponent,
@@ -89,11 +95,18 @@ export class SharedModule {
     private domSanitizer: DomSanitizer
   ) {
     this.matIconRegistry.addSvgIcon(
-      'color-scheme-editor-logo',
+      'app-logo',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        `./assets/images/color-scheme-editor-logo.svg`
+        `./assets/images/app-logo.svg`
       )
     );
+    this.matIconRegistry.addSvgIcon(
+      'app-logo-filled',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        `./assets/images/app-logo-filled.svg`
+      )
+    );
+    this.addFontawesomeIcon('bars');
     this.addFontawesomeIcon('undo');
     this.addFontawesomeIcon('folder-open');
     this.addFontawesomeIcon('file-upload');

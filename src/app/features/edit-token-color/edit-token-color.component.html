@@ -2,6 +2,10 @@
   <h1 class="title">Edit Token Color</h1>
   <ng-container *ngIf="token$ | async as token; else tokenIsEmpty">
     <ng-container *ngIf="token">
+      <cse-preview class="field-preview" [background]="token.background" [color]="token.color"
+        [fontStyleBold]="token.fontStyleBold" [fontStyleItalic]="token.fontStyleItalic"
+        [fontStyleUnderline]="token.fontStyleUnderline">
+      </cse-preview>
       <mat-form-field class="field-name">
         <input matInput placeholder="Name" maxlength="100" [(ngModel)]="token.name">
       </mat-form-field>
@@ -14,10 +18,6 @@
         <mat-checkbox [(ngModel)]="token.fontStyleItalic"><i>Italic</i></mat-checkbox>
         <mat-checkbox [(ngModel)]="token.fontStyleUnderline"><u>Underline</u></mat-checkbox>
       </section>
-      <cse-preview class="field-preview" [background]="token.background" [color]="token.color"
-        [fontStyleBold]="token.fontStyleBold" [fontStyleItalic]="token.fontStyleItalic"
-        [fontStyleUnderline]="token.fontStyleUnderline">
-      </cse-preview>
       <section class="field-readability custom-form-field">
         <mat-placeholder>Readability:</mat-placeholder>
         <cse-readability-view [readability]="token.readability"></cse-readability-view>

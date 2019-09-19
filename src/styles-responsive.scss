@@ -6,7 +6,7 @@ $size-big-desktop-up: 'big-desktop-up';
 
 @mixin for-size($size) {
   @if $size==phone-only {
-    @media (max-width: 576px) {
+    @media (min-width: 576px) {
       @content;
     }
   }

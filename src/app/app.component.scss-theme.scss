@@ -13,6 +13,19 @@
     }
   }
 
+  mat-sidenav {
+    .mat-list-item {
+      &.active {
+        color: mat-color($accent, default-contrast);
+        background-color: mat-color($accent) !important;
+
+        &:hover {
+          background-color: mat-color($accent, darker) !important;
+        }
+      }
+    }
+  }
+
   .error-notification-overlay {
     color: mat-color($warn, default-contrast);
     background-color: mat-color($warn);
