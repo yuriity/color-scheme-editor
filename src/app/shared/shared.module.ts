@@ -106,6 +106,7 @@ export class SharedModule {
         `./assets/images/app-logo-filled.svg`
       )
     );
+    this.addFontawesomeIcon('caret-down');
     this.addFontawesomeIcon('bars');
     this.addFontawesomeIcon('undo');
     this.addFontawesomeIcon('folder-open');
