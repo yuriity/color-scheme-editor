@@ -76,11 +76,11 @@
 
     mat-progress-bar {
       position: absolute;
-      top: 64px;
+      top: 56px;
       left: 0;
 
       @include for-size($size-phone-only) {
-        top: 56px;
+        top: 64px;
       }
     }
   }
