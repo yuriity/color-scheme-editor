@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "color-scheme-editor",
+      "public": "dist/color-scheme-editor",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

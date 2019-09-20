@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "color-scheme-editor": {
+      "hosting": {
+        "color-scheme-editor": [
+          "color-scheme-editor"
+        ]
+      }
+    }
+  }
+}
