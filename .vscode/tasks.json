@@ -43,9 +43,9 @@
       "problemMatcher": []
     },
     {
-      "label": "build prod",
+      "label": "deploy",
       "type": "shell",
-      "command": "npm run build:prod",
+      "command": "npm run ng deploy",
       "presentation": {
         "reveal": "always",
         "panel": "new"
