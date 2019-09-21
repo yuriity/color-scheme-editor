@@ -5,7 +5,17 @@
   "tasks": [{
       "label": "serve",
       "type": "shell",
-      "command": "npm run ng serve --aot=true",
+      "command": "npm run start:aot",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "start:prod",
+      "type": "shell",
+      "command": "npm run start:prod",
       "presentation": {
         "reveal": "always",
         "panel": "new"

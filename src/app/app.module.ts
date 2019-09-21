@@ -7,7 +7,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { ParseColorSchemeDialogModule } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.module';
-import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,10 @@ import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-d
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    ParseColorSchemeDialogModule
+    ParseColorSchemeDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
