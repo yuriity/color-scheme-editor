@@ -122,6 +122,7 @@ export class SharedModule {
     this.addFontawesomeIcon('underline');
     this.addFontawesomeIcon('palette');
     this.addFontawesomeIcon('github');
+    this.addFontawesomeIcon('question-circle');
   }
 
   private addFontawesomeIcon(iconName: string) {

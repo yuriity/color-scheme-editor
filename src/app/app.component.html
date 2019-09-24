@@ -7,9 +7,13 @@
           <mat-icon svgIcon="app-logo-filled"></mat-icon>
           <span>Color Scheme Editor</span>
         </div>
-        <a mat-list-item [routerLink]="'/token-colors'" routerLinkActive="active" (click)="sidenav.close()"> Editor </a>
-        <a mat-list-item [routerLink]="'/help'" routerLinkActive="active" (click)="sidenav.close()"> Help </a>
-        <a mat-list-item [routerLink]="'/about'" routerLinkActive="active" (click)="sidenav.close()"> About </a>
+        <a mat-list-item routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+          (click)="sidenav.close()">
+          Editor
+        </a>
+        <a mat-list-item routerLink="/help" routerLinkActive="active" (click)="sidenav.close()">
+          Help
+        </a>
         <a mat-list-item href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank"
           rel="noreferrer">
           Github
@@ -22,18 +26,10 @@
         <button mat-icon-button class="bars-button" (click)="sidenav.open()">
           <mat-icon svgIcon="bars"></mat-icon>
         </button>
-        <a mat-icon-button matTooltip="Home" href="/" class="app-logo">
+        <span routerLink="" matTooltip="Home" class="app-logo">
           <mat-icon svgIcon="app-logo"></mat-icon>
-        </a>
-        <button mat-button class="nav-button" [routerLink]="'/token-colors'" routerLinkActive="active">
-          Editor
-        </button>
-        <button mat-button class="nav-button" [routerLink]="'/help'" routerLinkActive="active">
-          Help
-        </button>
-        <button mat-button class="nav-button" [routerLink]="'/about'" routerLinkActive="active">
-          About
-        </button>
+          <span class="ghostly">Color Scheme Editor</span>
+        </span>
 
         <span class="toolbar-spacer"></span>
 
@@ -75,7 +71,10 @@
             Dark Theme
           </button>
         </mat-menu>
-        <a mat-icon-button class="nav-button" matTooltip="Project Github Repository"
+        <a mat-icon-button class="ghostly" matTooltip="Help" routerLink="/help">
+          <mat-icon svgIcon="question-circle"></mat-icon>
+        </a>
+        <a mat-icon-button class="ghostly" matTooltip="Project Github Repository"
           href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank" rel="noreferrer">
           <mat-icon svgIcon="github"></mat-icon>
         </a>

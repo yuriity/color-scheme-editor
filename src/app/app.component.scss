@@ -41,14 +41,15 @@
     mat-toolbar {
       background: linear-gradient(107deg, #ff5722, #9b0063);
 
-      a.app-logo {
-        margin-right: 16px;
-        height: auto;
-        width: auto;
+      span.app-logo {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
 
         mat-icon {
           height: 48px;
           width: 48px;
+          margin-right: 8px;
         }
       }
 
@@ -61,7 +62,7 @@
         }
       }
 
-      .nav-button {
+      .ghostly {
         display: none;
 
         @include for-size($size-tablet-portrait-up) {
