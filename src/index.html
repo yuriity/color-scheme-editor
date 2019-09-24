@@ -11,17 +11,105 @@
   <meta name="theme-color" content="#1976d2">
 
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.3dc1b16e6c8bfc90fe4f.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
   <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
+
+  <style type="text/css">
+    body,
+    html {
+      height: 100%;
+    }
+
+    .app-loading {
+      overflow-y: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .app-loading .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #ddd;
+    }
+
+    .logo {
+      width: 96px;
+      height: 96px;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+
+  </style>
 </head>
 </head>
 
 <body>
-  <cse-root></cse-root>
+  <cse-root>
+    <div class="app-loading">
+      <div class="logo">
+        <svg class="spinner" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+        <svg viewBox="0 0 640 640">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="10%">
+              <stop offset="0%" style="stop-color:rgb(255, 76, 29);stop-opacity:1" id="stop2" />
+              <stop offset="100%" style="stop-color:rgb(155, 0, 99);stop-opacity:1" id="stop4" />
+            </linearGradient>
+          </defs>
+          <path
+            d="m 164.91213,431.92965 43.49658,-45.69571 c 4.59966,-4.82563 4.29967,-12.50724 -0.79992,-16.93893 l -90.59293,-78.49027 90.59293,-78.49027 c 5.09959,-4.43169 5.49956,-12.11331 0.79992,-16.93893 l -43.49658,-45.69572 c -4.49967,-4.72713 -12.09907,-5.02258 -16.9987,-0.49241 L 3.8247014,282.13831 c -5.0996005,4.62866 -5.0996005,12.60572 0,17.23438 L 147.91343,432.42206 c 4.89963,4.53018 12.49903,4.33322 16.9987,-0.49241 z m 327.17444,0.59089 144.08873,-133.04938 c 5.0996,-4.62865 5.0996,-12.60571 0,-17.23437 L 492.08657,149.08894 c -4.79963,-4.4317 -12.39904,-4.23474 -16.9987,0.4924 l -43.49658,45.69572 c -4.59966,4.82563 -4.29967,12.50723 0.79992,16.93893 l 90.59293,78.58875 -90.59293,78.49027 c -5.09959,4.43169 -5.49956,12.1133 -0.79992,16.93893 l 43.49658,45.69571 c 4.49967,4.82563 12.09907,5.02259 16.9987,0.59089 z"
+            style="fill:url(#grad1);" />
+          <path
+            d="m 263.77439,407.65222 c -22.56459,16.37149 -48.62558,43.49596 -48.22919,88.23281 0.1219,13.75793 -3.79686,21.87383 -14.65312,24.29531 -14.79604,3.30024 -38.42774,-8.77147 -45.66812,-10.94009 0.0981,70.67281 51.89409,94.62689 94.74101,88.68356 56.60028,-7.85107 107.97488,-87.16677 88.54027,-146.79134 -5.49202,-16.84929 -12.21626,-24.07324 -16.9887,-28.90496 z M 350.5386,38.890635 c -8.7577,5.36419 -15.37463,16.05021 -19.32588,28.09875 -74.76207,226.299435 -86.03158,237.442975 -73.27924,282.765885 3.25036,11.55207 8.22636,18.41452 14.22487,26.54351 l 57.1395,14.38102 c 6.01328,-0.1124 19.00017,-4.37459 27.87367,-12.11317 28.7084,-25.28449 24.01371,-55.43111 39.26292,-273.34286 0.85872,-14.711485 0.94778,-30.088375 -2.88145,-43.697895 -6.85898,-24.37741 -26.77567,-32.58162 -43.01439,-22.63524 z"
+            style="fill:url(#grad1);" />
+        </svg>
+      </div>
+    </div>
+  </cse-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 
