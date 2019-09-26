@@ -48,6 +48,7 @@
             <span>Import from copied JSON...</span>
           </button>
         </mat-menu>
+
         <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
           (click)="undoAllChanges()">
           <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
@@ -84,8 +85,8 @@
       </mat-progress-bar>
     </header>
 
-    <main [@fadeAnimation]="getRouterOutletState(o)">
-      <router-outlet #o="outlet"></router-outlet>
+    <main>
+      <router-outlet></router-outlet>
     </main>
 
   </mat-sidenav-container>

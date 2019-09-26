@@ -23,8 +23,7 @@ import { fadeAnimation } from './fade.animation';
   selector: 'cse-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeAnimation]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   theme$: Observable<string>;
@@ -68,19 +67,5 @@ export class AppComponent implements OnInit {
 
   onThemeChange(theme: string) {
     this.store.dispatch(settingsChangeTheme({ theme }));
-  }
-
-  public getRouterOutletState(outlet) {
-    // const result =
-    //   outlet &&
-    //   outlet.activatedRouteData &&
-    //   outlet.activatedRouteData['animation'];
-    const result = outlet.isActivated ? outlet.activatedRoute : '';
-    // const result =
-    //   outlet.isActivated &&
-    //   outlet.activatedRoute.routeConfig.data &&
-    //   outlet.activatedRoute.routeConfig.data.title;
-    console.log(result);
-    return result;
   }
 }
