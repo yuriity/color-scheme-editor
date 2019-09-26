@@ -8,7 +8,8 @@ import {
   resetAllTokens,
   loadFile,
   parseJson,
-  openExportColorSchemeDialog
+  openExportColorSchemeDialog,
+  loadDefaultColorScheme
 } from './core/store/tokens/tokens.actions';
 import {
   selectTokensLoading,
@@ -38,6 +39,10 @@ export class AppComponent implements OnInit {
     this.modifiedTokensTotal$ = this.store.pipe(
       select(selectModifiedTokensTotal)
     );
+  }
+
+  loadStandartTheme(fileName: string) {
+    this.store.dispatch(loadDefaultColorScheme({ fileName }));
   }
 
   loadFile(file: File) {

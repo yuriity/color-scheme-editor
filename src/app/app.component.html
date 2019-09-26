@@ -37,6 +37,7 @@
           File<mat-icon svgIcon="caret-down" class="menu-arrow-down"></mat-icon>
         </button>
         <mat-menu #fileMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+          <button mat-menu-item [matMenuTriggerFor]="defaultThemes">Open default theme</button>
           <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
             (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
           <button mat-menu-item (click)="fileInput.click()">
@@ -47,6 +48,13 @@
             <mat-icon svgIcon="file-upload"></mat-icon>
             <span>Import from copied JSON...</span>
           </button>
+        </mat-menu>
+        <mat-menu #defaultThemes="matMenu">
+          <button mat-menu-item (click)="loadStandartTheme('dark_vs.json')">Dark (Visual Studio)</button>
+          <button mat-menu-item (click)="loadStandartTheme('dark_plus.json')">Dark+ (default dark)</button>
+          <button mat-menu-item (click)="loadStandartTheme('light_vs.json')">Light (Visual Studio)</button>
+          <button mat-menu-item (click)="loadStandartTheme('light_plus.json')">Light+ (default light)</button>
+          <button mat-menu-item (click)="loadStandartTheme('hc_black.json')">Dark High Contrast</button>
         </mat-menu>
 
         <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"

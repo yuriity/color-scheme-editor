@@ -14,7 +14,8 @@ import {
   parseJson,
   loadColorSchemeSuccess,
   loadColorSchemeError,
-  openExportColorSchemeDialog
+  openExportColorSchemeDialog,
+  loadDefaultColorScheme
 } from './tokens.actions';
 import { AppState } from '../core.state';
 import { selectModifiedTokens, selectVSCodeSettings } from './tokens.selectors';
@@ -33,6 +34,21 @@ export class TokensEffects {
     private notificationService: NotificationService,
     private router: Router
   ) {}
+
+  loadStandartColorScheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadDefaultColorScheme),
+      tap(() => {
+        this.router.navigate(['/', 'token-colors']);
+      }),
+      switchMap(action =>
+        this.colorSchemeService.loadDefaultColorScheme(action.fileName).pipe(
+          map(colorScheme => loadColorSchemeSuccess({ colorScheme })),
+          catchError(error => of(loadColorSchemeError({ error })))
+        )
+      )
+    )
+  );
 
   loadColorScheme$ = createEffect(() =>
     this.actions$.pipe(

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,7 +15,7 @@ import { ColorScheme } from '../models/color-scheme';
   providedIn: 'root'
 })
 export class ColorSchemeService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   loadColorScheme(file: File): Observable<ColorScheme> {
     const reader = new FileReader();
@@ -25,6 +26,12 @@ export class ColorSchemeService {
     reader.readAsText(file);
 
     return fileReader$;
+  }
+
+  loadDefaultColorScheme(fileName: string): Observable<ColorScheme> {
+    return this.http
+      .get('assets/default-themes/' + fileName, { responseType: 'text' })
+      .pipe(map(data => this.parseColorScheme(data)));
   }
 
   parseColorScheme(json: string): ColorScheme {

@@ -8,6 +8,11 @@ export const openExportColorSchemeDialog = createAction(
   '[App] Open Export Color Scheme Dialog'
 );
 
+export const loadDefaultColorScheme = createAction(
+  '[ColorScheme] Load Default Color Scheme',
+  props<{ fileName: string }>()
+);
+
 export const loadFile = createAction(
   '[ColorScheme] Load From File',
   props<{ file: File }>()
