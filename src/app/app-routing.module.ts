@@ -14,12 +14,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/edit-token-color/edit-token-color.module').then(
         m => m.EditTokenColorModule
-      )
+      ),
+    data: { animation: 'isLeft' }
   },
   {
     path: 'help',
     loadChildren: () =>
-      import('./features/help/help.module').then(m => m.HelpModule)
+      import('./features/help/help.module').then(m => m.HelpModule),
+    data: { animation: 'isRight' }
   },
   {
     path: '**',

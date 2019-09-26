@@ -84,8 +84,8 @@
       </mat-progress-bar>
     </header>
 
-    <main>
-      <router-outlet></router-outlet>
+    <main [@fadeAnimation]="getRouterOutletState(o)">
+      <router-outlet #o="outlet"></router-outlet>
     </main>
 
   </mat-sidenav-container>
