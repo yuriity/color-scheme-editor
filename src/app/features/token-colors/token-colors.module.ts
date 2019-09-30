@@ -9,6 +9,7 @@ import { FontStyleViewComponent } from './components/font-style-view/font-style-
 import { HowToComponent } from './components/how-to/how-to.component';
 import { TokenColorsTableComponent } from './components/token-colors-table/token-colors-table.component';
 import { TokenColorsListComponent } from './components/token-colors-list/token-colors-list.component';
+import { SortByComponent } from './components/sort-by/sort-by.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
     FontStyleViewComponent,
     HowToComponent,
     TokenColorsTableComponent,
-    TokenColorsListComponent
+    TokenColorsListComponent,
+    SortByComponent
   ],
   imports: [SharedModule, RouterModule.forChild(routes)]
 })

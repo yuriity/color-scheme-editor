@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@mixin cse-sort-by-component-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  .mat-menu-item {
+    &.active {
+      color: mat-color($accent, default-contrast);
+      background-color: mat-color($accent) !important;
+
+      &:hover {
+        background-color: mat-color($accent, darker) !important;
+      }
+    }
+  }
+}

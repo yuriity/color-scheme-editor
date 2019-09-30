@@ -126,6 +126,14 @@ export class SharedModule {
     this.addFontawesomeIcon('github');
     this.addFontawesomeIcon('question-circle');
     this.addFontawesomeIcon('pencil-alt');
+    this.addFontawesomeIcon('sort-alpha-down-alt');
+    this.addFontawesomeIcon('sort-alpha-up-alt');
+    this.addFontawesomeIcon('sort-amount-down-alt');
+    this.addFontawesomeIcon('sort-amount-up-alt');
+    this.addFontawesomeIcon('sort-numeric-down-alt');
+    this.addFontawesomeIcon('sort-numeric-up-alt');
+    this.addFontawesomeIcon('long-arrow-alt-down');
+    this.addFontawesomeIcon('long-arrow-alt-up');
   }
 
   private addFontawesomeIcon(iconName: string) {
