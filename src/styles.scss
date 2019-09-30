@@ -12,6 +12,7 @@
 @import './styles-reset.scss-theme';
 @import './app/app.component.scss-theme.scss';
 @import './app/features/color-picker/color-picker.component.scss-theme.scss';
+@import './app/features/token-colors/components/token-colors-list/token-colors-list.component.scss-theme.scss';
 @import './app/features/token-colors/components/font-style-view/font-style-view.component.scss-theme';
 @import './app/features/token-colors/components/color-view/color-view.component.scss-theme.scss';
 @import './app/features/edit-token-color/preview/preview.component.scss-theme.scss';
@@ -20,6 +21,7 @@
   @include cse-styles-reset-theme($theme);
   @include cse-app-component-theme($theme);
   @include cse-color-picker-component-theme($theme);
+  @include cse-token-colors-list-component-theme($theme);
   @include cse-font-style-view-component-theme($theme);
   @include cse-color-view-component-theme($theme);
   @include cse-preview-component-theme($theme);
@@ -36,8 +38,6 @@
 }
 
 .main-container {
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 

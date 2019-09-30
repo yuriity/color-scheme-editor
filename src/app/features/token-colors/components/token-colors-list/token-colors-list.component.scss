@@ -1,0 +1,92 @@
+@import 'src/styles-responsive.scss';
+
+.list-item {
+  margin-right: 16px;
+  margin-left: 16px;
+  margin-bottom: 16px;
+
+  display: grid;
+  grid-template:
+    " readability-view  name    "auto // prettier-ignore
+    " color-view        scope   "auto // prettier-ignore
+    " font-style-view   actions "auto // prettier-ignore
+    " divider           divider "auto // prettier-ignore
+    / auto 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 5px;
+
+  @include for-size($size-tablet-portrait-up) {
+    grid-template:
+      " readability-view  name    actions "auto // prettier-ignore
+      " color-view        scope   actions "auto // prettier-ignore
+      " font-style-view   scope   actions "auto // prettier-ignore
+      // " free-space            scope   actions "auto // prettier-ignore
+      " divider           divider divider "auto // prettier-ignore
+      / auto 1fr auto;
+  }
+
+  @include for-size($size-tablet-landscape-up) {
+    grid-template:
+      " readability-view  color-view  font-style-view   name    actions "auto // prettier-ignore
+      " .                 .           .                 scope   .       "auto // prettier-ignore
+      " divider           divider     divider           divider divider "auto // prettier-ignore
+      / auto auto auto 1fr auto;
+  }
+
+  cse-readability-view-compact {
+    grid-area: readability-view;
+    justify-self: start;
+
+    min-width: 75px;
+  }
+
+  cse-color-view {
+    grid-area: color-view;
+
+    width: 100px;
+  }
+
+  cse-font-style-view {
+    grid-area: font-style-view;
+
+    margin-top: 8px;
+  }
+
+  h3 {
+    grid-area: name;
+    align-self: center;
+
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  .scope {
+    grid-area: scope;
+  }
+
+  .actions {
+    grid-area: actions;
+
+    justify-self: end;
+  }
+
+  mat-divider {
+    grid-area: divider;
+  }
+}
+
+.list-item:first-child {
+  margin-top: 16px;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+p.line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

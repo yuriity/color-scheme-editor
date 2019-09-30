@@ -1,6 +1,9 @@
 @import 'src/styles-responsive.scss';
 
 .main-container {
+  padding-right: 16px;
+  padding-left: 16px;
+
   display: grid;
   grid-template:
     " title             "auto // prettier-ignore

@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+@mixin cse-token-colors-list-component-theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .noname {
+    color: mat-color($foreground, 'disabled-text');
+  }
+}

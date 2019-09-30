@@ -8,6 +8,7 @@ import { TokenColorsToolbarComponent } from './components/token-colors-toolbar/t
 import { FontStyleViewComponent } from './components/font-style-view/font-style-view.component';
 import { HowToComponent } from './components/how-to/how-to.component';
 import { TokenColorsTableComponent } from './components/token-colors-table/token-colors-table.component';
+import { TokenColorsListComponent } from './components/token-colors-list/token-colors-list.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
     TokenColorsToolbarComponent,
     FontStyleViewComponent,
     HowToComponent,
-    TokenColorsTableComponent
+    TokenColorsTableComponent,
+    TokenColorsListComponent
   ],
   imports: [SharedModule, RouterModule.forChild(routes)]
 })

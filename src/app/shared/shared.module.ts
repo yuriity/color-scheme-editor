@@ -20,7 +20,8 @@ import {
   MatBadgeModule,
   MatSnackBarModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatDividerModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -57,7 +58,8 @@ import { RouterModule } from '@angular/router';
     MatBadgeModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule
   ],
   exports: [
     CommonModule,
@@ -83,6 +85,7 @@ import { RouterModule } from '@angular/router';
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
+    MatDividerModule,
 
     ReadabilityViewCompactComponent,
     ReadabilityViewComponent,
@@ -112,7 +115,6 @@ export class SharedModule {
     this.addFontawesomeIcon('folder-open');
     this.addFontawesomeIcon('file-upload');
     this.addFontawesomeIcon('file-export');
-    this.addFontawesomeIcon('code');
     this.addFontawesomeIcon('eye');
     this.addFontawesomeIcon('eye-slash');
     this.addFontawesomeIcon('low-vision');
@@ -123,6 +125,7 @@ export class SharedModule {
     this.addFontawesomeIcon('palette');
     this.addFontawesomeIcon('github');
     this.addFontawesomeIcon('question-circle');
+    this.addFontawesomeIcon('pencil-alt');
   }
 
   private addFontawesomeIcon(iconName: string) {
