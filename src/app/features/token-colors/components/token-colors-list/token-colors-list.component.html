@@ -1,5 +1,5 @@
 <div class="main-container">
-  <mat-list>
+  <mat-list *ngIf="dataSource$ | async as tokens">
     <div class="list-item" *ngFor="let token of tokens">
       <cse-readability-view-compact [readability]="token.readability">
       </cse-readability-view-compact>
@@ -13,8 +13,8 @@
         <p class="line-clamp">{{ token.scope }}</p>
       </div>
       <div class="actions">
-        <button mat-icon-button color="primary" (click)="resetToOriginal(token.id)" [disabled]="!token.modified" matTooltip="Reset to original values"
-          [matTooltipDisabled]="!token.modified">
+        <button mat-icon-button color="primary" (click)="resetToOriginal(token.id)" [disabled]="!token.modified"
+          matTooltip="Reset to original values" [matTooltipDisabled]="!token.modified">
           <mat-icon svgIcon="undo"></mat-icon>
         </button>
         <button mat-icon-button [routerLink]="['/edit-token', token.id]" color="primary" matTooltip="Edit token color">

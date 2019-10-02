@@ -1,22 +1,16 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   Input,
   Output,
   EventEmitter
 } from '@angular/core';
 
-export type SortType =
-  | 'NameAsc'
-  | 'NameDesc'
-  | 'ScopeAsc'
-  | 'ScopeDesc'
-  | 'ReadabilityAsc'
-  | 'ReadabilityDesc'
-  | 'ColorAsc'
-  | 'ColorDesc'
-  | null;
+import {
+  TokenColorSort,
+  FieldType,
+  DirectionType
+} from '../token-colors-list/token-colors-list.component';
 
 @Component({
   selector: 'cse-sort-by',
@@ -24,23 +18,32 @@ export type SortType =
   styleUrls: ['./sort-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SortByComponent implements OnInit {
-  @Input() sortBy: SortType;
+export class SortByComponent {
+  @Input() sort: TokenColorSort;
 
-  @Output() changeSortByEvent = new EventEmitter<SortType>();
+  @Output() changeSortEvent = new EventEmitter<TokenColorSort>();
 
   constructor() {}
 
-  ngOnInit() {}
-
-  changeSorting(sortBy: SortType) {
-    if (sortBy === this.sortBy) {
-      this.sortBy = null;
+  changeSorting(field: FieldType, direction: DirectionType) {
+    if (
+      this.sort &&
+      field === this.sort.field &&
+      direction === this.sort.direction
+    ) {
+      this.sort = null;
     } else {
-      this.sortBy = sortBy;
+      this.sort = { field, direction };
     }
 
-    this.changeSortByEvent.emit(sortBy);
-    console.log('changeSorting', this.sortBy);
+    this.changeSortEvent.emit(this.sort);
+  }
+
+  isActive(field: FieldType, direction: DirectionType) {
+    return (
+      this.sort &&
+      field === this.sort.field &&
+      direction === this.sort.direction
+    );
   }
 }

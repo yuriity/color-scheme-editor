@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -16,6 +11,7 @@ import { Update } from '@ngrx/entity';
 import { TokenColor } from 'app/core/models/token-color';
 import { updateToken } from 'app/core/store/tokens/tokens.actions';
 import { ColorSchemeResource } from 'app/core/models/color-scheme.resource';
+import { TokenColorSort } from './components/token-colors-list/token-colors-list.component';
 
 @Component({
   selector: 'cse-token-colors',
@@ -26,8 +22,9 @@ import { ColorSchemeResource } from 'app/core/models/color-scheme.resource';
 export class TokenColorsComponent implements OnInit {
   tokensLoading$: Observable<boolean>;
   colorScheme$: Observable<ColorSchemeResource>;
+  tokensSort: TokenColorSort = null;
 
-  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));

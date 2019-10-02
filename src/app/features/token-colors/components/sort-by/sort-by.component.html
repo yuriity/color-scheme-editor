@@ -1,73 +1,62 @@
 <button mat-button [matMenuTriggerFor]="sortMenu">
-  <ng-container [ngSwitch]="sortBy">
-    <span *ngSwitchCase="'NameAsc'">
-      Sort By: Name<mat-icon svgIcon="long-arrow-alt-up" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'NameDesc'">
-      Sort By: Name<mat-icon svgIcon="long-arrow-alt-down" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'ScopeAsc'">
-      Sort By: Scope<mat-icon svgIcon="long-arrow-alt-up" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'ScopeDesc'">
-      Sort By: Scope<mat-icon svgIcon="long-arrow-alt-down" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'ReadabilityAsc'">
-      Sort By: Readability<mat-icon svgIcon="long-arrow-alt-up" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'ReadabilityDesc'">
-      Sort By: Readability<mat-icon svgIcon="long-arrow-alt-down" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'ColorAsc'">
-      Sort By: Color<mat-icon svgIcon="long-arrow-alt-up" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchCase="'ColorDesc'">
-      Sort By: Color<mat-icon svgIcon="long-arrow-alt-down" class="sort-arrow"></mat-icon>
-    </span>
-    <span *ngSwitchDefault>Sort By</span>
-  </ng-container>
+  <span [ngSwitch]="sort?.field">
+    <ng-container *ngSwitchCase="'NAME'">
+      Sort By: Name
+    </ng-container>
+    <ng-container *ngSwitchCase="'SCOPE'">
+      Sort By: Scope
+    </ng-container>
+    <ng-container *ngSwitchCase="'READABILITY'">
+      Sort By: Readability
+    </ng-container>
+    <ng-container *ngSwitchCase="'COLOR'">
+      Sort By: Color
+    </ng-container>
+    <ng-container *ngSwitchDefault>Sort By</ng-container>
+    <mat-icon *ngIf="sort?.direction === 'asc'" svgIcon="long-arrow-alt-up" class="sort-arrow"></mat-icon>
+    <mat-icon *ngIf="sort?.direction === 'desc'" svgIcon="long-arrow-alt-down" class="sort-arrow"></mat-icon>
+  </span>
   <mat-icon svgIcon="caret-down" color="primary" class="menu-arrow-down"></mat-icon>
 </button>
 <mat-menu #sortMenu="matMenu" xPosition="before" yPosition="below" [overlapTrigger]="true">
-  <button mat-menu-item (click)="changeSorting('NameAsc')" [ngClass]="{ 'active': 'NameAsc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('NAME', 'asc')" [class.active]="isActive('NAME', 'asc')">
     <mat-icon svgIcon="sort-alpha-up-alt"></mat-icon>
     <span>Name Ascending</span>
   </button>
-  <button mat-menu-item (click)="changeSorting('NameDesc')" [ngClass]="{ 'active': 'NameDesc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('NAME', 'desc')" [class.active]="isActive('NAME', 'desc')">
     <mat-icon svgIcon="sort-alpha-down-alt"></mat-icon>
     <span>Name Descending</span>
   </button>
 
   <mat-divider></mat-divider>
 
-  <button mat-menu-item (click)="changeSorting('ScopeAsc')" [ngClass]="{ 'active': 'ScopeAsc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('SCOPE', 'asc')" [class.active]="isActive('SCOPE', 'asc')">
     <mat-icon svgIcon="sort-alpha-up-alt"></mat-icon>
     <span>Scope Ascending</span>
   </button>
-  <button mat-menu-item (click)="changeSorting('ScopeDesc')" [ngClass]="{ 'active': 'ScopeDesc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('SCOPE', 'desc')" [class.active]="isActive('SCOPE', 'desc')">
     <mat-icon svgIcon="sort-alpha-down-alt"></mat-icon>
     <span>Scope Descending</span>
   </button>
 
   <mat-divider></mat-divider>
 
-  <button mat-menu-item (click)="changeSorting('ReadabilityAsc')" [ngClass]="{ 'active': 'ReadabilityAsc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('READABILITY', 'asc')" [class.active]="isActive('READABILITY', 'asc')">
     <mat-icon svgIcon="sort-numeric-up-alt"></mat-icon>
     <span>Readability Ascending</span>
   </button>
-  <button mat-menu-item (click)="changeSorting('ReadabilityDesc')"
-    [ngClass]="{ 'active': 'ReadabilityDesc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('READABILITY', 'desc')" [class.active]="isActive('READABILITY', 'desc')">
     <mat-icon svgIcon="sort-numeric-down-alt"></mat-icon>
     <span>Readability Descending</span>
   </button>
 
   <mat-divider></mat-divider>
 
-  <button mat-menu-item (click)="changeSorting('ColorAsc')" [ngClass]="{ 'active': 'ColorAsc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('COLOR', 'asc')" [class.active]="isActive('COLOR', 'asc')">
     <mat-icon svgIcon="sort-amount-up-alt"></mat-icon>
     <span>Color Ascending</span>
   </button>
-  <button mat-menu-item (click)="changeSorting('ColorDesc')" [ngClass]="{ 'active': 'ColorDesc' === sortBy }">
+  <button mat-menu-item (click)="changeSorting('COLOR', 'desc')" [class.active]="isActive('COLOR', 'desc')">
     <mat-icon svgIcon="sort-amount-down-alt"></mat-icon>
     <span>Color Descending</span>
   </button>
