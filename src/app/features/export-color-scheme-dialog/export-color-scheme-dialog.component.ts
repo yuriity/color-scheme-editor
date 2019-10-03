@@ -20,9 +20,7 @@ export class ExportColorSchemeDialogComponent implements OnInit, AfterViewInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  ngOnInit() {
-    // console.log('ExportColorSchemeDialogComponent', this.data);
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     const inputElem = this.jsonInputRef.nativeElement as HTMLInputElement;

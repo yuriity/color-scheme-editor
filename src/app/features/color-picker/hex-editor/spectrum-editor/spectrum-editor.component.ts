@@ -50,7 +50,6 @@ export class SpectrumEditorComponent {
   constructor() {}
 
   onResized(event: ResizedEvent) {
-    console.log('onResized', event);
     this.spectrumRef.nativeElement.height = this.spectrumRef.nativeElement.clientHeight;
     this.spectrumRef.nativeElement.width = this.spectrumRef.nativeElement.clientWidth;
     this.markerOffsetHeight = this.markerRef.nativeElement.offsetHeight;
@@ -66,11 +65,7 @@ export class SpectrumEditorComponent {
 
     this.updateMarkerPosition({ x: point.x, y: point.y });
 
-    this.color = getImageColor(
-      this.spectrumRef.nativeElement,
-      point.x,
-      point.y
-    );
+    this.color = getImageColor(this.spectrumRef.nativeElement, point.x, point.y);
 
     this.preventUpdate = false;
   }
@@ -79,30 +74,15 @@ export class SpectrumEditorComponent {
     const spectrumCanvas = this.spectrumRef.nativeElement;
     const spectrumContext = this.spectrumRef.nativeElement.getContext('2d');
 
-    spectrumContext.clearRect(
-      0,
-      0,
-      spectrumCanvas.width,
-      spectrumCanvas.height
-    );
+    spectrumContext.clearRect(0, 0, spectrumCanvas.width, spectrumCanvas.height);
 
     // White gradient
-    const whiteGrd = spectrumContext.createLinearGradient(
-      0,
-      0,
-      spectrumCanvas.width,
-      0
-    );
+    const whiteGrd = spectrumContext.createLinearGradient(0, 0, spectrumCanvas.width, 0);
     whiteGrd.addColorStop(0.01, 'rgba(255, 255, 255, 1.000)');
     whiteGrd.addColorStop(0.99, 'rgba(255, 255, 255, 0.000)');
 
     // Black Gradient
-    const blackGrd = spectrumContext.createLinearGradient(
-      0,
-      0,
-      0,
-      spectrumCanvas.height
-    );
+    const blackGrd = spectrumContext.createLinearGradient(0, 0, 0, spectrumCanvas.height);
     blackGrd.addColorStop(0.01, 'rgba(0, 0, 0, 0.000)');
     blackGrd.addColorStop(0.99, 'rgba(0, 0, 0, 1.000)');
 
@@ -113,22 +93,12 @@ export class SpectrumEditorComponent {
     // Fill with white
     // Odd bug prevented selecting min, max ranges from all gradients
     spectrumContext.fillStyle = whiteGrd;
-    spectrumContext.fillRect(
-      -1,
-      -1,
-      spectrumCanvas.width + 2,
-      spectrumCanvas.height + 2
-    );
+    spectrumContext.fillRect(-1, -1, spectrumCanvas.width + 2, spectrumCanvas.height + 2);
 
     // Fill with black
     // Odd bug prevented selecting min, max ranges from all gradients
     spectrumContext.fillStyle = blackGrd;
-    spectrumContext.fillRect(
-      -1,
-      -1,
-      spectrumCanvas.width + 2,
-      spectrumCanvas.height + 2
-    );
+    spectrumContext.fillRect(-1, -1, spectrumCanvas.width + 2, spectrumCanvas.height + 2);
   }
 
   private updateMarkerPosition(point: Point = null) {
@@ -147,16 +117,10 @@ export class SpectrumEditorComponent {
     const yAdjusted = point.y + yOffset;
 
     const xFinal = Math.floor(
-      Math.max(
-        Math.min(this.spectrumRef.nativeElement.width + xOffset, xAdjusted),
-        xOffset
-      )
+      Math.max(Math.min(this.spectrumRef.nativeElement.width + xOffset, xAdjusted), xOffset)
     );
     const yFinal = Math.floor(
-      Math.max(
-        Math.min(this.spectrumRef.nativeElement.height + yOffset, yAdjusted),
-        yOffset
-      )
+      Math.max(Math.min(this.spectrumRef.nativeElement.height + yOffset, yAdjusted), yOffset)
     );
 
     this.markerRef.nativeElement.style.left = xFinal + 'px';

@@ -36,7 +36,7 @@
         <button mat-button [matMenuTriggerFor]="fileMenu">
           File<mat-icon svgIcon="caret-down" class="menu-arrow-down"></mat-icon>
         </button>
-        <mat-menu #fileMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+        <mat-menu #fileMenu="matMenu" yPosition="below">
           <button mat-menu-item [matMenuTriggerFor]="defaultThemes">Open default theme</button>
           <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
             (click)="this.fileInput.value = null" tabindex="-1" style="display:none">

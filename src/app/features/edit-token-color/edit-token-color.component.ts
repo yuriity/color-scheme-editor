@@ -28,7 +28,6 @@ export class EditTokenColorComponent implements OnInit {
   }
 
   onSave(token: TokenColorResource) {
-    console.log('onSave', token);
     const editedToken: Update<TokenColor> = {
       id: token.id,
       changes: {
