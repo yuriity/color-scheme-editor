@@ -31,11 +31,7 @@ import { JsonValidatorDirective } from './directives/json-validator.directive';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    ReadabilityViewCompactComponent,
-    ReadabilityViewComponent,
-    JsonValidatorDirective
-  ],
+  declarations: [ReadabilityViewCompactComponent, ReadabilityViewComponent, JsonValidatorDirective],
   imports: [
     CommonModule,
     RouterModule,
@@ -93,21 +89,14 @@ import { RouterModule } from '@angular/router';
   ]
 })
 export class SharedModule {
-  constructor(
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
       'app-logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        `./assets/images/app-logo.svg`
-      )
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`./assets/images/app-logo.svg`)
     );
     this.matIconRegistry.addSvgIcon(
       'app-logo-filled',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        `./assets/images/app-logo-filled.svg`
-      )
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`./assets/images/app-logo-filled.svg`)
     );
     this.addFontawesomeIcon('caret-down');
     this.addFontawesomeIcon('bars');
@@ -134,6 +123,8 @@ export class SharedModule {
     this.addFontawesomeIcon('sort-numeric-up-alt');
     this.addFontawesomeIcon('long-arrow-alt-down');
     this.addFontawesomeIcon('long-arrow-alt-up');
+    this.addFontawesomeIcon('search');
+    this.addFontawesomeIcon('times');
   }
 
   private addFontawesomeIcon(iconName: string) {

@@ -10,6 +10,7 @@ import { HowToComponent } from './components/how-to/how-to.component';
 import { TokenColorsTableComponent } from './components/token-colors-table/token-colors-table.component';
 import { TokenColorsListComponent } from './components/token-colors-list/token-colors-list.component';
 import { SortByComponent } from './components/sort-by/sort-by.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
     HowToComponent,
     TokenColorsTableComponent,
     TokenColorsListComponent,
-    SortByComponent
+    SortByComponent,
+    SearchBarComponent
   ],
   imports: [SharedModule, RouterModule.forChild(routes)]
 })

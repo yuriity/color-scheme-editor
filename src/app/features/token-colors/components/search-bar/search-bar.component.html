@@ -1,0 +1,29 @@
+<mat-form-field class="mat-search_field" [@slideInOut]="searchVisible">
+  <input
+    #searchInput
+    matInput
+    type="text"
+    maxlength="120"
+    [(ngModel)]="searchValue"
+    (blur)="onBlurring()"
+  />
+</mat-form-field>
+
+<div class="mat-search_icons" [class.mat-search_icons--active]="searchVisible">
+  <mat-icon
+    svgIcon="times"
+    class="mat-search_icon-close"
+    (click)="close()"
+    matRipple
+    color="primary"
+  >
+  </mat-icon>
+  <mat-icon
+    svgIcon="search"
+    class="mat-search_icon-search"
+    (click)="open()"
+    matRipple
+    color="primary"
+  >
+  </mat-icon>
+</div>

@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { TokenColorResource } from 'app/core/models/token-color.resource';
@@ -53,6 +47,19 @@ export class TokenColorsListComponent {
     this.updateDataSource();
   }
 
+  private _search: string;
+  get search(): string {
+    return this._search;
+  }
+  @Input() set search(value: string) {
+    if (this._search === value) {
+      return;
+    }
+
+    this._search = value;
+    this.updateDataSource();
+  }
+
   @Output() resetItemEvent = new EventEmitter<number>();
 
   constructor() {
@@ -65,46 +72,46 @@ export class TokenColorsListComponent {
   }
 
   private updateDataSource() {
-    this.dataSource$.next(this.sortData(this.tokens));
+    const data = this.sortData(this.searchData(this.tokens.slice()));
+    this.dataSource$.next(data);
   }
 
-  private sortData(tokens: TokenColorResource[]): TokenColorResource[] {
-    if (!this.sort) {
-      return tokens;
-    }
+  private sortData(data: TokenColorResource[]): TokenColorResource[] {
+    return !this.sort ? data : data.sort((a, b) => this.compareTokens(a, b));
+  }
 
-    return tokens.sort((a, b) => {
-      const valueA = this.getSortingValue(a, this.sort);
-      const valueB = this.getSortingValue(b, this.sort);
+  private searchData(data: TokenColorResource[]): TokenColorResource[] {
+    return !this.search ? data : data.filter(token => this.searchPredicate(token));
+  }
 
-      // If both valueA and valueB exist (truthy), then compare the two. Otherwise, check if
-      // one value exists while the other doesn't. In this case, existing value should come last.
-      // This avoids inconsistent results when comparing values to undefined/null.
-      // If neither value exists, return 0 (equal).
-      let comparatorResult = 0;
-      if (valueA != null && valueB != null) {
-        // Check if one value is greater than the other; if equal, comparatorResult should remain 0.
-        if (valueA > valueB) {
-          comparatorResult = 1;
-        } else if (valueA < valueB) {
-          comparatorResult = -1;
-        }
-      } else if (valueA != null) {
+  private compareTokens(a: TokenColorResource, b: TokenColorResource): number {
+    const valueA = this.getSortingValue(a);
+    const valueB = this.getSortingValue(b);
+
+    // If both valueA and valueB exist (truthy), then compare the two. Otherwise, check if
+    // one value exists while the other doesn't. In this case, existing value should come last.
+    // This avoids inconsistent results when comparing values to undefined/null.
+    // If neither value exists, return 0 (equal).
+    let comparatorResult = 0;
+    if (valueA != null && valueB != null) {
+      // Check if one value is greater than the other; if equal, comparatorResult should remain 0.
+      if (valueA > valueB) {
         comparatorResult = 1;
-      } else if (valueB != null) {
+      } else if (valueA < valueB) {
         comparatorResult = -1;
       }
+    } else if (valueA != null) {
+      comparatorResult = 1;
+    } else if (valueB != null) {
+      comparatorResult = -1;
+    }
 
-      return comparatorResult * (this.sort.direction === 'asc' ? 1 : -1);
-    });
+    return comparatorResult * (this.sort.direction === 'asc' ? 1 : -1);
   }
 
-  private getSortingValue(
-    token: TokenColorResource,
-    sort: TokenColorSort
-  ): string | number {
+  private getSortingValue(token: TokenColorResource): string | number {
     let value: string | number;
-    switch (sort.field) {
+    switch (this.sort.field) {
       case 'NAME':
         value = token.name;
         break;
@@ -120,5 +127,38 @@ export class TokenColorsListComponent {
     }
 
     return value;
+  }
+
+  private searchPredicate(token: TokenColorResource): boolean {
+    // Use an obscure Unicode character to delimit the words in the concatenated string.
+    // This avoids matches where the values of two columns combined will match the user's query
+    // (e.g. `Flute` and `Stop` will match `Test`). The character is intended to be something
+    // that has a very low chance of being typed in by somebody in a text field. This one in
+    // particular is "White up-pointing triangle with dot" from
+    // https://en.wikipedia.org/wiki/List_of_Unicode_characters
+    const obscureCharacter = '◬';
+
+    // Transform the data into a lowercase string of all property values.
+    let dataStr = '';
+    if (token.name) {
+      dataStr += token.name + obscureCharacter;
+    }
+    if (token.scope) {
+      dataStr += token.scope + obscureCharacter;
+    }
+    if (token.color.getAlpha() === 1) {
+      dataStr += token.color.toHexString() + obscureCharacter;
+    } else {
+      dataStr += token.color.toHex8String() + obscureCharacter;
+    }
+    dataStr += token.readability.toFixed(1) + obscureCharacter;
+
+    dataStr = dataStr.toLowerCase();
+
+    // Transform the search term by converting it to lowercase and removing whitespace.
+    const transformedSearch = this.search.trim().toLowerCase();
+
+    const result = dataStr.indexOf(transformedSearch) !== -1;
+    return result;
   }
 }

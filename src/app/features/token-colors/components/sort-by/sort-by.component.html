@@ -1,5 +1,5 @@
 <button mat-icon-button [matMenuTriggerFor]="sortMenu" class="show-on-sm">
-  <mat-icon svgIcon="sort-alpha-down-alt" [color]="sort ? 'primary' : ''"></mat-icon>
+  <mat-icon svgIcon="sort-alpha-up-alt" [color]="sort ? 'primary' : ''"></mat-icon>
 </button>
 
 <button mat-button [matMenuTriggerFor]="sortMenu" class="hide-on-sm">
@@ -26,44 +26,6 @@
 </button>
 
 <mat-menu #sortMenu="matMenu" xPosition="before" yPosition="below">
-  <button
-    mat-menu-item
-    (click)="changeSorting('NAME', 'asc')"
-    [class.active]="isActive('NAME', 'asc')"
-  >
-    <mat-icon svgIcon="sort-alpha-up-alt"></mat-icon>
-    <span>Name Ascending</span>
-  </button>
-  <button
-    mat-menu-item
-    (click)="changeSorting('NAME', 'desc')"
-    [class.active]="isActive('NAME', 'desc')"
-  >
-    <mat-icon svgIcon="sort-alpha-down-alt"></mat-icon>
-    <span>Name Descending</span>
-  </button>
-
-  <mat-divider></mat-divider>
-
-  <button
-    mat-menu-item
-    (click)="changeSorting('SCOPE', 'asc')"
-    [class.active]="isActive('SCOPE', 'asc')"
-  >
-    <mat-icon svgIcon="sort-alpha-up-alt"></mat-icon>
-    <span>Scope Ascending</span>
-  </button>
-  <button
-    mat-menu-item
-    (click)="changeSorting('SCOPE', 'desc')"
-    [class.active]="isActive('SCOPE', 'desc')"
-  >
-    <mat-icon svgIcon="sort-alpha-down-alt"></mat-icon>
-    <span>Scope Descending</span>
-  </button>
-
-  <mat-divider></mat-divider>
-
   <button
     mat-menu-item
     (click)="changeSorting('READABILITY', 'asc')"
@@ -98,5 +60,43 @@
   >
     <mat-icon svgIcon="sort-amount-down-alt"></mat-icon>
     <span>Color Descending</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button
+    mat-menu-item
+    (click)="changeSorting('NAME', 'asc')"
+    [class.active]="isActive('NAME', 'asc')"
+  >
+    <mat-icon svgIcon="sort-alpha-up-alt"></mat-icon>
+    <span>Name Ascending</span>
+  </button>
+  <button
+    mat-menu-item
+    (click)="changeSorting('NAME', 'desc')"
+    [class.active]="isActive('NAME', 'desc')"
+  >
+    <mat-icon svgIcon="sort-alpha-down-alt"></mat-icon>
+    <span>Name Descending</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button
+    mat-menu-item
+    (click)="changeSorting('SCOPE', 'asc')"
+    [class.active]="isActive('SCOPE', 'asc')"
+  >
+    <mat-icon svgIcon="sort-alpha-up-alt"></mat-icon>
+    <span>Scope Ascending</span>
+  </button>
+  <button
+    mat-menu-item
+    (click)="changeSorting('SCOPE', 'desc')"
+    [class.active]="isActive('SCOPE', 'desc')"
+  >
+    <mat-icon svgIcon="sort-alpha-down-alt"></mat-icon>
+    <span>Scope Descending</span>
   </button>
 </mat-menu>
