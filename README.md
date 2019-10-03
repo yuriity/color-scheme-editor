@@ -22,9 +22,10 @@
 
 - custom themes support (light and dark themes)
 - lazy-loading of feature modules
+- fully responsive design
+- PWA (Progressive Web App)
 - angular-material and custom components in SharedModule
 - localStorage ui state persistence **(in process)**
-- fully responsive design **(in process)**
 
 ## Stack
 
