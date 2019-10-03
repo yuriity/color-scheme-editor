@@ -104,7 +104,6 @@ export class SharedModule {
     this.addFontawesomeIcon('eye');
     this.addFontawesomeIcon('eye-slash');
     this.addFontawesomeIcon('low-vision');
-    this.addFontawesomeIcon('filter');
     this.addFontawesomeIcon('bold');
     this.addFontawesomeIcon('italic');
     this.addFontawesomeIcon('underline');
