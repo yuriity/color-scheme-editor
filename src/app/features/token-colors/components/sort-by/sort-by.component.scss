@@ -1,3 +1,5 @@
+@import 'src/styles-responsive.scss';
+
 .sort-arrow {
   height: 1em;
   width: 1em;
@@ -5,4 +7,20 @@
 
 .menu-arrow-down {
   margin-left: 5px;
+}
+
+.hide-on-sm {
+  display: none;
+
+  @include for-size($size-tablet-portrait-up) {
+    display: inline-block;
+  }
+}
+
+.show-on-sm {
+  display: inline-block;
+
+  @include for-size($size-tablet-portrait-up) {
+    display: none;
+  }
 }
