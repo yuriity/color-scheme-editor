@@ -1,20 +1,21 @@
 <ng-container *ngIf="colorScheme$ | async as colorScheme; else howto">
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <span class="theme-name">{{ colorScheme?.name }}</span>
-      <span class="toolbar-spacer"></span>
-      <cse-search-bar (searchChanged)="tokensSearch = $event"></cse-search-bar>
-      <cse-sort-by (changeSortEvent)="tokensSort = $event"></cse-sort-by>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <cse-token-colors-list
-    *ngIf="colorScheme.tokens.length > 0 || (tokensLoading$ | async); else howto"
-    [tokens]="colorScheme.tokens"
-    [sort]="tokensSort"
-    [search]="tokensSearch"
-    (resetItemEvent)="resetToOriginal($event)"
-  >
-  </cse-token-colors-list>
+  <ng-container *ngIf="colorScheme.tokens.length > 0 || (tokensLoading$ | async); else howto">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="theme-name">{{ colorScheme?.name }}</span>
+        <span class="toolbar-spacer"></span>
+        <cse-search-bar (searchChanged)="tokensSearch = $event"></cse-search-bar>
+        <cse-sort-by (changeSortEvent)="tokensSort = $event"></cse-sort-by>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <cse-token-colors-list
+      [tokens]="colorScheme.tokens"
+      [sort]="tokensSort"
+      [search]="tokensSearch"
+      (resetItemEvent)="resetToOriginal($event)"
+    >
+    </cse-token-colors-list>
+  </ng-container>
 </ng-container>
 
 <ng-template #howto>
