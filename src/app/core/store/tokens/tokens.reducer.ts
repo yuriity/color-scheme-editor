@@ -9,7 +9,8 @@ import {
   loadFile,
   loadColorSchemeSuccess,
   parseJson,
-  loadColorSchemeError
+  loadColorSchemeError,
+  loadDefaultColorScheme
 } from './tokens.actions';
 import { TokenColor } from '../../models/token-color';
 
@@ -97,6 +98,14 @@ const reducer = createReducer(
   on(updateTokens, (state, { tokens }) => {
     return tokensAdapter.updateMany(tokens, state);
   }),
+  on(loadDefaultColorScheme, state => ({
+    ...state,
+    ids: [],
+    entities: {},
+    loading: true,
+    error: null,
+    metadata: null
+  })),
   on(loadFile, state => ({
     ...state,
     ids: [],

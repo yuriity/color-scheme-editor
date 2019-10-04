@@ -99,19 +99,17 @@ export class TokensEffects {
         )
       ),
       map(modifiedTokens => {
-        const tokensToUpdate: Update<TokenColor>[] = modifiedTokens.map(
-          token => {
-            return {
-              id: token.id,
-              changes: {
-                name: null,
-                scope: null,
-                color: null,
-                fontStyle: null
-              }
-            };
-          }
-        );
+        const tokensToUpdate: Update<TokenColor>[] = modifiedTokens.map(token => {
+          return {
+            id: token.id,
+            changes: {
+              name: null,
+              scope: null,
+              color: null,
+              fontStyle: null
+            }
+          };
+        });
         return updateTokens({ tokens: tokensToUpdate });
       })
     )
