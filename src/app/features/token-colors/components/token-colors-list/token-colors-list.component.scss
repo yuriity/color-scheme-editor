@@ -1,36 +1,38 @@
 @import 'src/styles-responsive.scss';
 
 .list-item {
+  display: grid;
+  grid-column-gap: 16px;
+  grid-row-gap: 5px;
+  /* prettier-ignore */
+  grid-template:
+    " readability-view  name    " auto
+    " color-view        scope   " auto
+    " font-style-view   actions " auto
+    " divider           divider " auto
+    / auto              1fr;
+
   margin-right: 16px;
   margin-left: 16px;
   margin-bottom: 16px;
 
-  display: grid;
-  grid-template:
-    " readability-view  name    "auto // prettier-ignore
-    " color-view        scope   "auto // prettier-ignore
-    " font-style-view   actions "auto // prettier-ignore
-    " divider           divider "auto // prettier-ignore
-    / auto 1fr;
-  grid-column-gap: 16px;
-  grid-row-gap: 5px;
-
   @include for-size($size-tablet-portrait-up) {
+    /* prettier-ignore */
     grid-template:
-      " readability-view  name    actions "auto // prettier-ignore
-      " color-view        scope   actions "auto // prettier-ignore
-      " font-style-view   scope   actions "auto // prettier-ignore
-      // " free-space            scope   actions "auto // prettier-ignore
-      " divider           divider divider "auto // prettier-ignore
-      / auto 1fr auto;
+      " readability-view  name      actions " auto
+      " color-view        scope     actions " auto
+      " font-style-view   scope     actions " auto
+      " divider           divider   divider " auto
+      / auto              1fr       auto;
   }
 
   @include for-size($size-tablet-landscape-up) {
+    /* prettier-ignore */
     grid-template:
-      " readability-view  color-view  font-style-view   name    actions "auto // prettier-ignore
-      " .                 .           .                 scope   .       "auto // prettier-ignore
-      " divider           divider     divider           divider divider "auto // prettier-ignore
-      / auto auto auto 1fr auto;
+      " readability-view  color-view  font-style-view   name      actions " auto
+      " .                 .           .                 scope     .       " auto
+      " divider           divider     divider           divider   divider " auto
+      / auto              auto        auto              1fr       auto;
   }
 
   cse-readability-view-compact {
@@ -52,16 +54,22 @@
     margin-top: 8px;
   }
 
-  h3 {
+  .name {
     grid-area: name;
-    align-self: center;
 
-    margin-block-start: 0;
-    margin-block-end: 0;
+    overflow: hidden;
+
+    h3 {
+      align-self: center;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
   }
 
   .scope {
     grid-area: scope;
+
+    overflow: hidden;
   }
 
   .actions {
@@ -88,5 +96,12 @@ p.line-clamp {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+h3.line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }

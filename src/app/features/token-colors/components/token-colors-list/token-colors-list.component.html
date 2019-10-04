@@ -3,21 +3,36 @@
     <div class="list-item" *ngFor="let token of tokens">
       <cse-readability-view-compact [readability]="token.readability">
       </cse-readability-view-compact>
-      <cse-color-view [color]="token.color" [background]="token.background">
-      </cse-color-view>
-      <cse-font-style-view [fontStyleBold]="token.fontStyleBold" [fontStyleItalic]="token.fontStyleItalic"
-        [fontStyleUnderline]="token.fontStyleUnderline">
+      <cse-color-view [color]="token.color" [background]="token.background"> </cse-color-view>
+      <cse-font-style-view
+        [fontStyleBold]="token.fontStyleBold"
+        [fontStyleItalic]="token.fontStyleItalic"
+        [fontStyleUnderline]="token.fontStyleUnderline"
+      >
       </cse-font-style-view>
-      <h3 *ngIf="token.name; else noname">{{ token.name }}</h3>
+      <div class="name">
+        <h3 class="line-clamp" *ngIf="token.name; else noname">{{ token.name }}</h3>
+      </div>
       <div class="scope">
         <p class="line-clamp">{{ token.scope }}</p>
       </div>
       <div class="actions">
-        <button mat-icon-button color="primary" (click)="resetToOriginal(token.id)" [disabled]="!token.modified"
-          matTooltip="Reset to original values" [matTooltipDisabled]="!token.modified">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="resetToOriginal(token.id)"
+          [disabled]="!token.modified"
+          matTooltip="Reset to original values"
+          [matTooltipDisabled]="!token.modified"
+        >
           <mat-icon svgIcon="undo"></mat-icon>
         </button>
-        <button mat-icon-button [routerLink]="['/edit-token', token.id]" color="primary" matTooltip="Edit token color">
+        <button
+          mat-icon-button
+          [routerLink]="['/edit-token', token.id]"
+          color="primary"
+          matTooltip="Edit token color"
+        >
           <mat-icon svgIcon="pencil-alt"></mat-icon>
         </button>
       </div>

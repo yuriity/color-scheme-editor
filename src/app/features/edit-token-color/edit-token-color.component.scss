@@ -5,29 +5,31 @@
   padding-left: 16px;
 
   display: grid;
+  /* prettier-ignore */
   grid-template:
-    " title             "auto // prettier-ignore
-    " field-preview     "auto // prettier-ignore
-    " field-name        "auto // prettier-ignore
-    " field-scope       "auto // prettier-ignore
-    " field-styles      "auto // prettier-ignore
-    " field-readability "auto // prettier-ignore
-    " color-editor      "auto // prettier-ignore
-    " actions           "auto // prettier-ignore
+    " title             " auto
+    " field-preview     " auto
+    " field-name        " auto
+    " field-scope       " auto
+    " field-styles      " auto
+    " field-readability " auto
+    " color-editor      " auto
+    " actions           " auto
     / 1fr;
   grid-column-gap: 30px;
   grid-row-gap: 8px;
 
   @include for-size($size-tablet-portrait-up) {
+    /* prettier-ignore */
     grid-template:
-      " title          title             "auto // prettier-ignore
-      " field-name     field-readability "auto // prettier-ignore
-      " field-scope    color-editor      "auto // prettier-ignore
-      " field-styles   color-editor      "auto // prettier-ignore
-      " spacer         color-editor      "auto // prettier-ignore
-      " field-preview  color-editor      "auto // prettier-ignore
-      " actions        actions           "auto // prettier-ignore
-      / 1fr 1fr;
+      " title           title             " auto
+      " field-name      field-readability " auto
+      " field-scope     color-editor      " auto
+      " field-styles    color-editor      " auto
+      " spacer          color-editor      " auto
+      " field-preview   color-editor      " auto
+      " actions         actions           " auto
+      / 1fr             1fr;
   }
 }
 
@@ -65,7 +67,7 @@ cse-color-picker {
   justify-self: end;
   padding: 8px 0;
 
-  .mat-button+.mat-button {
+  .mat-button + .mat-button {
     margin-left: 8px;
   }
 }
@@ -80,7 +82,7 @@ cse-color-picker {
     flex: 2 1 auto;
   }
 
-  .mat-checkbox+.mat-checkbox {
+  .mat-checkbox + .mat-checkbox {
     margin-left: 20px;
   }
 }
