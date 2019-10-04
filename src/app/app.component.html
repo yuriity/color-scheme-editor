@@ -1,4 +1,4 @@
-<div id="app-container" class="mat-app-background" [ngClass]="[(theme$ | async)]">
+<div class="mat-app-background" [ngClass]="[(theme$ | async)]">
   <mat-sidenav-container>
 
     <mat-sidenav #sidenav mode="over">
@@ -21,81 +21,83 @@
       </mat-nav-list>
     </mat-sidenav>
 
-    <header>
-      <mat-toolbar color="primary" class="mat-elevation-z6">
-        <button mat-icon-button class="bars-button" (click)="sidenav.open()">
-          <mat-icon svgIcon="bars"></mat-icon>
-        </button>
-        <span routerLink="" matTooltip="Home" class="app-logo">
-          <mat-icon svgIcon="app-logo"></mat-icon>
-          <span class="ghostly">Color Scheme Editor</span>
-        </span>
-
-        <span class="toolbar-spacer"></span>
-
-        <button mat-button [matMenuTriggerFor]="fileMenu">
-          File<mat-icon svgIcon="caret-down" class="menu-arrow-down"></mat-icon>
-        </button>
-        <mat-menu #fileMenu="matMenu" yPosition="below">
-          <button mat-menu-item [matMenuTriggerFor]="defaultThemes">Open default theme</button>
-          <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
-            (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
-          <button mat-menu-item (click)="fileInput.click()">
-            <mat-icon svgIcon="folder-open"></mat-icon>
-            <span>Open local file...</span>
+    <div id="app-container">
+      <header>
+        <mat-toolbar color="primary" class="mat-elevation-z6">
+          <button mat-icon-button class="bars-button" (click)="sidenav.open()">
+            <mat-icon svgIcon="bars"></mat-icon>
           </button>
-          <button mat-menu-item (click)="generateColorScheme()">
-            <mat-icon svgIcon="file-upload"></mat-icon>
-            <span>Import from copied JSON...</span>
+          <span routerLink="" matTooltip="Home" class="app-logo">
+            <mat-icon svgIcon="app-logo"></mat-icon>
+            <span class="ghostly">Color Scheme Editor</span>
+          </span>
+
+          <span class="toolbar-spacer"></span>
+
+          <button mat-button [matMenuTriggerFor]="fileMenu">
+            File<mat-icon svgIcon="caret-down" class="menu-arrow-down"></mat-icon>
           </button>
-        </mat-menu>
-        <mat-menu #defaultThemes="matMenu">
-          <button mat-menu-item (click)="loadStandartTheme('dark_vs.json')">Dark (Visual Studio)</button>
-          <button mat-menu-item (click)="loadStandartTheme('dark_plus.json')">Dark+ (default dark)</button>
-          <button mat-menu-item (click)="loadStandartTheme('light_vs.json')">Light (Visual Studio)</button>
-          <button mat-menu-item (click)="loadStandartTheme('light_plus.json')">Light+ (default light)</button>
-          <button mat-menu-item (click)="loadStandartTheme('hc_black.json')">Dark High Contrast</button>
-        </mat-menu>
+          <mat-menu #fileMenu="matMenu" yPosition="below">
+            <button mat-menu-item [matMenuTriggerFor]="defaultThemes">Open default theme</button>
+            <input #fileInput type="file" accept=".json" (change)="loadFile($event.target.files[0])"
+              (click)="this.fileInput.value = null" tabindex="-1" style="display:none">
+            <button mat-menu-item (click)="fileInput.click()">
+              <mat-icon svgIcon="folder-open"></mat-icon>
+              <span>Open local file...</span>
+            </button>
+            <button mat-menu-item (click)="generateColorScheme()">
+              <mat-icon svgIcon="file-upload"></mat-icon>
+              <span>Import from copied JSON...</span>
+            </button>
+          </mat-menu>
+          <mat-menu #defaultThemes="matMenu">
+            <button mat-menu-item (click)="loadStandartTheme('dark_vs.json')">Dark (Visual Studio)</button>
+            <button mat-menu-item (click)="loadStandartTheme('dark_plus.json')">Dark+ (default dark)</button>
+            <button mat-menu-item (click)="loadStandartTheme('light_vs.json')">Light (Visual Studio)</button>
+            <button mat-menu-item (click)="loadStandartTheme('light_plus.json')">Light+ (default light)</button>
+            <button mat-menu-item (click)="loadStandartTheme('hc_black.json')">Dark High Contrast</button>
+          </mat-menu>
 
-        <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
-          (click)="undoAllChanges()">
-          <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
-            [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeSize="small" matBadgeColor="accent"
-            matBadgePosition="below after" matBadgeDescription="Number of modified tokens">
-          </mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
-          (click)="exportChanges()">
-          <mat-icon svgIcon="file-export"></mat-icon>
-        </button>
-
-        <button mat-icon-button [matMenuTriggerFor]="themesMenu" matTooltip="Select application theme">
-          <mat-icon svgIcon="palette"></mat-icon>
-        </button>
-        <mat-menu #themesMenu="matMenu">
-          <button mat-menu-item (click)="onThemeChange('light-theme')" [disabled]="(theme$ | async) === 'light-theme'">
-            Ligth Theme
+          <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
+            (click)="undoAllChanges()">
+            <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
+              [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeSize="small" matBadgeColor="accent"
+              matBadgePosition="below after" matBadgeDescription="Number of modified tokens">
+            </mat-icon>
           </button>
-          <button mat-menu-item (click)="onThemeChange('dark-theme')" [disabled]="(theme$ | async) === 'dark-theme'">
-            Dark Theme
+          <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
+            (click)="exportChanges()">
+            <mat-icon svgIcon="file-export"></mat-icon>
           </button>
-        </mat-menu>
-        <a mat-icon-button class="ghostly" matTooltip="Help" routerLink="/help">
-          <mat-icon svgIcon="question-circle"></mat-icon>
-        </a>
-        <a mat-icon-button class="ghostly" matTooltip="Project Github Repository"
-          href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank" rel="noreferrer">
-          <mat-icon svgIcon="github"></mat-icon>
-        </a>
-      </mat-toolbar>
 
-      <mat-progress-bar color="accent" mode="indeterminate" *ngIf="tokensLoading$ | async">
-      </mat-progress-bar>
-    </header>
+          <button mat-icon-button [matMenuTriggerFor]="themesMenu" matTooltip="Select application theme">
+            <mat-icon svgIcon="palette"></mat-icon>
+          </button>
+          <mat-menu #themesMenu="matMenu">
+            <button mat-menu-item (click)="onThemeChange('light-theme')" [disabled]="(theme$ | async) === 'light-theme'">
+              Ligth Theme
+            </button>
+            <button mat-menu-item (click)="onThemeChange('dark-theme')" [disabled]="(theme$ | async) === 'dark-theme'">
+              Dark Theme
+            </button>
+          </mat-menu>
+          <a mat-icon-button class="ghostly" matTooltip="Help" routerLink="/help">
+            <mat-icon svgIcon="question-circle"></mat-icon>
+          </a>
+          <a mat-icon-button class="ghostly" matTooltip="Project Github Repository"
+            href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank" rel="noreferrer">
+            <mat-icon svgIcon="github"></mat-icon>
+          </a>
+        </mat-toolbar>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+        <mat-progress-bar color="accent" mode="indeterminate" *ngIf="tokensLoading$ | async">
+        </mat-progress-bar>
+      </header>
+
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
 
   </mat-sidenav-container>
 </div>
