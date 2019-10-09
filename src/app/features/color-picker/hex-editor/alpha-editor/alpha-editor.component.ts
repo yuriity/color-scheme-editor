@@ -7,10 +7,10 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { ResizedEvent } from 'angular-resize-event';
 
 import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
-import { Point } from '../pick-color.directive';
+import { Point } from '../directives/pick-color.directive';
+import { ResizedEvent } from '../directives/resized.directive';
 
 @Component({
   selector: 'cse-alpha-editor',
@@ -94,31 +94,15 @@ export class AlphaEditorComponent {
     alphaContext.clearRect(0, 0, alphaCanvas.width, alphaCanvas.height);
 
     // Create gradient
-    const hueGrd = alphaContext.createLinearGradient(
-      10,
-      0.0,
-      10,
-      alphaCanvas.height
-    );
+    const hueGrd = alphaContext.createLinearGradient(10, 0.0, 10, alphaCanvas.height);
 
     // Add colors
-    hueGrd.addColorStop(
-      0.01,
-      `rgba(${currentColor.r},${currentColor.g},${currentColor.b},1`
-    );
-    hueGrd.addColorStop(
-      0.99,
-      `rgba(${currentColor.r},${currentColor.g},${currentColor.b},0`
-    );
+    hueGrd.addColorStop(0.01, `rgba(${currentColor.r},${currentColor.g},${currentColor.b},1`);
+    hueGrd.addColorStop(0.99, `rgba(${currentColor.r},${currentColor.g},${currentColor.b},0`);
 
     // Fill with gradient
     alphaContext.fillStyle = hueGrd;
-    alphaContext.fillRect(
-      -1,
-      -1,
-      alphaCanvas.width + 2,
-      alphaCanvas.height + 2
-    );
+    alphaContext.fillRect(-1, -1, alphaCanvas.width + 2, alphaCanvas.height + 2);
   }
 
   private updateMarkerPosition(y: number | null = null) {
@@ -131,10 +115,7 @@ export class AlphaEditorComponent {
 
     const yAdjusted = y + yOffset;
     const yFinal = Math.round(
-      Math.max(
-        Math.min(this.alphaRef.nativeElement.height - 1 + yOffset, yAdjusted),
-        yOffset
-      )
+      Math.max(Math.min(this.alphaRef.nativeElement.height - 1 + yOffset, yAdjusted), yOffset)
     );
 
     this.markerRef.nativeElement.style.top = yFinal + 'px';

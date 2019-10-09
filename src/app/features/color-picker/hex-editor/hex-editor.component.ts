@@ -10,7 +10,7 @@ import {
 import * as tinycolor from 'tinycolor2';
 
 import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
-import {} from './pick-color.directive';
+import {} from './directives/pick-color.directive';
 
 interface Offsets {
   offsetHeight: number;

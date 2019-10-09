@@ -6,12 +6,11 @@ import * as tinycolor from 'tinycolor2';
 
 import { ColorPickerComponent } from './color-picker.component';
 import { HexEditorComponent } from './hex-editor/hex-editor.component';
-import { PickColorDirective } from './hex-editor/pick-color.directive';
+import { PickColorDirective } from './hex-editor/directives/pick-color.directive';
 import { AlphaEditorComponent } from './hex-editor/alpha-editor/alpha-editor.component';
 import { HueEditorComponent } from './hex-editor/hue-editor/hue-editor.component';
 import { SpectrumEditorComponent } from './hex-editor/spectrum-editor/spectrum-editor.component';
 import { SharedModule } from 'app/shared/shared.module';
-import { AngularResizedEventModule } from 'angular-resize-event';
 
 describe('ColorPickerComponent', () => {
   let component: ColorPickerComponent;
@@ -19,7 +18,7 @@ describe('ColorPickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, SharedModule, AngularResizedEventModule],
+      imports: [NoopAnimationsModule, SharedModule],
       declarations: [
         PickColorDirective,
         ColorPickerComponent,

@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlphaEditorComponent } from './alpha-editor.component';
-import { AngularResizedEventModule } from 'angular-resize-event';
 import { SharedModule } from 'app/shared/shared.module';
 
 describe('AlphaEditorComponent', () => {
@@ -11,7 +10,7 @@ describe('AlphaEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AlphaEditorComponent],
-      imports: [SharedModule, AngularResizedEventModule]
+      imports: [SharedModule]
     }).compileComponents();
   }));
 

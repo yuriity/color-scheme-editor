@@ -7,11 +7,11 @@ import {
   ElementRef,
   EventEmitter
 } from '@angular/core';
-import { ResizedEvent } from 'angular-resize-event';
 
 import { TinycolorInstance } from 'app/core/models/tinycolor-instance';
-import { Point } from '../pick-color.directive';
+import { Point } from '../directives/pick-color.directive';
 import { getImageColor } from '../shared-functions';
+import { ResizedEvent } from '../directives/resized.directive';
 
 @Component({
   selector: 'cse-spectrum-editor',

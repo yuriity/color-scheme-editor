@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularResizedEventModule } from 'angular-resize-event';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { SpectrumEditorComponent } from './spectrum-editor.component';
@@ -11,7 +10,7 @@ describe('SpectrumEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SpectrumEditorComponent],
-      imports: [SharedModule, AngularResizedEventModule]
+      imports: [SharedModule]
     }).compileComponents();
   }));
 

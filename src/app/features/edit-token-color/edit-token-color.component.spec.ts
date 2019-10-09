@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularResizedEventModule } from 'angular-resize-event';
 import { provideMockStore } from '@ngrx/store/testing';
 import * as tinycolor from 'tinycolor2';
 
@@ -16,12 +15,7 @@ xdescribe('EditTokenColorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EditTokenColorComponent, PreviewComponent],
-      imports: [
-        NoopAnimationsModule,
-        AngularResizedEventModule,
-        SharedModule,
-        ColorPickerModule
-      ],
+      imports: [NoopAnimationsModule, SharedModule, ColorPickerModule],
       providers: [
         provideMockStore({
           initialState: {

@@ -7,10 +7,10 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import { ResizedEvent } from 'angular-resize-event';
 
-import { Point } from '../pick-color.directive';
+import { Point } from '../directives/pick-color.directive';
 import { getImageColor } from '../shared-functions';
+import { ResizedEvent } from '../directives/resized.directive';
 
 @Component({
   selector: 'cse-hue-editor',
@@ -103,10 +103,7 @@ export class HueEditorComponent {
 
     const yAdjusted = y + yOffset;
     const yFinal = Math.round(
-      Math.max(
-        Math.min(this.hueRef.nativeElement.height - 1 + yOffset, yAdjusted),
-        yOffset
-      )
+      Math.max(Math.min(this.hueRef.nativeElement.height - 1 + yOffset, yAdjusted), yOffset)
     );
 
     this.markerRef.nativeElement.style.top = yFinal + 'px';

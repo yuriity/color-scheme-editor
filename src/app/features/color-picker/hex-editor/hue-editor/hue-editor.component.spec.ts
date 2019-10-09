@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularResizedEventModule } from 'angular-resize-event';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { HueEditorComponent } from './hue-editor.component';
@@ -11,7 +10,7 @@ describe('HueEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HueEditorComponent],
-      imports: [SharedModule, AngularResizedEventModule]
+      imports: [SharedModule]
     }).compileComponents();
   }));
 
