@@ -94,8 +94,8 @@
         </mat-progress-bar>
       </header>
 
-      <main>
-        <router-outlet></router-outlet>
+      <main [@routeAnimation]="getRouterOutletState(o)">
+        <router-outlet #o="outlet"></router-outlet>
       </main>
     </div>
 

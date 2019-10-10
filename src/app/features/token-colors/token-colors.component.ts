@@ -1,10 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Update } from '@ngrx/entity';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from 'app/core/store/core.state';
 import { selectColorScheme, selectTokensLoading } from 'app/core/store/tokens/tokens.selectors';
-import { Update } from '@ngrx/entity';
 import { TokenColor } from 'app/core/models/token-color';
 import { updateToken } from 'app/core/store/tokens/tokens.actions';
 import { ColorSchemeResource } from 'app/core/models/color-scheme.resource';

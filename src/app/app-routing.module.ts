@@ -5,9 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./features/token-colors/token-colors.module').then(
-        m => m.TokenColorsModule
-      )
+      import('./features/token-colors/token-colors.module').then(m => m.TokenColorsModule),
+    data: { animation: 'TokenColorsPage' }
   },
   {
     path: 'edit-token/:tokenId',
@@ -15,13 +14,12 @@ const routes: Routes = [
       import('./features/edit-token-color/edit-token-color.module').then(
         m => m.EditTokenColorModule
       ),
-    data: { animation: 'isLeft' }
+    data: { animation: 'EditTokenPage' }
   },
   {
     path: 'help',
-    loadChildren: () =>
-      import('./features/help/help.module').then(m => m.HelpModule),
-    data: { animation: 'isRight' }
+    loadChildren: () => import('./features/help/help.module').then(m => m.HelpModule),
+    data: { animation: 'HelpPage' }
   },
   {
     path: '**',

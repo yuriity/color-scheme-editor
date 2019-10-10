@@ -1,9 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { RouterOutlet } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from './core/store/core.state';
+import { routeAnimation } from './shared/animations/route-animations';
 import {
   resetAllTokens,
   loadFile,
@@ -18,13 +20,13 @@ import {
 import { selectTheme } from './core/store/settings/settings.selectors';
 import { ParseColorSchemeDialogComponent } from './features/parse-color-scheme-dialog/parse-color-scheme-dialog.component';
 import { settingsChangeTheme } from './core/store/settings/settings.actions';
-import { fadeAnimation } from './fade.animation';
 
 @Component({
   selector: 'cse-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [routeAnimation]
 })
 export class AppComponent implements OnInit {
   theme$: Observable<string>;
@@ -36,9 +38,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.theme$ = this.store.pipe(select(selectTheme));
     this.tokensLoading$ = this.store.pipe(select(selectTokensLoading));
-    this.modifiedTokensTotal$ = this.store.pipe(
-      select(selectModifiedTokensTotal)
-    );
+    this.modifiedTokensTotal$ = this.store.pipe(select(selectModifiedTokensTotal));
   }
 
   loadStandartTheme(fileName: string) {
@@ -72,5 +72,9 @@ export class AppComponent implements OnInit {
 
   onThemeChange(theme: string) {
     this.store.dispatch(settingsChangeTheme({ theme }));
+  }
+
+  public getRouterOutletState(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 }
