@@ -2,15 +2,28 @@
   <h1 class="title">Edit Token Color</h1>
   <ng-container *ngIf="token$ | async as token; else tokenIsEmpty">
     <ng-container *ngIf="token">
-      <cse-preview class="field-preview" [background]="token.background" [color]="token.color"
-        [fontStyleBold]="token.fontStyleBold" [fontStyleItalic]="token.fontStyleItalic"
-        [fontStyleUnderline]="token.fontStyleUnderline">
+      <cse-preview
+        class="field-preview"
+        [background]="token.background"
+        [color]="token.color"
+        [fontStyleBold]="token.fontStyleBold"
+        [fontStyleItalic]="token.fontStyleItalic"
+        [fontStyleUnderline]="token.fontStyleUnderline"
+      >
       </cse-preview>
       <mat-form-field class="field-name">
-        <input matInput placeholder="Name" maxlength="100" [(ngModel)]="token.name">
+        <input matInput placeholder="Name" maxlength="100" [(ngModel)]="token.name" />
       </mat-form-field>
       <mat-form-field class="field-scope">
-        <textarea matInput placeholder="Scope" required maxlength="250" [(ngModel)]="token.scope"></textarea>
+        <textarea
+          matInput
+          placeholder="Scope"
+          [(ngModel)]="token.scope"
+          required
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
       </mat-form-field>
       <section class="field-styles custom-form-field">
         <mat-placeholder>Font styles:</mat-placeholder>
