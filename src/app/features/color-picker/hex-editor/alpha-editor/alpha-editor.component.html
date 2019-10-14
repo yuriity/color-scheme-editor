@@ -1,4 +1,4 @@
 <div class="alpha-container checkered-bg" (resized)="onResized($event)">
-  <canvas #alpha csePickColor (colorPicked)="onAlphaPicked($event)"></canvas>
+  <canvas #alpha (pointerMoved)="onAlphaPicked($event)"></canvas>
   <div #marker id="marker" class="square-marker"></div>
 </div>

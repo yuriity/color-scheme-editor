@@ -1,4 +1,4 @@
 <div class="hue-container" (resized)="onResized($event)">
-  <canvas #hue csePickColor (colorPicked)="onHuePicked($event)"></canvas>
+  <canvas #hue (pointerMoved)="onHuePicked($event)"></canvas>
   <div #marker id="marker" class="square-marker"></div>
 </div>

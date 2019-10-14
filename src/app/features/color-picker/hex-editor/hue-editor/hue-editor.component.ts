@@ -8,7 +8,7 @@ import {
   ElementRef
 } from '@angular/core';
 
-import { Point } from '../directives/pick-color.directive';
+import { Point } from '../directives/pointer-moved.directive';
 import { getImageColor } from '../shared-functions';
 import { ResizedEvent } from '../directives/resized.directive';
 

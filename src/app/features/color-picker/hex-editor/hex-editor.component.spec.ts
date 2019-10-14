@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import * as tinycolor from 'tinycolor2';
 
 import { HexEditorComponent } from './hex-editor.component';
-import { PickColorDirective } from './directives/pick-color.directive';
+import { PointerMovedDirective } from './directives/pointer-moved.directive';
 import { AlphaEditorComponent } from './alpha-editor/alpha-editor.component';
 import { HueEditorComponent } from './hue-editor/hue-editor.component';
 import { SpectrumEditorComponent } from './spectrum-editor/spectrum-editor.component';
@@ -15,7 +15,7 @@ describe('HexEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        PickColorDirective,
+        PointerMovedDirective,
         HexEditorComponent,
         AlphaEditorComponent,
         HueEditorComponent,

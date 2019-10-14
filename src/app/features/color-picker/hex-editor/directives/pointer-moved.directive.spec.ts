@@ -2,26 +2,26 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { PickColorDirective } from './pick-color.directive';
+import { PointerMovedDirective } from './pointer-moved.directive';
 
 @Component({
   template: `
-    <canvas csePickColor (colorPicked)="onColorPicked($event)"></canvas>
+    <canvas (pointerMoved)="onColorPicked($event)"></canvas>
   `
 })
 class ColorPickedTestComponent {
   onColorPicked(event: MouseEvent) {}
 }
 
-describe('PickColorDirective', () => {
+describe('PointerMovedDirective', () => {
   let component: ColorPickedTestComponent;
   let fixture: ComponentFixture<ColorPickedTestComponent>;
   let inputEl: DebugElement;
-  let colorPicked: PickColorDirective;
+  let colorPicked: PointerMovedDirective;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ColorPickedTestComponent, PickColorDirective]
+      declarations: [ColorPickedTestComponent, PointerMovedDirective]
     });
     fixture = TestBed.createComponent(ColorPickedTestComponent);
     fixture.detectChanges();
@@ -29,8 +29,8 @@ describe('PickColorDirective', () => {
     component = fixture.componentInstance;
     inputEl = fixture.debugElement.query(By.css('canvas'));
     colorPicked = fixture.debugElement
-      .query(By.directive(PickColorDirective))!
-      .injector.get<PickColorDirective>(PickColorDirective);
+      .query(By.directive(PointerMovedDirective))!
+      .injector.get<PointerMovedDirective>(PointerMovedDirective);
   });
 
   it('should create an instance', () => {

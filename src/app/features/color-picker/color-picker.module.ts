@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { ColorPickerComponent } from './color-picker.component';
-import { PickColorDirective } from './hex-editor/directives/pick-color.directive';
+import { PointerMovedDirective } from './hex-editor/directives/pointer-moved.directive';
 import { HexEditorComponent } from './hex-editor/hex-editor.component';
 import { AlphaEditorComponent } from './hex-editor/alpha-editor/alpha-editor.component';
 import { HueEditorComponent } from './hex-editor/hue-editor/hue-editor.component';
@@ -11,7 +11,7 @@ import { ResizedDirective } from './hex-editor/directives/resized.directive';
 
 @NgModule({
   declarations: [
-    PickColorDirective,
+    PointerMovedDirective,
     ColorPickerComponent,
     HexEditorComponent,
     AlphaEditorComponent,

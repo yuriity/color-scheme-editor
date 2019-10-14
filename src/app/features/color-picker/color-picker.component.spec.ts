@@ -6,7 +6,7 @@ import * as tinycolor from 'tinycolor2';
 
 import { ColorPickerComponent } from './color-picker.component';
 import { HexEditorComponent } from './hex-editor/hex-editor.component';
-import { PickColorDirective } from './hex-editor/directives/pick-color.directive';
+import { PointerMovedDirective } from './hex-editor/directives/pointer-moved.directive';
 import { AlphaEditorComponent } from './hex-editor/alpha-editor/alpha-editor.component';
 import { HueEditorComponent } from './hex-editor/hue-editor/hue-editor.component';
 import { SpectrumEditorComponent } from './hex-editor/spectrum-editor/spectrum-editor.component';
@@ -20,7 +20,7 @@ describe('ColorPickerComponent', () => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, SharedModule],
       declarations: [
-        PickColorDirective,
+        PointerMovedDirective,
         ColorPickerComponent,
         HexEditorComponent,
         AlphaEditorComponent,
