@@ -5,21 +5,23 @@
 
   .main-container {
     display: grid;
-    /* prettier-ignore */
-    grid-template:
-    " title             " auto
-    " field-preview     " auto
-    " field-name        " auto
-    " field-scope       " auto
-    " field-styles      " auto
-    " field-readability " auto
-    " color-editor      " auto
-    " actions           " auto
-    / 1fr;
     grid-column-gap: 30px;
     grid-row-gap: 8px;
 
+    margin-top: 16px;
+    /* prettier-ignore */
+    grid-template:
+    " field-preview     " auto
+    " field-styles      " auto
+    " field-readability " auto
+    " color-editor      " auto
+    " field-name        " auto
+    " field-scope       " auto
+    " actions           " auto
+    / 1fr;
+
     @include for-size($size-tablet-portrait-up) {
+      margin-top: 0;
       /* prettier-ignore */
       grid-template:
       " title           title             " auto
@@ -31,44 +33,49 @@
       " actions         actions           " auto
       / 1fr             1fr;
     }
-  }
 
-  .title {
-    grid-area: title;
-  }
+    .title {
+      grid-area: title;
+      display: none;
 
-  .field-name {
-    grid-area: field-name;
-  }
+      @include for-size($size-tablet-portrait-up) {
+        display: block;
+      }
+    }
 
-  .field-scope {
-    grid-area: field-scope;
-  }
+    .field-name {
+      grid-area: field-name;
+    }
 
-  .field-styles {
-    grid-area: field-styles;
-  }
+    .field-scope {
+      grid-area: field-scope;
+    }
 
-  .field-preview {
-    grid-area: field-preview;
-  }
+    .field-styles {
+      grid-area: field-styles;
+    }
 
-  .field-readability {
-    grid-area: field-readability;
-  }
+    .field-preview {
+      grid-area: field-preview;
+    }
 
-  cse-color-picker {
-    grid-area: color-editor;
-  }
+    .field-readability {
+      grid-area: field-readability;
+    }
 
-  .actions {
-    grid-area: actions;
+    cse-color-picker {
+      grid-area: color-editor;
+    }
 
-    justify-self: end;
-    padding: 8px 0;
+    .actions {
+      grid-area: actions;
 
-    .mat-button + .mat-button {
-      margin-left: 8px;
+      justify-self: end;
+      padding: 8px 0;
+
+      .mat-button + .mat-button {
+        margin-left: 8px;
+      }
     }
   }
 
