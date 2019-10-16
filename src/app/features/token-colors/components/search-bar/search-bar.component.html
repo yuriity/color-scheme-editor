@@ -6,10 +6,16 @@
     maxlength="120"
     [(ngModel)]="searchValue"
     (blur)="onBlurring()"
+    aria-label="Search"
   />
 </mat-form-field>
 
-<div class="mat-search_icons" [class.mat-search_icons--active]="searchVisible">
+<div
+  class="mat-search_icons"
+  [class.mat-search_icons--active]="searchVisible"
+  role="button"
+  aria-label="Open search input"
+>
   <mat-icon
     svgIcon="times"
     class="mat-search_icon-close"

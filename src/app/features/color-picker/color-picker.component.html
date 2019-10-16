@@ -1,7 +1,7 @@
 <div class="preview checkered-bg">
   <input [style.background]="color" [ngClass]="{'dark': !color.isDark() || color.getAlpha() < .45}"
     class="layout-fill layout-align-center-center" [value]="colorValue" (focus)="onColorValueFocused()"
-    (blur)="onColorValueBlur()" (input)="onColorValueInput($event.target.value)">
+    (blur)="onColorValueBlur()" (input)="onColorValueInput($event.target.value)" aria-label="Color value">
 </div>
 <mat-tab-group mat-stretch-tabs [selectedIndex]="selected.value" (selectedIndexChange)="onSelectedIndexChange($event)">
   <mat-tab label="HEX">

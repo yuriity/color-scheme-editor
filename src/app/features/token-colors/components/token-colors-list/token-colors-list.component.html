@@ -24,6 +24,7 @@
           [disabled]="!token.modified"
           matTooltip="Reset to original values"
           [matTooltipDisabled]="!token.modified"
+          aria-label="Reset to original values"
         >
           <mat-icon svgIcon="undo"></mat-icon>
         </button>
@@ -32,6 +33,7 @@
           [routerLink]="['/edit-token', token.id]"
           color="primary"
           matTooltip="Edit token color"
+          aria-label="Edit token color"
         >
           <mat-icon svgIcon="pencil-alt"></mat-icon>
         </button>

@@ -1,7 +1,7 @@
 <div class="mat-app-background" [ngClass]="[(theme$ | async)]">
   <mat-sidenav-container>
 
-    <mat-sidenav #sidenav mode="over">
+    <mat-sidenav #sidenav mode="over" role="navigation">
       <mat-nav-list>
         <div class="branding">
           <mat-icon svgIcon="app-logo-filled"></mat-icon>
@@ -24,7 +24,7 @@
     <div id="app-container">
       <header>
         <mat-toolbar color="primary" class="mat-elevation-z6">
-          <button mat-icon-button class="bars-button" (click)="sidenav.open()">
+          <button mat-icon-button class="bars-button" (click)="sidenav.open()" aria-label="Navigation menu">
             <mat-icon svgIcon="bars"></mat-icon>
           </button>
           <span routerLink="" matTooltip="Home" class="app-logo">
@@ -34,7 +34,7 @@
 
           <span class="toolbar-spacer"></span>
 
-          <button mat-button [matMenuTriggerFor]="fileMenu">
+          <button mat-button [matMenuTriggerFor]="fileMenu" aria-label="File menu">
             File<mat-icon svgIcon="caret-down" class="menu-arrow-down"></mat-icon>
           </button>
           <mat-menu #fileMenu="matMenu" yPosition="below">
@@ -59,18 +59,18 @@
           </mat-menu>
 
           <button mat-icon-button matTooltip="Undo all changes" [disabled]="(modifiedTokensTotal$ | async) <= 0"
-            (click)="undoAllChanges()">
+            (click)="undoAllChanges()" aria-label="Undo all changes">
             <mat-icon svgIcon="undo" [matBadge]="modifiedTokensTotal$ | async"
               [matBadgeHidden]="(modifiedTokensTotal$ | async) <= 0" matBadgeSize="small" matBadgeColor="accent"
               matBadgePosition="below after" matBadgeDescription="Number of modified tokens">
             </mat-icon>
           </button>
           <button mat-icon-button matTooltip="Export results" [disabled]="(modifiedTokensTotal$ | async) <= 0"
-            (click)="exportChanges()">
+            (click)="exportChanges()" aria-label="Export results">
             <mat-icon svgIcon="file-export"></mat-icon>
           </button>
 
-          <button mat-icon-button [matMenuTriggerFor]="themesMenu" matTooltip="Select application theme">
+          <button mat-icon-button [matMenuTriggerFor]="themesMenu" matTooltip="Select application theme" aria-label="Select application theme">
             <mat-icon svgIcon="palette"></mat-icon>
           </button>
           <mat-menu #themesMenu="matMenu">
@@ -81,11 +81,11 @@
               Dark Theme
             </button>
           </mat-menu>
-          <a mat-icon-button class="ghostly" matTooltip="Help" routerLink="/help">
+          <a mat-icon-button class="ghostly" matTooltip="Help" routerLink="/help" aria-label="Help">
             <mat-icon svgIcon="question-circle"></mat-icon>
           </a>
-          <a mat-icon-button class="ghostly" matTooltip="Project Github Repository"
-            href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank" rel="noreferrer">
+          <a mat-icon-button class="ghostly" matTooltip="Project on Github"
+            href="https://github.com/yuriity/color-scheme-editor#colorschemeeditor" target="_blank" rel="noreferrer" aria-label="Project on Github">
             <mat-icon svgIcon="github"></mat-icon>
           </a>
         </mat-toolbar>
