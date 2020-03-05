@@ -2,27 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatToolbarModule,
-  MatMenuModule,
-  MatIconModule,
-  MatButtonModule,
-  MatIconRegistry,
-  MatTooltipModule,
-  MatSortModule,
-  MatInputModule,
-  MatProgressBarModule,
-  MatDialogModule,
-  MatCheckboxModule,
-  MatTabsModule,
-  MatSliderModule,
-  MatBadgeModule,
-  MatSnackBarModule,
-  MatSidenavModule,
-  MatListModule,
-  MatDividerModule
-} from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { ReadabilityViewCompactComponent } from './components/readability-view/readability-view-compact.component';
 import { ReadabilityViewComponent } from './components/readability-view/readability-view.component';
