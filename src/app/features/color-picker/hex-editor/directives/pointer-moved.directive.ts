@@ -73,7 +73,7 @@ export class PointerMovedDirective implements OnInit, OnDestroy {
 
   private onPointerMoved(point: Point) {
     if (!this.oldPoint || this.oldPoint.x !== point.x || this.oldPoint.y !== point.y) {
-      console.log('onColorPicked', point);
+      // console.log('onColorPicked', point);
       this.zone.run(() => {
         this.oldPoint = point;
         this.pointerMoved.emit(point);
